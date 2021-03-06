@@ -1,0 +1,4353 @@
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:40+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:40+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:40+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:40+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:41+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 1680
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:41+07:00</dateTime>
+<activePostCount>1</activePostCount>
+<eventType>TMPA</eventType>
+<eventState>active</eventState>
+<eventDescription>Temperature Measurement Precautionary Alarm</eventDescription>
+<DetectionRegionList>
+<DetectionRegionEntry>
+<regionID>1</regionID>
+<RegionCoordinatesList>
+<RegionCoordinates>
+<positionX>387</positionX>
+<positionY>267</positionY>
+</RegionCoordinates>
+<RegionCoordinates>
+<positionX>434</positionX>
+<positionY>267</positionY>
+</RegionCoordinates>
+<RegionCoordinates>
+<positionX>434</positionX>
+<positionY>386</positionY>
+</RegionCoordinates>
+<RegionCoordinates>
+<positionX>387</positionX>
+<positionY>386</positionY>
+</RegionCoordinates>
+</RegionCoordinatesList>
+<TMPA>
+<thermometryUnit>celsius</thermometryUnit>
+<ruleTemperature>37.0</ruleTemperature>
+<currTemperature>37.1</currTemperature>
+<ruleCalibType>region</ruleCalibType>
+<ruleType>highest temp is higher than</ruleType>
+<MaximumTemperaturePoint>
+<RegionCoordinates>
+<positionX>415</positionX>
+<positionY>364</positionY>
+</RegionCoordinates>
+</MaximumTemperaturePoint>
+<AbsoluteHigh>
+<elevation>0.000</elevation>
+<azimuth>0.000</azimuth>
+<absoluteZoom>0.10</absoluteZoom>
+</AbsoluteHigh>
+</TMPA>
+</DetectionRegionEntry>
+</DetectionRegionList>
+<channelName>THERMAL CAMERA Gate1</channelName>
+<detectionPicturesNumber>2</detectionPicturesNumber>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:41+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:42+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:42+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:42+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:43+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:43+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:43+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:44+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:44+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:44+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:44+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:45+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:45+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:45+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:46+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:46+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:46+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:47+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:47+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:47+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:48+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:48+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/json; charset="UTF-8"
+Content-Length: 1640
+
+{
+	"ipAddress":	"10.209.7.57",
+	"portNo":	80,
+	"protocol":	"HTTP",
+	"macAddress":	"a4:14:37:84:50:a1",
+	"channelID":	1,
+	"dateTime":	"2020-12-29T11:53:48+07:00",
+	"activePostCount":	1,
+	"eventType":	"faceCapture",
+	"eventState":	"active",
+	"eventDescription":	"faceCapture",
+	"channelName":	"THERMAL CAMERA Gate1",
+	"faceCapture":	[{
+			"targetAttrs":	{
+				"deviceChannel":	1,
+				"deviceName":	"THERMAL CAMERA",
+				"faceTime":	"2020-12-29T11:53:48+07:00",
+				"contentID":	"backgroundImage"
+			},
+			"faces":	[{
+					"faceId":	14058,
+					"faceRect":	{
+						"height":	127.593,
+						"width":	34.125,
+						"x":	721.875,
+						"y":	592.778,
+						"age":	{
+							"value":	28,
+							"ageGroup":	"prime"
+						},
+						"gender":	{
+							"value":	"female"
+						},
+						"glass":	{
+							"value":	"no"
+						},
+						"faceExpression":	{
+							"value":	"poker-faced"
+						},
+						"race":	{
+							"value":	"asians"
+						},
+						"beard":	{
+							"value":	"no"
+						},
+						"hat":	{
+							"value":	"no"
+						}
+					},
+					"contentID":	"faceImage",
+					"stayDuration":	0,
+					"faceScore":	35,
+					"captureEndMark":	"false",
+					"FacePictureRect":	{
+						"height":	1000.000,
+						"width":	1000.000,
+						"x":	0.000,
+						"y":	0.000
+					},
+					"swingAngle":	0,
+					"tiltAngle":	0,
+					"pupilDistance":	30,
+					"livenessDetectionStatus":	"notLiveFace",
+					"faceSnapThermometryEnabled":	"true",
+					"currTemperature":	36.2,
+					"isAbnomalTemperature":	"false",
+					"thermometryUnit":	"celsius",
+					"alarmTemperature":	37.5
+				}],
+			"uid":	"202012291153480004ea45036611a84c26c82cc1b369d3a7654ca25647f09483"
+		}]
+}
+
+--boundary
+Content-Disposition: form-data; name=""; filename="facePicture.jpg";
+Content-Type: image/jpeg
+Content-Length: 5747
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:48+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:49+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:49+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:49+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:50+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:50+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:50+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:50+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:51+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:51+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:51+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:52+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:52+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:52+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:53+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:53+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:53+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:54+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:54+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:54+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:54+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:55+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:55+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:55+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:56+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:56+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:56+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:57+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:57+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:57+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:58+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:58+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:58+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:59+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:59+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:59+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:53:59+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:00+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:00+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:00+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:01+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:01+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:01+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:02+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:02+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:02+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:03+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:03+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:03+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:03+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:04+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:04+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:04+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:05+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:05+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:05+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:06+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:06+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:06+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:07+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:07+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:07+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:07+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:08+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:08+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:08+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:09+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:09+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:09+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:10+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:10+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:10+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:11+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:11+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:11+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:12+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:12+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:12+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:12+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:13+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:13+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:13+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:14+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:14+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:14+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:15+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:15+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:15+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:16+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:16+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:16+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:16+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:17+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:17+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:17+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:18+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:18+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:18+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:19+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:19+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:19+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:20+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:20+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:20+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:21+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:21+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:21+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/json; charset="UTF-8"
+Content-Length: 1632
+
+{
+	"ipAddress":	"10.209.7.57",
+	"portNo":	80,
+	"protocol":	"HTTP",
+	"macAddress":	"a4:14:37:84:50:a1",
+	"channelID":	1,
+	"dateTime":	"2020-12-29T11:54:21+07:00",
+	"activePostCount":	2,
+	"eventType":	"faceCapture",
+	"eventState":	"active",
+	"eventDescription":	"faceCapture",
+	"channelName":	"THERMAL CAMERA Gate1",
+	"faceCapture":	[{
+			"targetAttrs":	{
+				"deviceChannel":	1,
+				"deviceName":	"THERMAL CAMERA",
+				"faceTime":	"2020-12-29T11:54:21+07:00",
+				"contentID":	"backgroundImage"
+			},
+			"faces":	[{
+					"faceId":	14060,
+					"faceRect":	{
+						"height":	91.481,
+						"width":	39.583,
+						"x":	166.667,
+						"y":	375.185,
+						"age":	{
+							"value":	28,
+							"ageGroup":	"prime"
+						},
+						"gender":	{
+							"value":	"female"
+						},
+						"glass":	{
+							"value":	"yes"
+						},
+						"faceExpression":	{
+							"value":	"sad"
+						},
+						"race":	{
+							"value":	"asians"
+						},
+						"beard":	{
+							"value":	"no"
+						},
+						"hat":	{
+							"value":	"no"
+						}
+					},
+					"contentID":	"faceImage",
+					"stayDuration":	0,
+					"faceScore":	35,
+					"captureEndMark":	"false",
+					"FacePictureRect":	{
+						"height":	1000.000,
+						"width":	1000.000,
+						"x":	0.000,
+						"y":	0.000
+					},
+					"swingAngle":	0,
+					"tiltAngle":	0,
+					"pupilDistance":	30,
+					"livenessDetectionStatus":	"notLiveFace",
+					"faceSnapThermometryEnabled":	"true",
+					"currTemperature":	36.1,
+					"isAbnomalTemperature":	"false",
+					"thermometryUnit":	"celsius",
+					"alarmTemperature":	37.5
+				}],
+			"uid":	"20201229115421000382576fa37c3e65a1f458ba356bcc47b7e6b0b4e77feb7f"
+		}]
+}
+
+--boundary
+Content-Disposition: form-data; name=""; filename="facePicture.jpg";
+Content-Type: image/jpeg
+Content-Length: 4183
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:22+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:22+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:23+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:23+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:23+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:24+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:24+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:24+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:25+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:25+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:25+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:25+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:26+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:26+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:26+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:27+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:27+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:27+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:28+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:28+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:28+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:29+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:29+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:29+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:29+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:30+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:30+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:30+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:31+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:31+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:31+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:32+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:32+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:32+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:33+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:33+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:33+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:34+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:34+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:34+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:34+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:35+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:35+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:35+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:36+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:36+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:36+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:37+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:37+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:37+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:38+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:38+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:38+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:38+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:39+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:39+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:39+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:40+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:40+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:40+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:41+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:41+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:41+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:42+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:42+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:42+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:43+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:43+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:43+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:43+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:44+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:44+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:44+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:45+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:45+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:45+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:46+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/json; charset="UTF-8"
+Content-Length: 1639
+
+{
+	"ipAddress":	"10.209.7.57",
+	"portNo":	80,
+	"protocol":	"HTTP",
+	"macAddress":	"a4:14:37:84:50:a1",
+	"channelID":	1,
+	"dateTime":	"2020-12-29T11:54:46+07:00",
+	"activePostCount":	3,
+	"eventType":	"faceCapture",
+	"eventState":	"active",
+	"eventDescription":	"faceCapture",
+	"channelName":	"THERMAL CAMERA Gate1",
+	"faceCapture":	[{
+			"targetAttrs":	{
+				"deviceChannel":	1,
+				"deviceName":	"THERMAL CAMERA",
+				"faceTime":	"2020-12-29T11:54:46+07:00",
+				"contentID":	"backgroundImage"
+			},
+			"faces":	[{
+					"faceId":	14062,
+					"faceRect":	{
+						"height":	77.037,
+						"width":	32.292,
+						"x":	522.917,
+						"y":	250.741,
+						"age":	{
+							"value":	28,
+							"ageGroup":	"prime"
+						},
+						"gender":	{
+							"value":	"female"
+						},
+						"glass":	{
+							"value":	"no"
+						},
+						"faceExpression":	{
+							"value":	"poker-faced"
+						},
+						"race":	{
+							"value":	"asians"
+						},
+						"beard":	{
+							"value":	"no"
+						},
+						"hat":	{
+							"value":	"no"
+						}
+					},
+					"contentID":	"faceImage",
+					"stayDuration":	0,
+					"faceScore":	35,
+					"captureEndMark":	"false",
+					"FacePictureRect":	{
+						"height":	1000.000,
+						"width":	1000.000,
+						"x":	0.000,
+						"y":	0.000
+					},
+					"swingAngle":	0,
+					"tiltAngle":	0,
+					"pupilDistance":	30,
+					"livenessDetectionStatus":	"notLiveFace",
+					"faceSnapThermometryEnabled":	"true",
+					"currTemperature":	35.7,
+					"isAbnomalTemperature":	"false",
+					"thermometryUnit":	"celsius",
+					"alarmTemperature":	37.5
+				}],
+			"uid":	"2020122911544600056ff83881118fa4f193b707b5a80094b4fd10f2e378bc43"
+		}]
+}
+
+--boundary
+Content-Disposition: form-data; name=""; filename="facePicture.jpg";
+Content-Type: image/jpeg
+Content-Length: 2672
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:46+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:47+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:47+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:47+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:48+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:48+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:48+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:48+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:49+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:49+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:49+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:50+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:50+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:50+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:51+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:51+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:51+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:52+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:52+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:52+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:52+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:53+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:53+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:53+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:54+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:54+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 528
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>10.209.7.57</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>a4:14:37:84:50:a1</macAddress>
+<channelID>1</channelID>
+<dateTime>2020-12-29T11:54:54+07:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>videoloss</eventType>
+<eventState>inactive</eventState>
+<eventDescription>videoloss alarm</eventDescription>
+<channelName>THERMAL CAMERA Gate1</channelName>
+</EventNotificationAlert>

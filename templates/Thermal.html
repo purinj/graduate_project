@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<title>Smart Safety</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin="" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+  html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: "Raleway", sans-serif
+  }
+  .column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 10%;
+  float: left;
+  margin:1%;
+  text-align: center;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+.collectCard {
+  display: flex;
+}
+.collectCard > div {
+  flex: 1; /*grow*/
+}
+</style>
+
+<body class="w3-light-grey">
+
+  <!-- Top container -->
+  <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i
+        class="fa fa-bars"></i>  Menu</button>
+    <span class="w3-bar-item w3-right">Smart Safety</span>
+  </div>
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+    <div class="w3-container w3-row">
+      <div class="w3-col s3">
+        <img src="{{ url_for('static',filename='image/profile.png') }}" class="w3-circle w3-margin-right" style="width:46px">
+      </div>
+      <div class="w3-col s8 w3-bar">
+        <span>Welcome, <strong>Tanawat</strong></span><br>
+        <!-- <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a> -->
+        <a href="#" class="w1-bar-item w1-button">Logout</a>
+      </div>
+    </div>
+    <hr>
+    <div class="w3-container">
+      <h5></h5>
+    </div>
+    <div class="w3-bar-block">
+      <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
+        onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+      <a href="/" class="w3-bar-item w3-button w3-padding"><i class="fa fa-area-chart fa-fw"></i> 
+        Dashboard</a>
+      <a href="/thermal" class="w3-bar-item w3-button w3-padding w3-blue"><i
+          class="fa fa-thermometer-full fa-fw"></i>  Termal Camera</a>
+      <a href="/carcounting" class="w3-bar-item w3-button w3-padding"><i class="fa fa-car fa-fw"></i>  Axxon Next
+        </a>
+      <a href="/maps" class="w3-bar-item w3-button w3-padding"><i class="fa fa-map fa-fw"></i>  Camera Maps</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
+    </div>
+  </nav>
+
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+    title="close side menu" id="myOverlay"></div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+    <!-- Header -->
+    <header class="w3-container" style="padding-top:22px">
+      <h5><b><i class="fa fa-thermometer-full"></i> Termal Camera</b></h5>
+      <a>วันที่เริ่ม:</a>
+      <input type="date" id="start_date" value="2020-07-10">
+      <a>วันที่สิ้นสุด:</a>
+      <input type="date" id="end_date" value="2020-07-11">
+      <button id="find_range">ตกลง</button>
+    </header>
+
+    <div class="row">
+      <div class="w3 column">
+        <canvas class="w3-white" id="myChart" width="650" height="400"></canvas>
+      </div>
+      <div class="w3 column w3-white" style="margin-left: 5%; width: 44%; height: 400px;text-align: center;">
+        <a>เลือกชั้น:</a>
+        <select id="floor" onchange="selectedFloor()">
+          <option value="floor1">ชั้น 1</option>
+          <option value="floor2">ชั้น 2</option>
+          <option value="floor3">ชั้น 3</option>
+          <option value="floor4">ชั้น 4</option>
+          <option value="floor5">ชั้น 5</option>
+          <option value="floor6">ชั้น 6</option>
+        </select>
+        <img id="floorImage" width="500" height="360" src="static/image/floor1.png">
+      </div>
+    </div>
+    <div class="w3" style="padding: 20px; height: 30%; width: 100%;">
+      <div>
+        <div class="card">
+          <img src="static/image/male.png" alt="Avatar" style="width:100%">
+          <div class="container">
+            <p id="p_male">15</p> 
+          </div>
+      </div>
+    </div>
+
+      <div>
+        <div class="card">
+          <img src="static/image/female.png" alt="Avatar" style="width:100%">
+          <div class="container">
+            <p id="p_female">15</p> 
+          </div>
+      </div>
+    </div>
+
+      <div>
+        <div class="card">
+          <img src="static/image/glass_yes.png" alt="Avatar" style="width:100%">
+          <div class="container">
+            <p id="p_glass_yes">15</p> 
+          </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <img src="static/image/glass_no.png" alt="Avatar" style="width:100%">
+          <div class="container">
+            <p id="p_glass_no">15</p> 
+          </div>
+      </div>
+    </div>
+
+      <div>
+        <div class="card">
+          <img src="static/image/bread.png" alt="Avatar" style="width:100%">
+          <div class="container">
+            <p id="p_beard_yes">15</p> 
+          </div>
+      </div>
+    </div>
+
+      <div>
+        <div class="card">
+          <img src="static/image/nobread.png" alt="Avatar" style="width:100%">
+          <div class="container">
+            <p id="p_beard_no">15</p> 
+          </div>
+      </div>
+    </div>
+
+      <div>
+        <div class="card">
+          <img src="static/image/hat.png" alt="Avatar" style="width:100%">
+          <div class="container">
+            <p id="p_hat_yes">15</p> 
+          </div>
+      </div>
+    </div>
+
+      <div>
+        <div class="card">
+          <img src="static/image/nohat.png" alt="Avatar" style="width:100%">
+          <div class="container">
+            <p id="p_hat_no">15</p> 
+          </div>
+      </div>
+    </div>
+      
+      </div>
+      <div class="w3-container w3-white" id="detail">
+        test
+      </div>
+    </div>
+
+
+
+    <!-- End page content -->
+  </div>
+  <script src="static/javascript/host.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+  <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/themes/kelly.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+  <script src="static/javascript/thermal.js"></script>
+
+</body>
+
+</html>

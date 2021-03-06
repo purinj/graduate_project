@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<title>Smart Safety</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin="" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+  html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: "Raleway", sans-serif
+  }
+  .column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+
+<body class="w3-light-grey">
+
+  <!-- Top container -->
+  <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i
+        class="fa fa-bars"></i>  Menu</button>
+    <span class="w3-bar-item w3-right">Smart Safety</span>
+  </div>
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+    <div class="w3-container w3-row">
+      <div class="w3-col s3">
+        <img src="static/image/profile.png" class="w3-circle w3-margin-right" style="width:46px">
+      </div>
+      <div class="w3-col s8 w3-bar">
+        <span>Welcome, <strong>Tanawat</strong></span><br>
+        <!-- <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a> -->
+        <a href="#" class="w1-bar-item w1-button">Logout</a>
+      </div>
+    </div>
+    <hr>
+    <div class="w3-container">
+      <h5></h5>
+    </div>
+    <div class="w3-bar-block">
+      <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
+        onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+      <a href="/" class="w3-bar-item w3-button w3-padding"><i class="fa fa-area-chart fa-fw"></i> 
+        Dashboard</a>
+      <a href="/thermal" class="w3-bar-item w3-button w3-padding"><i class="fa fa-thermometer-full fa-fw"></i> 
+        Termal Camera</a>
+      <a href="/carcounting" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-car fa-fw"></i>  Axxon Next
+        </a>
+      <a href="/maps" class="w3-bar-item w3-button w3-padding"><i class="fa fa-map fa-fw"></i>  Camera Maps</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
+    </div>
+  </nav>
+  <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+    <div class="w3 row">
+      <div class="w3 column" id="firstChart">
+        <a>วันที่เริ่ม:</a>
+        <input type="date" id="start_date" value="2020-07-10">
+        <a>วันที่สิ้นสุด:</a>
+        <input type="date" id="end_date" value="2020-07-11">
+        <button id="find_range">ตกลง</button>
+        <canvas class="w3-white" id="myChart" width="650" height="400"></canvas>
+      </div>
+    </div>
+    <div class="row" id="select_contain" style="margin-left: 10px;margin-top: 150px; padding: 5px;">
+      <a>เลือกกล้อง:</a>
+      <select id="Cam">
+      </select>
+      <a>ประเภท:</a>
+      <select id="type">
+        <option value="เข้า">เข้า</option>
+        <option value="ออก">ออก</option>
+      </select>
+      <button onclick="findTime()">ตกลง</button>
+      <button onclick="tog()" hidden>ปิด</button>
+    </div>
+    <div class="w3-white row" id="time_Chart_container" style="margin-left: 10px;margin-top: 10px;overflow-x: scroll; text-align: center;">
+      <canvas class="w3-white" id="time_Chart" hidden></canvas>
+    </div>
+  </div>
+
+  <script src="static/javascript/host.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+  <script src="static/javascript/Carcounting.js"></script>
+
+</body>
+
+</html>

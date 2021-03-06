@@ -1,0 +1,14 @@
+<HttpHostNotification version="2.0" xmlns="http://www.isapi.org/ver20/XMLSchema">
+  <id>1</id>
+  <url>http://10.209.7.200:80/</url>
+  <protocolType>HTTP</protocolType>
+  <parameterFormatType>XML</parameterFormatType>
+  <addressingFormatType>ipaddress</addressingFormatType>
+  <httpAuthenticationMethod>none</httpAuthenticationMethod>
+  <eventType optional="AID,TFS,TPS">captureResult</eventType>
+  <EventList><!--dependent, it is valid only when eventMode is "list"-->
+    <Event><!--required-->
+      <type>captureResult</type>
+    </Event>
+</EventList>
+</HttpHostNotification>

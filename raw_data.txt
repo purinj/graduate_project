@@ -1,0 +1,15 @@
+{
+    \t"ipAddress":\t"10.209.7.57",
+    \t"portNo":\t80,
+    \t"protocol":\t"HTTP",
+    \t"macAddress":\t"a4:14:37:84:50:a1",
+    \t"channelID":\t1,
+    \t"dateTime":\t"2020-12-30T13:08:29+07:00",
+    \t"activePostCount":\t1,
+    \t"eventType":\t"faceCapture",
+    \t"eventState":\t"active",
+    \t"eventDescription":\t"faceCapture",
+    \t"channelName":\t"THERMAL CAMERA Gate1",
+    \t"faceCapture":\t[{\t\t\t"targetAttrs":\t{\t\t\t\t"deviceChannel":\t1,
+    \t\t\t\t"deviceName":\t"THERMAL CAMERA",\t\t\t\t"faceTime":\t"2020-12-30T13:08:29+07:00",
+    \t\t\t\t"contentID":\t"backgroundImage"\t\t\t},\t\t\t"faces":\t[{\t\t\t\t\t"faceId":\t16374,\t\t\t\t\t"faceRect":\t{\t\t\t\t\t\t"height":\t127.593,\t\t\t\t\t\t"width":\t55.208,\t\t\t\t\t\t"x":\t456.250,\t\t\t\t\t\t"y":\t381.667,\t\t\t\t\t\t"age":\t{\t\t\t\t\t\t\t"value":\t23,\t\t\t\t\t\t\t"ageGroup":\t"young"\t\t\t\t\t\t},\t\t\t\t\t\t"gender":\t{\t\t\t\t\t\t\t"value":\t"female"\t\t\t\t\t\t},\t\t\t\t\t\t"glass":\t{\t\t\t\t\t\t\t"value":\t"yes"\t\t\t\t\t\t},\t\t\t\t\t\t"faceExpression":\t{\t\t\t\t\t\t\t"value":\t"sad"\t\t\t\t\t\t},\t\t\t\t\t\t"race":\t{\t\t\t\t\t\t\t"value":\t"asians"\t\t\t\t\t\t},\t\t\t\t\t\t"beard":\t{\t\t\t\t\t\t\t"value":\t"no"\t\t\t\t\t\t},\t\t\t\t\t\t"hat":\t{\t\t\t\t\t\t\t"value":\t"no"\t\t\t\t\t\t}\t\t\t\t\t},\t\t\t\t\t"contentID":\t"faceImage",\t\t\t\t\t"stayDuration":\t0,\t\t\t\t\t"faceScore":\t23,\t\t\t\t\t"captureEndMark":\t"false",\t\t\t\t\t"FacePictureRect":\t{\t\t\t\t\t\t"height":\t1000.000,\t\t\t\t\t\t"width":\t1000.000,\t\t\t\t\t\t"x":\t0.000,\t\t\t\t\t\t"y":\t0.000\t\t\t\t\t},\t\t\t\t\t"swingAngle":\t0,\t\t\t\t\t"tiltAngle":\t0,\t\t\t\t\t"pupilDistance":\t21,\t\t\t\t\t"livenessDetectionStatus":\t"notLiveFace",\t\t\t\t\t"faceSnapThermometryEnabled":\t"true",\t\t\t\t\t"currTemperature":\t35.9,\t\t\t\t\t"isAbnomalTemperature":\t"false",\t\t\t\t\t"thermometryUnit":\t"celsius",\t\t\t\t\t"alarmTemperature":\t37.5\t\t\t\t}],\t\t\t"uid":\t"2020123013082900027047b103b0d47fb3c4420b657f8e90631963a326b68074"\t\t}]}

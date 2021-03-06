@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddCam</title>
+</head>
+<body>
+    <h1>เพิ่มกล้อง</h1>
+    <a>IP:</a>
+    <button id="test" onclick="jojo()">คลิก</button>
+    <input type="text" id="CamIp">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+<canvas id="myChart"></canvas>
+<script>
+    var data = [{ x: "18:00", y: "230" }, { x: "19:00", y: "232" }, { x: "20:00", y: "236" }, { x: "22:00", y: "228" }];
+    var test_location = [[10,12],[13,14],[15,16]] 
+
+    for ( i = 0 ; i < test_location.length;i++) {
+       console.log(test_location[i]);
+       window['location'+i] = "hello " + i;
+
+    }
+    function jojo() {
+       console.log('yy');
+       create_Time_Chart(data)
+    }
+    function create_Time_Chart(result) {
+        // parse labels and data
+        var labels = result.map(e => moment(e.x, 'HH:mm'));
+        var data = result.map(e => +e.y);
+        console.log(labels);
+        console.log(data);
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+           type: 'line',
+           data: {
+              labels: labels,
+              datasets: [{
+                 label: 'คนเข้า',
+                 data: data
+      }]
+   },
+   options: {
+      scales: {
+         xAxes: [{
+            type: 'time',
+            time: {
+               unit: 'hour',
+               displayFormats: {
+                  hour: 'HH:mm'
+               }
+            }
+         }]
+      },
+   }
+});
+    }
+</script>
+</body>
+</html>
