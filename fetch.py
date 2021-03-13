@@ -23,7 +23,7 @@ def reading(read_input):
     is_in_condition = False
     for line in read_input.iter_lines(): #read each line 
         raw_data = str(line)[2:-1]
-        print(raw_data)
+        #print(raw_data)
         # find condition json data from mixtype data 
         if raw_data == 'Content-Type: application/json; charset="UTF-8"':
             condition_json = True 

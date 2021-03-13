@@ -154,10 +154,9 @@ ot\xfb\xc8\xf8\x9b\xce\x9fr\xb6}8\x18\xad9%r\x16\xba3\xa1\xd5|g>\x98\xb2\x0b\xed
 img_string = img_string.replace(' ','')
 img_string = img_string.replace('\n','')
 new_string = img_string.replace('\t','')
+hex_img_string = binascii.hexlify(new_string.encode())
 
-# hex_img_string = binascii.hexlify(new_string.encode())
+print(hex_img_string)
 
-# print(hex_img_string)
-
-photo_infile = io.StringIO(new_string)
-photo_image = PIL.Image.frombytes(photo_infile)
+# photo_infile = io.StringIO(new_string)
+# photo_image = PIL.Image.frombytes(photo_infile)

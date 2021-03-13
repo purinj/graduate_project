@@ -1,117 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-    }
+    <title>Gentelella Alela! | </title>
 
-    form {
-      border: 3px solid #f1f1f1;
-    }
+    <!-- Bootstrap -->
+    <link href="static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="static/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="static/vendors/animate.css/animate.min.css" rel="stylesheet">
 
-    input[type=text],
-    input[type=password] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
+    <!-- Custom Theme Style -->
+    <link href="static/build/css/custom.min.css" rel="stylesheet">
+  </head>
 
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-    }
+  <body class="login">
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
 
-    button:hover {
-      opacity: 0.8;
-    }
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form>
+              <h1> {{ message }}</h1>
+              <h1>Login Form</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="Username" required="" id="username"/>
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="Password" required="" id="password"/>
+              </div>
+              <div> 
+                <button  class="btn btn-primary" id="loging_in">Log in</button>
+              </div>
 
-    .cancelbtn {
-      width: auto;
-      padding: 10px 18px;
-      background-color: #f44336;
-    }
+              <div class="clearfix"></div>
 
-    .imgcontainer {
-      text-align: center;
-      margin: 24px 0 12px 0;
+              <div class="separator">
+                <p class="change_link">New to site?
+                  <a href="#signup" class="to_register"> Create Account </a>
+                </p>
 
-    }
+                <div class="clearfix"></div>
+                <br />
 
-    img.avatar {
-      width: 10%;
-      border-radius: 50%;
-    }
+                <div>
+                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
 
-    .center {
-      position: absolute;
-      top: 35vh;
-      left: 85vh;
-      margin-top: -50px;
-      margin-left: -50px;
-      width: 50vh;
-      height: 25vw;
-    }
+        <div id="register" class="animate form registration_form">
+          <section class="login_content">
+            <form>
+              <h1>Create Account</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="Username" required="" />
+              </div>
+              <div>
+                <input type="email" class="form-control" placeholder="Email" required="" />
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="Password" required="" />
+              </div>
+              <div>
+                <a class="btn btn-default submit" href="index.html">Submit</a>
+              </div>
 
-    .container {
-      padding: 16px;
-    }
+              <div class="clearfix"></div>
 
-    span.psw {
-      float: right;
-      padding-top: 16px;
-    }
+              <div class="separator">
+                <p class="change_link">Already a member ?
+                  <a href="#signin" class="to_register"> Log in </a>
+                </p>
 
-    /* Change styles for span and cancel button on extra small screens */
-    @media screen and (max-width: 300px) {
-      span.psw {
-        display: block;
-        float: none;
-      }
+                <div class="clearfix"></div>
+                <br />
 
-      .cancelbtn {
-        width: 100%;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-
-  <div class="center">
-    <form>
-      <div class="imgcontainer">
-        <img src="/image/login.png" alt="Avatar" class="avatar">
+                <div>
+                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
       </div>
+    </div>
+    <script src="static/javascript/host.js"></script>
+    <script src="static/vendors/jquery/dist/jquery.min.js"></script>
+    <script>
+      document.getElementById('loging_in').onclick = function() {
+        console.log(document.getElementById('username').value);
+        console.log(document.getElementById('password').value);
+        $.ajax({
+         type: 'POST',
+         async: false,
+         url: host_url + "api/login",
+         data: {
+          username:document.getElementById('username').value,
+          password:document.getElementById('password').value
+        }
+        });
 
-      <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname">
-
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw">
-
-        <button type="submit" onclick="go()">Login</button>
-      </div>
-    </form>
-  </div>
-</body>
-<script>
-  function go() {
-    location.replace("Dashboard.html");
-    console.log("adsd");
-  }
-</script>
-
+      }
+       
+    </script>
+  </body>
 </html>

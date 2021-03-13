@@ -29,6 +29,7 @@ class ConfigClass(object):
 
 
 
+
 app.config.from_object(__name__+'.ConfigClass')
 db = SQLAlchemy(app)
 #---------SmartSafety DB ------------#
@@ -63,6 +64,11 @@ class Affiliate(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(255), unique=True)
 
+class CustomUserManager(UserManager):
+
+    # Override or extend the default login view method
+    def login_view(self):
+        return redirect(url_for('login'))
 # *** DB Set Up ***
 db_adapter = SQLAlchemyAdapter(db,  User)
 user_manager = UserManager(db_adapter, app)
@@ -70,7 +76,8 @@ user_manager = UserManager(db_adapter, app)
 def rowToJson(inputlist):
     text = {}
     for i in inputlist:
-            text.update({i[0] : i[1]})    
+            text.update({i[0] : i[1]})
+    
     return text
 
 
@@ -83,36 +90,18 @@ def gen(video):
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
 
-## Main Route Start
-@app.route('/login')
-def login():
-    messages = request.args['messages']  # counterpart for url_for()
-    messages = session['messages']       # counterpart for session
-    return render_template('Login.html', messages=json.loads(messages))
 
 @app.route('/')
 @login_required
 def index():
     return render_template('Dashboard.html')
 
-@app.route('/axxondatastatic')
-def axxondatastatic():
-    return render_template('AxxonNext_Event.html')
 
-@app.route('/thermalDataStatic')
-def thermalDataStatic():
-    return render_template('thermalcam_event.html')
-
-@app.route('/camera_manage')
-@roles_required('Admin')
-def camera_manage():
-    return render_template('camera_manage.html')
-
-## Main Route End
+@app.route('/logins')
+def login():
+    return render_template('Login.html')
 
 
-
-# Old Route
 @app.route('/carcounting')
 def carcounting():
     return render_template('CarCounting.html')
@@ -128,12 +117,20 @@ def PeopleCoun():
 @app.route('/thermal')
 def thermal():
     return render_template('Thermal.html')
-# Old Route
 
+@app.route('/axxondatastatic')
+def axxondatastatic():
+    return render_template('AxxonNext_Event.html')
 
+@app.route('/thermalDataStatic')
+def thermalDataStatic():
+    return render_template('thermalcam_event.html')
+    
+@app.route('/camera_manage')
+@roles_required('Admin')
+def camera_manage():
+    return render_template('camera_manage.html')
 
-
-##________________
 @app.route('/axxoncam_manage')
 def axxoncam_manage():
     return render_template('axxoncam_manage.html')
@@ -145,23 +142,7 @@ def thermalcam_manage():
 @app.route('/streamView')
 def streamView():
     return render_template('streaming.html')
-##________________
 
-
-# API Start
-# ___ Login API
-@app.route('/api/login',methods = ['POST'])
-def login_api():
-    if request.method == 'POST':
-        user = User.query.filter_by(username=request.form.get('username'),password=request.form.get('password')).first()
-        print('user =', user)
-        # 
-        if (user == None):
-            messages = json.dumps({"main":"รหัสไม่ถูก"})
-            return redirect(url_for('login', messages=messages))
-        else:
-            login_user(user)
-            return redirect(request.args.get('next') or url_for('index'))
 
 @app.route('/api/fastcreateuser')
 def fastcreateuser():
@@ -183,8 +164,6 @@ def fastlogin():
 def fastlogout():
     logout_user()
     return 'You are now logged out!'
-# ___ Login API
-
 
 @app.route('/video_feed/<brand>/<ipOfCam>')
 def video_feed(brand, ipOfCam):
