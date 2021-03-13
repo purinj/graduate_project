@@ -47,7 +47,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(255), nullable=False, server_default='')
     firstname = db.Column(db.String(255), nullable=False, server_default='')
     lastname = db.Column(db.String(255), nullable=False, server_default='')
-    affiliate = db.Column(db.Integer(), db.ForeignKey('affiliate.id', ondelete='CASCADE'))
+    organization = db.Column(db.Integer(), db.ForeignKey('organization.id', ondelete='CASCADE'))
     roles = db.relationship('Role', secondary='user_roles',backref=db.backref('users', lazy='dynamic'))
 
 class Role(db.Model):
@@ -59,13 +59,14 @@ class UserRoles(db.Model):
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id', ondelete='CASCADE'))
     role_id = db.Column(db.Integer(), db.ForeignKey('role.id', ondelete='CASCADE'))
 
-class Affiliate(db.Model):
+class Organization(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(255), unique=True)
 
 # *** DB Set Up ***
 db_adapter = SQLAlchemyAdapter(db,  User)
 user_manager = UserManager(db_adapter, app)
+
     
 def rowToJson(inputlist):
     text = {}
@@ -107,6 +108,11 @@ def thermalDataStatic():
 @roles_required('Admin')
 def camera_manage():
     return render_template('camera_manage.html')
+
+@app.route('/user_manage')
+@roles_required('Admin')
+def user_manage():
+    return render_template('user_manage.html')
 
 ## Main Route End
 
@@ -165,8 +171,8 @@ def login_api():
 
 @app.route('/api/fastcreateuser')
 def fastcreateuser():
-    user1 = User(username='user_fast1', firstname='fast', lastname='user',affiliate=1,
-                password=user_manager.hash_password('Password1'))
+    user1 = User(username='user_fast1', firstname='fast', lastname='user',organization=1,
+                password='Password1')
     user1.roles.append(Role(name='Admin'))
     db.session.add(user1)
     db.session.commit()
@@ -693,7 +699,33 @@ def allCameraTable():
         connection.close()
         return 'del LibCam complete'
 
-
+@app.route('/api/usermanage',methods = ['GET','POST','PUT','PATCH']) 
+def usermanage_table():
+    if request.method == 'GET':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute(usermanage_table_Get);
+        records = cur.fetchall()
+        #print(cur.description)
+        col_names = []
+        for elt in cur.description:
+            col_names.append(elt[0])
+        
+        table_row_column = {
+        'column': col_names,
+        'row': records
+        }
+        cur.close()
+        connection.close()
+        return table_row_column
+    
+    if request.method == 'POST':
+        user1 = User(username=request.form.get('username'), firstname=request.form.get('firstname'), lastname=request.form.get('lastname'),organization=request.form.get('organization'),
+                password=request.form.get('password'))
+        user1.roles.append(Role(name=request.form.get('Role')))
+        db.session.add(user1)
+        db.session.commit()
+        return 'User has Created'
 
 
 

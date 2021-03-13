@@ -76,3 +76,6 @@ axxonTimeScale_ppl_out_time = '''SELECT count(typex),cast(substring(split_part(s
             AND to_date(substring(timestampx,1,8), 'YYYYMMDD') <= '%s'
             group by host,devicepint,display_name,hh,mm 
             order by host,devicepint,hh,mm;'''
+
+usermanage_table_Get = '''SELECT public."user".id, username, password, firstname, lastname, public."organization".name as organization
+	FROM public."user",public."organization" where organization = public."organization".id;'''
