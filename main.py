@@ -94,7 +94,7 @@ def login():
 @app.route('/')
 @login_required
 def index():
-    return render_template('Dashboard.html')
+    return render_template('index.html')
 
 @app.route('/axxondatastatic')
 def axxondatastatic():
