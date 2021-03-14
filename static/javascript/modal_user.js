@@ -42,24 +42,20 @@ document.getElementById('add_thermal_complete').onclick = function() {
     if (document.getElementById('Library_checkbox').checked == true){
         roles.push('Library')
     } 
+    if (document.getElementById('Viewer_checkbox').checked == true){
+        roles.push('Viewer')
+    }
     $.ajax({
         type: 'POST',
         async: false,
-        url: host_url + "api/allCameraTable",
+        url: host_url + "api/usermanage",
         data: {
-            ip: document.querySelector("#add_all_ip").value,
-            brand: document.querySelector("#add_all_brand").value,
-            model: document.querySelector("#add_all_model").value,
-            camera_name: document.querySelector("#add_all_camera_name").value,
-            user: document.querySelector("#add_all_user").value,
-            password: document.querySelector("#add_all_password").value,
-            auth_type: document.querySelector("#add_all_Auth_type").value,
-            stream_url: document.querySelector("#add_all_stream_url").value,
-            location_name: document.querySelector("#add_all_location_name").value,
-            latitude: document.querySelector("#add_all_latitude").value,
-            longitude: document.querySelector("#add_all_longitude").value,
-            organization: document.querySelector("#add_all_organization").value,
-            manage_role:roles,
+            username: document.querySelector('#add_user_username').value,
+            password: document.querySelector('#add_user_password').value,
+            firstname:document.querySelector('#add_user_firstname').value,
+            lastname: document.querySelector('#add_user_lastname').value,
+            organization:document.querySelector('#add_user_organization').selectedIndex + 1,
+            role:roles,
 
         },
         success: function(data) {
@@ -83,25 +79,21 @@ document.getElementById('edit_complete').onclick = function() {
     if (document.getElementById('edit_Library_checkbox').checked == true){
         roles.push('Library')
     } 
+    if (document.getElementById('edit_Viewer_checkbox').checked == true){
+        roles.push('Viewer')
+    } 
     $.ajax({
         type: 'PUT',
         async: false,
-        url: host_url + "api/allCameraTable" ,
+        url: host_url + "api/usermanage" ,
         data: {
-            ip: document.querySelector("#edit_ip").value,
-            brand: document.querySelector("#edit_all_brand").value,
-            model: document.querySelector("#edit_model").value,
-            camera_name: document.querySelector("#edit_camera_name").value,
-            user: document.querySelector("#edit_user").value,
-            password: document.querySelector("#edit_password").value,
-            auth_type: document.querySelector("#edit_all_Auth_type").value,
-            stream_url: document.querySelector("#edit_stream_url").value,
-            location_name: document.querySelector("#edit_location_name").value,
-            latitude: document.querySelector("#edit_latitude").value,
-            longitude: document.querySelector("#edit_longitude").value,
-            organization: document.querySelector("#edit_all_organization").value,
-            manage_role:roles,
-            id_Index: document.querySelector("#edit_id").value
+            username: document.querySelector('#edit_username').value,
+            password: document.querySelector('#edit_password').value,
+            firstname:document.querySelector('#edit_firstname').value,
+            lastname: document.querySelector('#edit_lastname').value,
+            organization:document.querySelector('#edit_organization').selectedIndex + 1,
+            role:roles,
+            ID: document.querySelector("#edit_id").value
         },
         success: function(data) {
          console.log(data);
@@ -115,7 +107,7 @@ document.getElementById('del_complete').onclick = function() {
     $.ajax({
         type: 'PATCH',
         async: false,
-        url: host_url + "api/allCameraTable" ,
+        url: host_url + "api/usermanage" ,
         data: {
             del_id:document.querySelector("#displayId").innerHTML
         },
@@ -136,25 +128,49 @@ function edit_open_modal(ip_value,typeoftable) {
     modal.style.display = "block";
     document.querySelector("#edit_id").value = document.getElementById('id_rows' + ip_value).innerHTML;
     document.querySelector("#edit_id").disabled = true
-    document.querySelector("#edit_ip").value = document.getElementById('ip_rows' + ip_value).innerHTML;
-    document.querySelector("#edit_all_brand").value = document.getElementById('brand_rows' + ip_value).innerHTML;
-    document.querySelector("#edit_model").value = document.getElementById('model_rows' + ip_value).innerHTML;
-    document.querySelector("#edit_camera_name").value = document.getElementById('camera_name_rows' + ip_value).innerHTML;
-    document.querySelector("#edit_user").value = document.getElementById('user_rows' + ip_value).innerHTML;
+    document.querySelector("#edit_username").value = document.getElementById('username_rows' + ip_value).innerHTML;
     document.querySelector("#edit_password").value = document.getElementById('password_rows' + ip_value).innerHTML;
-    document.querySelector("#edit_all_Auth_type").select = document.getElementById('auth_type_rows' + ip_value).innerHTML;
-    document.querySelector("#edit_stream_url").value = document.getElementById('stream_url_rows' + ip_value).innerHTML;
-    document.querySelector("#edit_location_name").value = document.getElementById('location_name_rows' + ip_value).innerHTML;
-    document.querySelector("#edit_latitude").value = document.getElementById('latitude_rows' + ip_value).innerHTML;
-    document.querySelector("#edit_longitude").value = document.getElementById('longitude_rows' + ip_value).innerHTML;
-    document.querySelector("#edit_all_organization").value = document.getElementById('organization_rows' + ip_value).innerHTML;
+    document.querySelector("#edit_firstname").value = document.getElementById('firstname_rows' + ip_value).innerHTML;
+    document.querySelector("#edit_lastname").value = document.getElementById('lastname_rows' + ip_value).innerHTML;
+    document.getElementById('div_edit_role').innerHTML = '<a>Role: </a> \
+    <input type="checkbox" id="edit_Admin_checkbox" name="Admin" value="Admin"> \
+    <label for="Admin">Admin</label> \
+    <input type="checkbox" id="edit_Security_checkbox" name="Security" value="Security"> \
+    <label for="Security">Security</label> \
+    <input type="checkbox" id="edit_SmartCity_checkbox" name="SmartCity" value="SmartCity"> \
+    <label for="SmartCity">SmartCity</label> \
+    <input type="checkbox" id="edit_Library_checkbox" name="Library" value="Library"> \
+    <label for="Library">Library</label> \
+    <input type="checkbox" id="edit_Viewer_checkbox" name="Viewer" value="Viewer"> \
+    <label for="edit_Viewer">Viewer</label> \
+    '
+    var role_for_check = document.getElementById('Roles_rows' + ip_value).innerHTML.split(',');
+    if (role_for_check.includes('Admin')) {
+        document.getElementById('edit_Admin_checkbox').checked = true;
+    }
+    if (role_for_check.includes('Security')) {
+        document.getElementById('edit_SmartCity_checkbox').checked = true;
+    }
+    if (role_for_check.includes('SmartCity')) {
+        document.getElementById('edit_SmartCity_checkbox').checked = true;
+    }
+    if (role_for_check.includes('Library')) {
+        document.getElementById('edit_Library_checkbox').checked = true;
+    }
+    if (role_for_check.includes('Viewer')) {
+        document.getElementById('edit_Viewer_checkbox').checked = true;
+    }
+    document.getElementById('div_edit_organization').innerHTML = '<a>Organization</a><select id="edit_organization"  class="form-control"> \
+                                    </select>'
+    addOption_organization('edit_organization')
+    document.querySelector("#edit_organization").value = document.getElementById('organization_rows' + ip_value).innerHTML;
        
 }
 
 function delete_open_modal(ip_value,typeoftable) {
     del_modal.style.display = "block";
     document.getElementById('displayId').innerHTML = document.getElementById('id_rows' + ip_value).innerHTML 
-    document.getElementById('ip_for_del').innerHTML = ' เลข IP ' + document.getElementById('ip_rows' + ip_value).innerHTML + ' '
+    document.getElementById('ip_for_del').innerHTML = 'username= ' + document.getElementById('username_rows' + ip_value).innerHTML + ' '
 
 }
 

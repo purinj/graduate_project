@@ -105,7 +105,7 @@ def thermalDataStatic():
     return render_template('thermalcam_event.html')
 
 @app.route('/camera_manage')
-@roles_required('Admin')
+@roles_required(['Admin','Security','SmartCity','Library'])
 def camera_manage():
     return render_template('camera_manage.html')
 
@@ -113,6 +113,16 @@ def camera_manage():
 @roles_required('Admin')
 def user_manage():
     return render_template('user_manage.html')
+
+@app.route('/organization_manage')
+@roles_required('Admin')
+def organization_manage():
+    return render_template('organization_manage.html')
+
+@app.route('/brand_manage')
+@roles_required('Admin')
+def brand_manage():
+    return render_template('brand_manage.html')
 
 ## Main Route End
 
@@ -171,17 +181,21 @@ def login_api():
 
 @app.route('/api/fastcreateuser')
 def fastcreateuser():
-    user1 = User(username='user_fast1', firstname='fast', lastname='user',organization=1,
-                password='Password1')
-    user1.roles.append(Role(name='Admin'))
+    user1 = User(username='smartcity', firstname='smartcity', lastname='smartcity',organization=1,
+                password='12345678')
+    user1.roles.append(Role(name='SmartCity'))
     db.session.add(user1)
     db.session.commit()
     return 'User has Created'
 
 @app.route('/api/fastlogin')
 def fastlogin():
-    user = User.query.filter_by(username='user_fast1').first()
-    login_user(user)
+    # user = User.query.filter_by(username='user_fast1').first()
+    # login_user(user)
+    user = User.query.filter_by(id = 1).first()
+    role = Role.query.get(2)
+    user.roles.remove(role)
+    db.session.commit()
     return 'You are now logged in!'
 
 @app.route('/api/fastlogout')
@@ -219,6 +233,18 @@ def axn_vid(host,pin):
     return Response(gen(video),mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
+@app.route('/api/stream/<ipOfCam>')
+def stream_api(ipOfCam):
+    reIPofcam = ipOfCam.replace("_", ".")
+    connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+    cur = connection.cursor()
+    cur.execute(stream_sql % reIPofcam)
+    stram_link = cur.fetchall()
+    print(stram_link)
+    cur.close()
+    connection.close()
+    video = cv2.VideoCapture(stram_link[0][0])
+    return Response(gen(video), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 
@@ -635,11 +661,22 @@ def allCameraTable():
     elif request.method == 'POST':
         connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
         cur = connection.cursor()
+        print(request.form.get('ip'),
+            request.form.get('brand'),
+            request.form.get('model'),
+            request.form.get('camera_name'),
+            request.form.get('user'),
+            request.form.get('password'),
+            request.form.get('auth_type'),
+            request.form.get('stream_url'),
+            request.form.get('location_name'),
+            request.form.get('latitude'),
+            request.form.get('longitude'),
+            request.form.get('organization'),
+           request.form.getlist('manage_role[]')
+            )
         
-
-        cur.execute('''INSERT INTO public.all_cameras(
-             ip, brand, model, camera_name, "user", password, auth_type, stream_url, location_name, latitude, longitude, "responsible_agency", manage_role)
-            VALUES ('%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'); ''' %(
+        cur.execute(insert_all %(
             request.form.get('ip'),
             request.form.get('brand'),
             request.form.get('model'),
@@ -651,9 +688,8 @@ def allCameraTable():
             request.form.get('location_name'),
             request.form.get('latitude'),
             request.form.get('longitude'),
-            request.form.get('responsible_agency'),
-            request.form.get('manage_role')
-
+            request.form.get('organization'),
+            request.form.getlist('manage_role[]')
         ))
         connection.commit()
         cur.close()
@@ -665,8 +701,8 @@ def allCameraTable():
         cur = connection.cursor()
 
         cur.execute(''' UPDATE public.all_cameras
-	SET ip= '%s', brand= '%s', model='%s', camera_name='%s', "user"='%s', password='%s', auth_type='%s', stream_url='%s', location_name='%s', latitude='%s', longitude='%s', " responsible_agency"='%s', manage_role='%s'
-	WHERE id= %s, ''' %(
+	SET ip= '%s', brand= '%s', model='%s', camera_name='%s', "user"='%s', password='%s', auth_type='%s', stream_url='%s', location_name='%s', latitude='%s', longitude='%s', "organization"='%s', manage_role=ARRAY%s
+	WHERE id= %s ''' %(
             request.form.get('ip'),
             request.form.get('brand'),
             request.form.get('model'),
@@ -678,8 +714,8 @@ def allCameraTable():
             request.form.get('location_name'),
             request.form.get('latitude'),
             request.form.get('longitude'),
-            request.form.get('responsible_agency'),
-            request.form.get('manage_role'),
+            request.form.get('organization'),
+            request.form.getlist('manage_role[]'),
             request.form.get('id_Index')
         ))
         connection.commit()
@@ -710,6 +746,137 @@ def usermanage_table():
         col_names = []
         for elt in cur.description:
             col_names.append(elt[0])
+
+        role_user = []
+
+        cur.execute('select id from public.user order by id');
+        use_id = cur.fetchall()
+
+        for i in use_id:
+            print(i[0])
+            twst = User.query.filter_by(id = i[0]).first()
+            role_user.append([role.name for role in twst.roles])
+
+        print(role_user)
+
+
+        
+        table_row_column = {
+        'column': col_names,
+        'row': records,
+        'role_row':role_user
+        }
+        cur.close()
+        connection.close()
+        return table_row_column
+    
+    if request.method == 'POST':
+        user1 = User(username=request.form.get('username'), firstname=request.form.get('firstname'), lastname=request.form.get('lastname'),organization=request.form.get('organization'),
+                password=request.form.get('password'))
+        db.session.add(user1)
+        db.session.commit()
+        user_for_id = User.query.filter_by(username=request.form.get('username'), firstname=request.form.get('firstname'), lastname=request.form.get('lastname'),organization=request.form.get('organization'),
+                password=request.form.get('password')).first()
+        
+        print(request.form.get('username'),request.form.get('firstname'),request.form.get('lastname'),request.form.get('organization'),request.form.get('password'),request.form.getlist('role[]'))
+        for i in request.form.getlist('role[]'):
+            role = [row[0] for row in db.engine.execute('''select id from public.role where name = '%s' ;''' %(i))]
+            print('role = ',role[0])
+            role_add = UserRoles(user_id=user_for_id.id,role_id=role[0])
+            db.session.add(role_add)
+            db.session.commit()
+        
+        return 'User has Created'
+
+    if request.method == 'PUT':
+        user_edit = User.query.filter_by(id = request.form.get('ID')).first()
+        print(user_edit)
+        print([role.id for role in user_edit.roles])
+
+        for i in [role.id for role in user_edit.roles]:
+            role = Role.query.get(i)
+            user_edit.roles.remove(role)
+            db.session.commit()
+
+        user_edit.password = request.form.get('password')
+        user_edit.firstname = request.form.get('firstname')
+        user_edit.lastname = request.form.get('lastname')
+        user_edit.organization = request.form.get('organization')
+        db.session.commit()
+        print('role=',request.form.getlist('role[]'))
+        for i in request.form.getlist('role[]'):
+            role = [row[0] for row in db.engine.execute('''select id from public.role where name = '%s' ;''' %(i))]
+            print('role = ',role[0])
+            role_add = UserRoles(user_id=request.form.get('ID'),role_id=role[0])
+            db.session.add(role_add)
+            db.session.commit()
+        return 'User has Edited'
+
+    if request.method == 'PATCH':
+        User.query.filter_by(id=request.form.get('del_id')).delete()
+        db.session.commit()
+        return 'User has Deleted'
+
+
+
+@app.route('/api/brandManage',methods = ['GET','POST','PUT','PATCH']) 
+def brandManage():
+    if request.method == 'GET':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute(brandManage_get);
+        records = cur.fetchall()
+        #print(cur.description)
+        col_names = []
+        for elt in cur.description:
+            col_names.append(elt[0])
+
+        table_row_column = {
+        'column': col_names,
+        'row': records
+        }
+        cur.close()
+        connection.close()
+        return table_row_column
+    
+    if request.method == 'POST':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute('''INSERT INTO public.cam_brand(brand_name) VALUES ('%s'); ''' %(request.form.get('brand_name')));
+        connection.commit()
+        cur.close()
+        connection.close()
+        return 'Brand has Created'
+    
+    if request.method == 'PUT':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute(''' UPDATE public.cam_brand SET brand_name= '%s' WHERE id = %s; ''' %(request.form.get('brand_name'),request.form.get('ID')));
+        connection.commit()
+        cur.close()
+        connection.close()
+        return 'Brand has Edited'
+
+    if request.method == 'PATCH':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute('''delete from public.cam_brand where id = %s; '''%(request.form.get('del_id')));
+        connection.commit()
+        cur.close()
+        connection.close()
+        return 'Brand has deleted'
+
+@app.route('/api/OrganizationManage',methods = ['GET','POST','PUT','PATCH']) 
+def OrganizationManage():
+    if request.method == 'GET':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute(OrganizationManage_get);
+        records = cur.fetchall()
+        #print(cur.description)
+        col_names = []
+        for elt in cur.description:
+            col_names.append(elt[0])
         
         table_row_column = {
         'column': col_names,
@@ -720,17 +887,31 @@ def usermanage_table():
         return table_row_column
     
     if request.method == 'POST':
-        user1 = User(username=request.form.get('username'), firstname=request.form.get('firstname'), lastname=request.form.get('lastname'),organization=request.form.get('organization'),
-                password=request.form.get('password'))
-        user1.roles.append(Role(name=request.form.get('Role')))
-        db.session.add(user1)
-        db.session.commit()
-        return 'User has Created'
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute('''INSERT INTO public.organization(name) VALUES ('%s'); ''' %(request.form.get('name')));
+        connection.commit()
+        cur.close()
+        connection.close()
+        return 'Brand has Created'
+    
+    if request.method == 'PUT':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute(''' UPDATE public.organization SET name= '%s' WHERE id = %s; ''' %(request.form.get('name'),request.form.get('ID')));
+        connection.commit()
+        cur.close()
+        connection.close()
+        return 'Brand has Edited'
 
-
-
-
-
+    if request.method == 'PATCH':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute('''delete from public.organization where id = %s; '''%(request.form.get('del_id')));
+        connection.commit()
+        cur.close()
+        connection.close()
+        return 'Brand has deleted'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=2204, threaded=True,debug=True)

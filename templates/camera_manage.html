@@ -258,61 +258,120 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+                        <div id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_libcam_ip">ip:</span>
-                                </label>
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_all_ip">ip:</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" id="add_libcam_ip" name="add_libcam_ip" class="form-control ">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_libcam_user">user:</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" id="add_libcam_user" name="add_thermallibcam_user" class="form-control">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_libcam_password">password:</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" id="add_libcam_password" name="add_libcam_password" class="form-control">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_libcam_brand">brand:</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" id="add_libcam_brand" name="add_libcam_brand" class="form-control">
+                                    <input type="text" id="add_all_ip"  class="form-control ">
                                 </div>
                             </div>
 
                             <div class="item form-group">
-                              <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_libcam_model">model:</span>
-                              </label>
+                              <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_all_brand">brand:</label>
                               <div class="col-md-6 col-sm-6 ">
-                                  <input type="text" id="add_libcam_model" name="add_libcam_model" class="form-control">
+                                  <select id="add_all_brand"  class="form-control">
+                                  </select>
                               </div>
                           </div>
 
-                            <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_libcam_note">note:</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" id="add_libcam_note" name="add_libcam_note" class="form-control">
-                                </div>
+                          <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_all_model">model:</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="add_all_model"  class="form-control ">
                             </div>
+                        </div>
 
+                        <div class="item form-group">
+                          <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_all_camera_name">camera_name:</label>
+                          <div class="col-md-6 col-sm-6 ">
+                              <input type="text" id="add_all_camera_name"  class="form-control ">
+                          </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_all_user">user:</label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <input type="text" id="add_all_user"  class="form-control ">
+                        </div>
+                    </div>
+                        
+                    <div class="item form-group">
+                      <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_all_password">password:</label>
+                      <div class="col-md-6 col-sm-6 ">
+                          <input type="text" id="add_all_password"  class="form-control ">
+                      </div>
+                  </div>
+
+                  <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_all_Auth_type">Auth_type:</label>
+                    <div class="col-md-6 col-sm-6 ">
+                        <select id="add_all_Auth_type"  class="form-control ">
+                          <option value="No">No Auth</option>
+                          <option value="Basic">Basic</option>
+                          <option value="Digest">Digest</option>
+                        </select>
+                    </div>
+                </div>
+                         
+                <div class="item form-group">
+                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_all_stream_url">stream_url:</label>
+                  <div class="col-md-6 col-sm-6 ">
+                      <input type="text" id="add_all_stream_url"  class="form-control ">
+                  </div>
+              </div>
+
+              <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_all_location_name">location_name:</label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input type="text" id="add_all_location_name"  class="form-control ">
+                </div>
+            </div>
+
+              <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_all_latitude">latitude:</label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input type="text" id="add_all_latitude"  class="form-control ">
+                </div>
+            </div>
+            
+            <div class="item form-group">
+              <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_all_longitude">longitude:</label>
+              <div class="col-md-6 col-sm-6 ">
+                  <input type="text" id="add_all_longitude"  class="form-control ">
+              </div>
+          </div>
+
+          <div class="item form-group">
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_all_organization">organization:</label>
+            <div class="col-md-6 col-sm-6 ">
+                <select id="add_all_organization"  class="form-control ">
+                  <option>1:หน่วยงาน</option>
+                </select>
+            </div>
+        </div>
+        <div class="item form-group">
+          <label class="col-form-label col-md-3 col-sm-3 label-align" for="add_all_organization">Role:</label>
+          <div class="col-md-6 col-sm-6 ">
+            <input type="checkbox" id="Admin_checkbox" name="Admin" value="Admin">
+            <label for="Admin">Admin</label><br>
+            <input type="checkbox" id="Security_checkbox" name="Security" value="Security">
+            <label for="Security">Security</label><br>
+            <input type="checkbox" id="SmartCity_checkbox" name="SmartCity" value="SmartCity">
+            <label for="SmartCity">SmartCity</label><br>
+            <input type="checkbox" id="Library_checkbox" name="Library" value="Library">
+            <label for="Library">Library</label><br>
+          </div>
+      </div>
+          
+              
                             <div class="ln_solid"></div>
                             <div class="item form-group">
                                 <div class="col-md-6 col-sm-6 offset-md-3">
-                                    <button type="submit" class="btn btn-success" id="add_thermal_complete">เพิ่มข้อมูล</button>
+                                    <button  class="btn btn-success" id="add_thermal_complete">เพิ่มข้อมูล</button>
                                 </div>
                             </div>
 
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -418,6 +477,36 @@
 
    <script>
      add_data_test('allCameraTable',"camera_data_column","camera_data_row","LibCam")
+     addOption_brand('add_all_brand')
+     addOption_organization('add_all_organization')
+     document.getElementById('Admin_checkbox').checked  = true
+     document.getElementById('Admin_checkbox').disabled = true
+     document.getElementById('div_edit_auth_type').innerHTML = '<a>auth_type</a><select id="edit_all_Auth_type"  class="form-control "> \
+<option value="No">No Auth</option> \
+<option value="Basic">Basic</option> \
+<option value="Digest">Digest</option>'
+  document.getElementById('div_edit_brand').innerHTML = '<a>brand</a><select id="edit_all_brand"  class="form-control"> \
+                                  </select>'
+  addOption_brand('edit_all_brand')
+  document.getElementById('div_edit_organization').innerHTML = '<a>Organization</a><select id="edit_all_organization"  class="form-control"> \
+                                  </select>'
+  addOption_organization('edit_all_organization')
+
+  document.getElementById('div_edit_manage_role').innerHTML = '<a>Role: </a> \
+  <input type="checkbox" id="edit_Admin_checkbox" name="Admin" value="Admin"> \
+  <label for="Admin">Admin</label> \
+  <input type="checkbox" id="edit_Security_checkbox" name="Security" value="Security"> \
+  <label for="Security">Security</label> \
+  <input type="checkbox" id="edit_SmartCity_checkbox" name="SmartCity" value="SmartCity"> \
+  <label for="SmartCity">SmartCity</label> \
+  <input type="checkbox" id="edit_Library_checkbox" name="Library" value="Library"> \
+  <label for="Library">Library</label> \
+  '
+
+  document.getElementById('edit_Admin_checkbox').checked  = true
+  document.getElementById('edit_Admin_checkbox').disabled = true
+
+
    </script>
 
 

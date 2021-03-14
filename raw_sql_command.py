@@ -78,4 +78,13 @@ axxonTimeScale_ppl_out_time = '''SELECT count(typex),cast(substring(split_part(s
             order by host,devicepint,hh,mm;'''
 
 usermanage_table_Get = '''SELECT public."user".id, username, password, firstname, lastname, public."organization".name as organization
-	FROM public."user",public."organization" where organization = public."organization".id;'''
+	FROM public."user",public."organization" where organization = public."organization".id order by public."user".id;'''
+
+brandManage_get = '''SELECT * from public.cam_brand order by id '''
+stream_sql = '''select stream_url from public.all_cameras where ip = '%s'; '''
+OrganizationManage_get = '''SELECT * from public.organization order by id '''
+
+insert_all = '''INSERT INTO public.all_cameras(
+	ip, brand, model, camera_name, "user", password, auth_type, stream_url, location_name, latitude, longitude, "organization", manage_role)
+	VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', ARRAY%s);
+ '''
