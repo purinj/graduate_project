@@ -51,7 +51,7 @@ def record_json(str): # turn data without \t to json record json data to databas
     
     connection = psycopg2.connect(user="postgres",
                                     password="123456789o",
-                                    host="127.0.0.1",
+                                    host="10.101.118.45",
                                     port="5432",
                                     database="SmartSafety") # connect to database
 
