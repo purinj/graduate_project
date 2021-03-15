@@ -94,35 +94,37 @@ def login():
 @app.route('/')
 @login_required
 def index():
-    return render_template('index.html')
+    return render_template('index.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
 
 @app.route('/axxondatastatic')
+@login_required
 def axxondatastatic():
-    return render_template('AxxonNext_Event.html')
+    return render_template('AxxonNext_Event.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
 
 @app.route('/thermalDataStatic')
+@login_required
 def thermalDataStatic():
-    return render_template('thermalcam_event.html')
+    return render_template('thermalcam_event.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
 
 @app.route('/camera_manage')
 @roles_required(['Admin','Security','SmartCity','Library'])
 def camera_manage():
-    return render_template('camera_manage.html')
+    return render_template('camera_manage.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
 
 @app.route('/user_manage')
 @roles_required('Admin')
 def user_manage():
-    return render_template('user_manage.html')
+    return render_template('user_manage.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
 
 @app.route('/organization_manage')
 @roles_required('Admin')
 def organization_manage():
-    return render_template('organization_manage.html')
+    return render_template('organization_manage.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
 
 @app.route('/brand_manage')
-@roles_required('Admin')
+@roles_required(['Admin','Security','SmartCity','Library'])
 def brand_manage():
-    return render_template('brand_manage.html')
+    return render_template('brand_manage.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
 
 ## Main Route End
 
@@ -152,15 +154,15 @@ def thermal():
 ##________________
 @app.route('/axxoncam_manage')
 def axxoncam_manage():
-    return render_template('axxoncam_manage.html')
+    return render_template('axxoncam_manage.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
 
 @app.route('/thermalcam_manage')
 def thermalcam_manage():
-    return render_template('thermalcam_manage.html')   
+    return render_template('thermalcam_manage.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})   
 
 @app.route('/streamView')
 def streamView():
-    return render_template('streaming.html')
+    return render_template('streaming.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
 ##________________
 
 
@@ -640,10 +642,25 @@ def AxxonCameraTable():
 @app.route('/api/allCameraTable',methods = ['GET','POST','PUT','PATCH']) 
 def allCameraTable():
     if request.method == 'GET':
+        sql_com = '''SELECT id, ip, brand, model, cam_type, camera_name, "user", password, auth_type, stream_url, location_name, latitude, longitude, organization, manage_role
+	FROM public.all_cameras where '''
+        count = 0
+        for i in [role.name for role in current_user.roles]:
+            if count > 0:
+                sql_com += ''' or manage_role @> ARRAY['%s']''' %(i)
+            else:
+                sql_com += '''manage_role @> ARRAY['%s']''' %(i)
+
+            count += 1
+        sql_com += ''' order by id;'''
+        print(sql_com)
+        print(count)
+
         connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
         cur = connection.cursor()
-        cur.execute('SELECT * \
-                    FROM public.all_cameras order by id;');
+
+   
+        cur.execute(sql_com);
         records = cur.fetchall()
         #print(cur.description)
         col_names = []
@@ -689,7 +706,8 @@ def allCameraTable():
             request.form.get('latitude'),
             request.form.get('longitude'),
             request.form.get('organization'),
-            request.form.getlist('manage_role[]')
+            request.form.getlist('manage_role[]'),
+            request.form.get('cam_type')
         ))
         connection.commit()
         cur.close()
@@ -701,7 +719,7 @@ def allCameraTable():
         cur = connection.cursor()
 
         cur.execute(''' UPDATE public.all_cameras
-	SET ip= '%s', brand= '%s', model='%s', camera_name='%s', "user"='%s', password='%s', auth_type='%s', stream_url='%s', location_name='%s', latitude='%s', longitude='%s', "organization"='%s', manage_role=ARRAY%s
+	SET ip= '%s', brand= '%s', model='%s', camera_name='%s', "user"='%s', password='%s', auth_type='%s', stream_url='%s', location_name='%s', latitude='%s', longitude='%s', "organization"='%s', manage_role=ARRAY%s, cam_type = '%s'
 	WHERE id= %s ''' %(
             request.form.get('ip'),
             request.form.get('brand'),
@@ -716,6 +734,7 @@ def allCameraTable():
             request.form.get('longitude'),
             request.form.get('organization'),
             request.form.getlist('manage_role[]'),
+            request.form.get('cam_type'),
             request.form.get('id_Index')
         ))
         connection.commit()
@@ -798,6 +817,7 @@ def usermanage_table():
             user_edit.roles.remove(role)
             db.session.commit()
 
+        user_edit.username = request.form.get('username')
         user_edit.password = request.form.get('password')
         user_edit.firstname = request.form.get('firstname')
         user_edit.lastname = request.form.get('lastname')

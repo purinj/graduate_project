@@ -690,22 +690,28 @@ function init_chart_doughnut() {
             tooltipFillColor: "rgba(51, 51, 51, 0.55)",
             data: {
                 labels: [
-                    "Asians",
-                    "White",
-                    "Black",
+                    "Symbian",
+                    "Blackberry",
+                    "Other",
+                    "Android",
+                    "IOS"
                 ],
                 datasets: [{
-                    data: [70, 20, 10],
+                    data: [15, 20, 30, 10, 30],
                     backgroundColor: [
-                        "#FE3D67",
-                        "#3498DB",
-                        "#FFCD56" ]
-                    // ],
-                    // hoverBackgroundColor: [
-                    //     "#E95E4F",
-                    //     "#36CAAB",
-                    //     "#49A9EA"
-                    // ]
+                        "#BDC3C7",
+                        "#9B59B6",
+                        "#E74C3C",
+                        "#26B99A",
+                        "#3498DB"
+                    ],
+                    hoverBackgroundColor: [
+                        "#CFD4D8",
+                        "#B370CF",
+                        "#E95E4F",
+                        "#36CAAB",
+                        "#49A9EA"
+                    ]
                 }]
             },
             options: {
@@ -715,98 +721,6 @@ function init_chart_doughnut() {
         }
 
         $('.canvasDoughnut').each(function () {
-
-            var chart_element = $(this);
-            var chart_doughnut = new Chart(chart_element, chart_doughnut_settings);
-
-        });
-
-    }
-    
-    if ($('.canvasDoughnut2').length) {
-
-        var chart_doughnut_settings = {
-            type: 'doughnut',
-            tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-            data: {
-                labels: [
-                    "Prime",
-                    "Middle",
-                    "Old",
-                    "Middle age",
-                    "Young"
-                ],
-                datasets: [{
-                    data: [30, 10, 20,10,10],
-                    backgroundColor: [
-                        "#FE3D67",
-                        "#FF9F40",
-                        "#FFCD56",
-                        "#3498DB",
-                        "#9B59B6" ]
-                    // ],
-                    // hoverBackgroundColor: [
-                    //     "#E95E4F",
-                    //     "#36CAAB",
-                    //     "#49A9EA"
-                    // ]
-                }]
-            },
-            options: {
-                legend: false,
-                responsive: false
-            }
-        }
-
-        $('.canvasDoughnut2').each(function () {
-
-            var chart_element = $(this);
-            var chart_doughnut = new Chart(chart_element, chart_doughnut_settings);
-
-        });
-
-    }
-
-    if ($('.canvasDoughnut3').length) {
-
-        var chart_doughnut_settings = {
-            type: 'doughnut',
-            tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-            data: {
-                labels: [
-                    "Panic",
-                    "Angry",
-                    "Surprised",
-                    "Happy",
-                    "Disgusted",
-                    "Poker-Faced",
-                    "Sad"
-                ],
-                datasets: [{
-                    data: [10, 10, 20, 30, 5, 15, 10],
-                    backgroundColor: [
-                        "#FE3D67",
-                        "#FF9F40",
-                        "#FFCD56",
-                        "#1ABB9C",
-                        "#3498DB",
-                        "#9B59B6",
-                        "#9CC2CB" ]
-                    // ],
-                    // hoverBackgroundColor: [
-                    //     "#E95E4F",
-                    //     "#36CAAB",
-                    //     "#49A9EA"
-                    // ]
-                }]
-            },
-            options: {
-                legend: false,
-                responsive: false
-            }
-        }
-
-        $('.canvasDoughnut3').each(function () {
 
             var chart_element = $(this);
             var chart_doughnut = new Chart(chart_element, chart_doughnut_settings);

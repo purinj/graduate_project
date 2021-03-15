@@ -85,6 +85,6 @@ stream_sql = '''select stream_url from public.all_cameras where ip = '%s'; '''
 OrganizationManage_get = '''SELECT * from public.organization order by id '''
 
 insert_all = '''INSERT INTO public.all_cameras(
-	ip, brand, model, camera_name, "user", password, auth_type, stream_url, location_name, latitude, longitude, "organization", manage_role)
-	VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', ARRAY%s);
+	ip, brand, model, camera_name, "user", password, auth_type, stream_url, location_name, latitude, longitude, "organization", manage_role,cam_type)
+	VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', ARRAY%s,'%s');
  '''

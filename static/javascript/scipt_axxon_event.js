@@ -18,8 +18,8 @@ create_Time_Chart("people_out_time_chart",Out_timeSeq,'people_out','#FF7F50')
 
 
 // Show
-document.getElementById('loading').hidden = true;
-document.getElementById('Complete').hidden = false;
+// document.getElementById('loading').hidden = true;
+// document.getElementById('Complete').hidden = false;
 
     
 // listener Event For Date Range

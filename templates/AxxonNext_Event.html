@@ -1,391 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="static/image/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="static/image/favicon.ico" type="image/ico" />
 
-    <!-- Bootstrap -->
-    <link href="static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="static/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="static/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
-    <!-- bootstrap-progressbar -->
-    <link href="static/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="static/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
-    <!-- bootstrap-daterangepicker -->
-    <link href="static/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+  <title>Gentelella Alela! | </title>
 
-    <!-- Custom Theme Style -->
-    <link href="static/build/css/custom.min.css" rel="stylesheet">
-  </head>
-  <style>
-    .loader {
-      border: 16px solid #f3f3f3;
-      border-radius: 50%;
-      border-top: 16px solid #3498db;
-      width: 120px;
-      height: 120px;
-      -webkit-animation: spin 2s linear infinite; /* Safari */
-      animation: spin 2s linear infinite;
-    }
-    
+  <!-- Bootstrap -->
+  <link href="static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="static/vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- iCheck -->
+  <link href="static/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+  <!-- bootstrap-progressbar -->
+  <link href="static/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+  <!-- JQVMap -->
+  <link href="static/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+  <!-- bootstrap-daterangepicker -->
+  <link href="static/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="static/build/css/custom.min.css" rel="stylesheet">
+</head>
+<style>
+  .loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
     /* Safari */
-    @-webkit-keyframes spin {
-      0% { -webkit-transform: rotate(0deg); }
-      100% { -webkit-transform: rotate(360deg); }
+    animation: spin 2s linear infinite;
+  }
+
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
     }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+
+    100% {
+      -webkit-transform: rotate(360deg);
     }
-    .range-button {
-      background-color: white; 
-      color: gray;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
     }
-    </style>
 
-  <body class="nav-md">
-    <div style="width: 100%; height: 100%;" id="loading">
-      <div style="position: relative;">
-        <div class="loader" style="position: absolute;
-        top: 50%;
-        left: 50%;
-        margin: -25px 0 0 -25px; /* apply negative top and left margins to truly center the element */"></div>
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
-      </div>
-     
-    </div>
-    <div class="container body" id="Complete" hidden>
-      <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Smart Safety</span></a>
-            </div>
+  .range-button {
+    background-color: white;
+    color: gray;
+  }
+</style>
 
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="static/image/img.jpg" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>John Doe</h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">  
-                  <li><a href="/"><i class="fa fa-home"></i>Home</a></li>              
-                  <li><a href="/axxondatastatic"><i class="fa fa-bar-chart"></i>ข้อมูล Smartpoles</a></li>
-                  <li><a href="/thermalDataStatic"><i class="fa fa-bar-chart"></i>ข้อมูลกล้องวัดอุณหภูมิ</a></li>
-                  <li><a href="/streamView"><i class="fa fa-bar-chart"></i>ดูภาพ stream</a></li>
-                </ul>
-                <h3>Admin</h3>
-                <ul class="nav side-menu">                
-                  <li><a href="/user_manage"><i class="fa fa-group"></i>จัดการสมาชิก</a></li>
-                  <li><a href="/camera_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูลกล้อง</a></li>
-                  <li><a href="/axxoncam_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Smart Pole</a></li>
-                  <li><a href="/brand_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Brand กล้อง</a></li>
-                  <li><a href="/organization_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูลหน่วยงาน</a></li>
-                  <li><a href="*"><i class="fa fa-video-camera"></i>จัดการข้อมูล Blue Pole</a></li>
-                </ul>
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Smart Safety</span></a>
           </div>
-        </div>
 
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
-              <nav class="nav navbar-nav">
-              <ul class=" navbar-right">
-                <li class="nav-item dropdown open" style="padding-left: 15px;">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="static/image/img.jpg" alt="">John Doe
-                  </a>
-                  <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item"  href="javascript:;"> Profile</a>
-                      <a class="dropdown-item"  href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                  <a class="dropdown-item"  href="javascript:;">Help</a>
-                    <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                  </div>
-                </li>
+          <div class="clearfix"></div>
 
-                <li role="presentation" class="nav-item dropdown open">
-                  <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="static/image/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="static/image/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="static/image/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="static/image/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <div class="text-center">
-                        <a class="dropdown-item">
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
+          <!-- menu profile quick info -->
+          <div class="profile clearfix">
+            <div class="profile_pic">
+              <img src="static/image/profile.png" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+              <span>Welcome,</span>
+              <p id="Roles_p" hidden>{{ user_msg.user_roles }}</p>
+              <h2>{{ user_msg.firstname }} {{ user_msg.lastname}}</h2>
+            </div>
+          </div>
+          <!-- /menu profile quick info -->
+
+          <br />
+
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+              <h3>General</h3>
+              <ul class="nav side-menu">
+                <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="/axxondatastatic"><i class="fa fa-bar-chart"></i>ข้อมูล Smartpoles</a></li>
+                <li><a href="/thermalDataStatic"><i class="fa fa-bar-chart"></i>ข้อมูลกล้องวัดอุณหภูมิ</a></li>
+                <li><a href="/streamView"><i class="fa fa-bar-chart"></i>ดูภาพ stream</a></li>
               </ul>
-            </nav>
+              {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') or current_user.has_role('Security') or current_user.has_role('Library') %}
+              <h3>Manage</h3>
+              <ul class="nav side-menu">
+                {% if current_user.has_role('Admin')%}
+                <li><a href="/user_manage"><i class="fa fa-group"></i>จัดการสมาชิก</a></li>
+                {% endif %}
+                <li><a href="/camera_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูลกล้อง</a></li>
+                {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') %}
+                <li><a href="/axxoncam_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Smart Pole</a></li>
+                {% endif %}
+                <li><a href="/brand_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Brand กล้อง</a></li>
+                {% if current_user.has_role('Admin')%}
+                <li><a href="/organization_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูลหน่วยงาน</a></li>
+                <li><a href="*"><i class="fa fa-video-camera"></i>จัดการข้อมูล Blue Pole</a></li>
+                {% endif %}
+
+              </ul>
+              {% endif %}
+            </div>
+
           </div>
+          <!-- /sidebar menu -->
+
+          <!-- /menu footer buttons -->
+          <div class="sidebar-footer hidden-small">
+            <a data-toggle="tooltip" data-placement="top" title="Settings">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Lock">
+              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>
+          </div>
+          <!-- /menu footer buttons -->
         </div>
-        <!-- /top navigation -->
+      </div>
 
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="row">
-            <div class="col-md-12 col-sm-12 ">
-              <div class="dashboard_graph">
+      <!-- top navigation -->
+      <div class="top_nav">
+        <div class="nav_menu">
+          <div class="nav toggle">
+            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+          </div>
+          <nav class="nav navbar-nav">
+            <ul class=" navbar-right">
+              <li class="nav-item dropdown open" style="padding-left: 15px;">
+                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown"
+                  data-toggle="dropdown" aria-expanded="false">
+                  <img src="static/image/profile.png" alt="">{{ user_msg.firstname }} {{ user_msg.lastname}}
+                </a>
+                <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                  <!-- <a class="dropdown-item"  href="javascript:;"> Profile</a>
+                    <a class="dropdown-item"  href="javascript:;">
+                      <span class="badge bg-red pull-right">50%</span>
+                      <span>Settings</span>
+                    </a>
+                <a class="dropdown-item"  href="javascript:;">Help</a> -->
+                  <a class="dropdown-item" href="/api/fastlogout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                </div>
+              </li>
+            </ul>
+            </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- /top navigation -->
 
-                <div class="row x_title">
-                  <div class="col-md-12">
-                    <h3>ข้อมูลสรุปจำนวนเหตุการณ์เข้าออก<small>(Smart Pole)</small></h3>
-                  </div>
-                  <!-- <div class="col-md-6">
+      <!-- page content -->
+      <div class="right_col" role="main">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 ">
+            <div class="dashboard_graph">
+
+              <div class="row x_title">
+                <div class="col-md-12">
+                  <h3>ข้อมูลสรุปจำนวนเหตุการณ์เข้าออก<small>(Smart Pole)</small></h3>
+                </div>
+                <!-- <div class="col-md-6">
                     <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
                       <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
                       <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
                     </div>
                   </div> -->
+              </div>
+
+              <div class="col-md-9 col-sm-9">
+                <div id="Axxon_chart_container">
+                  <canvas id="AxxonChart"></canvas>
                 </div>
 
-                <div class="col-md-9 col-sm-9">
-                  <div id="Axxon_chart_container">
-                    <canvas id="AxxonChart"></canvas>
-                  </div>
-                
-                  <!-- <canvas class="w3-white" id="myChart" width="650" height="400"></canvas> -->
-                </div>
-                <div class="col-md-3 col-sm-3  bg-white">
-                  <div class="x_title">
-                    <h2>ช่วงที่ต้องการดูข้อมูล</h2>
-                    <div class="clearfix"></div>
-                  </div>
-
-                  <div class="col-md-12 col-sm-12 ">
-                    <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                      <button class="btn btn-secondary range-button" type="button">7 วันที่ผ่านมา</button>
-                      <button class="btn btn-secondary range-button" type="button">30 วันที่ผ่านมา</button>
-                      <button class="btn btn-secondary range-button" type="button">1 ปีที่ผ่านมา</button>
-                    </div>
-                    <div>
-                      <p>วันที่เริ่มต้น:</p>
-                      <div class="">
-                        <input class="date-picker form-control" type="date" id="start_date" value="2020-07-10">
-                      </div>
-                    </div>
-                    <br>
-                    <div>
-                      <p>วันที่สิ้นสุด:</p>
-                      <div class="">
-                        <input class="date-picker form-control" type="date" id="end_date" value="2020-07-11">
-                        <br>
-                      </div>
-                    </div>
-                  </div>
-                 
-                  <div class="col-md-12 col-sm-12 ">
-                    <div>
-                      <div class="">
-                        <button class="form-control btn btn-primary" id="find_range">ตกลง</button>
-                      </div>
-                    </div>
-                  </div>
-
+                <!-- <canvas class="w3-white" id="myChart" width="650" height="400"></canvas> -->
+              </div>
+              <div class="col-md-3 col-sm-3  bg-white">
+                <div class="x_title">
+                  <h2>ช่วงที่ต้องการดูข้อมูล</h2>
+                  <div class="clearfix"></div>
                 </div>
 
+                <div class="col-md-12 col-sm-12 ">
+                  <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                    <button class="btn btn-secondary range-button" type="button">7 วันที่ผ่านมา</button>
+                    <button class="btn btn-secondary range-button" type="button">30 วันที่ผ่านมา</button>
+                    <button class="btn btn-secondary range-button" type="button">1 ปีที่ผ่านมา</button>
+                  </div>
+                  <div>
+                    <p>วันที่เริ่มต้น:</p>
+                    <div class="">
+                      <input class="date-picker form-control" type="date" id="start_date" value="2020-07-10">
+                    </div>
+                  </div>
+                  <br>
+                  <div>
+                    <p>วันที่สิ้นสุด:</p>
+                    <div class="">
+                      <input class="date-picker form-control" type="date" id="end_date" value="2020-07-11">
+                      <br>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12 ">
+                  <div>
+                    <div class="">
+                      <button class="form-control btn btn-primary" id="find_range">ตกลง</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+        <br>
+        <div class="row">
+          <div class="col-md-6 col-sm-6  ">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>กราฟเวลาเหตุการณ์เข้า</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                  <li style="margin-top: 3%;"><strong>เลือกกล้อง</strong><select id="Cam_Name_for_in"></select></li>
+                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
+                        class="fa fa-wrench"></i></a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">Settings 1</a>
+                      <a class="dropdown-item" href="#">Settings 2</a>
+                    </div>
+                  </li>
+                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                  </li>
+                </ul>
                 <div class="clearfix"></div>
               </div>
-            </div>
-
-          </div>
-
-          <div class="clearfix"></div>
-          <br>
-          <div class="row">
-            <div class="col-md-6 col-sm-6  ">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h2>กราฟเวลาเหตุการณ์เข้า</h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li style="margin-top: 3%;"><strong>เลือกกล้อง</strong><select id="Cam_Name_for_in"></select></li>
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content" id="people_in_time_chart_container">
-                  <canvas id="people_in_time_chart"></canvas>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6  ">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h2>กราฟเวลาเหตุการณ์ออก</h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li style="margin-top: 3%;"><strong>เลือกกล้อง</strong><select id="Cam_Name_for_out"></select></li>
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content" id="people_out_time_chart_container">
-                  <canvas id="people_out_time_chart"></canvas>
-                </div>
+              <div class="x_content" id="people_in_time_chart_container">
+                <canvas id="people_in_time_chart"></canvas>
               </div>
             </div>
           </div>
-          <div class="clearfix"></div>
-         
-          
+
+          <div class="col-md-6 col-sm-6  ">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>กราฟเวลาเหตุการณ์ออก</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                  <li style="margin-top: 3%;"><strong>เลือกกล้อง</strong><select id="Cam_Name_for_out"></select></li>
+                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
+                        class="fa fa-wrench"></i></a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">Settings 1</a>
+                      <a class="dropdown-item" href="#">Settings 2</a>
+                    </div>
+                  </li>
+                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                  </li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content" id="people_out_time_chart_container">
+                <canvas id="people_out_time_chart"></canvas>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- /page content -->
+        <div class="clearfix"></div>
 
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
+
       </div>
+      <!-- /page content -->
+
+      <!-- footer content -->
+      <footer>
+        <div class="pull-right">
+          Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
     </div>
+  </div>
 
   <script src="static/javascript/host.js"></script>
-   <!-- jQuery -->
-   <script src="static/vendors/jquery/dist/jquery.min.js"></script>
-   <script src="static/vendors/moment/min/moment.min.js"></script>
-   <script src="static/vendors/Chart.js/dist/Chart.js"></script>
-   <script src="static/javascript/scipt_axxon_event.js"></script>
-     
-   <!-- Bootstrap -->
+  <!-- jQuery -->
+  <script src="static/vendors/jquery/dist/jquery.min.js"></script>
+  <script src="static/vendors/moment/min/moment.min.js"></script>
+  <script src="static/vendors/Chart.js/dist/Chart.js"></script>
+  <script src="static/javascript/scipt_axxon_event.js"></script>
+
+  <!-- Bootstrap -->
   <script src="static/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-   <!-- FastClick -->
-   <script src="static/vendors/fastclick/lib/fastclick.js"></script>
-   <!-- NProgress -->
-   <script src="static/vendors/nprogress/nprogress.js"></script>
-   
-   <!-- Custom Theme Scripts -->
-   <script src="static/build/js/custom.min.js"></script>
+  <!-- FastClick -->
+  <script src="static/vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="static/vendors/nprogress/nprogress.js"></script>
+
+  <!-- Custom Theme Scripts -->
+  <script src="static/build/js/custom.min.js"></script>
 
 
-	
-  </body>
+
+</body>
+
 </html>

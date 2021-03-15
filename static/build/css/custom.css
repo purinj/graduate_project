@@ -1089,20 +1089,6 @@ body .container.body .right_col {
 .dark {
   color: #34495E; }
 
-.orange {
-  color: #FF9F40; }
-
-.yellow {
-  color: #FFCD56; }
-
-.pink {
-  color: #FE3D67;
-}
-
-.row-fit {
-  width: 100%;
-}
-
 .border-blue {
   border-color: #3498DB !important; }
 
@@ -2274,9 +2260,9 @@ span.right {
   background: #425567; }
 
 /** top tiles  */
-/* .tile_count {
+.tile_count {
   margin-bottom: 20px;
-  margin-top: 20px; } */
+  margin-top: 20px; }
 
 .tile_count .tile_stats_count {
   border-bottom: 1px solid #D9DEE4;
