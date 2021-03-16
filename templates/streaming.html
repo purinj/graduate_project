@@ -29,43 +29,25 @@
 
   <!-- Custom Theme Style -->
   <link href="static/build/css/custom.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
 </head>
 <style>
-  .loader {
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #3498db;
-    width: 120px;
-    height: 120px;
-    -webkit-animation: spin 2s linear infinite;
-    /* Safari */
-    animation: spin 2s linear infinite;
+  #stream_map {
+    height: 800px;
   }
 
-  /* Safari */
-  @-webkit-keyframes spin {
-    0% {
-      -webkit-transform: rotate(0deg);
-    }
-
-    100% {
-      -webkit-transform: rotate(360deg);
-    }
+  .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 320px;
+    height: 100%;
+    right: 0px;
   }
 
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  .range-button {
-    background-color: white;
-    color: gray;
+  .modal-content {
+    height: 100%;
   }
 </style>
 
@@ -118,7 +100,7 @@
                 <li><a href="/brand_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Brand กล้อง</a></li>
                 {% if current_user.has_role('Admin')%}
                 <li><a href="/organization_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูลหน่วยงาน</a></li>
-                <li><a href="*"><i class="fa fa-video-camera"></i>จัดการข้อมูล Blue Pole</a></li>
+                <li><a href="/bluepole_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Blue Pole</a></li>
                 {% endif %}
 
               </ul>
@@ -180,9 +162,35 @@
 
       <!-- page content -->
       <div class="right_col" role="main">
+        <div class="container demo">
+          <div class="text-center">
+            <button id="modal_btn" type="button" class="btn btn-demo" data-toggle="modal" data-target="#myModal2"
+              hidden> Right Sidebar Modal </button>
+          </div>
+          <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3>เลือก Stram</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                      aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body" id='streamBtnContainer'>
+                  <!-- <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.</p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>คลิกที่หมุดเพื่อดูภาพ stream</p>
 
-        
-        
+
+
+
+
+        <div id="stream_map"></div>
+
+
 
 
       </div>
@@ -217,6 +225,133 @@
 
   <!-- Custom Theme Scripts -->
   <script src="static/build/js/custom.min.js"></script>
+
+  <!-- leaflet -->
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+  <script>
+    // console.log(mymap);
+    let allRow = []
+    let locationAndName = []
+    var mymap = L.map('stream_map').setView([16.476631, 102.823252], 13.5);
+    const accessToken = `pk.eyJ1IjoidHNwZXRlciIsImEiOiJja2RpeTgzcGEwOWpoMzRwOXNpYmRzeXBjIn0.r4QTVks0jXkW-nRjrzpjYQ`
+    L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`, {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox/streets-v11',
+      tileSize: 512,
+      zoomOffset: -1,
+      accessToken
+    }).addTo(mymap);
+    $.ajax({
+        type: 'GET',
+        async: false,
+        url: host_url + "api/AxxonCameraTable",
+        success: function(data) {
+          console.log(data);
+          allRow = data.row
+          for(i=0;i<data.row.length;i++) {
+            locationAndName.push({
+            lat:data.row[i][5],
+            long: data.row[i][6],
+            text: data.row[i][3],
+            allText: [data.row[i][3]],
+        })
+            
+
+          }
+          
+        }
+
+      });
+
+    console.log(locationAndName);
+
+
+    function getAppendLocation(data) {
+      const temp = {}
+      data.forEach((v, i) => {
+        console.log(v);
+        const location = `${v.lat}${v.long}`
+        console.log(location);
+        if (!temp[location]) {
+          temp[location] = i + 1
+        } else {
+          data[i] = undefined
+          data[temp[location] - 1].allText.push(v.text)
+          data[temp[location] - 1].objectAmount += v.objectAmount
+          data[temp[location] - 1].text = `
+                        <div style="color:black">${data[temp[location] - 1].text}</div>
+                        <div style="color:black">${v.text}</div>
+                    `
+        }
+
+      })
+      data = data.filter(v => v)
+      return data
+    }
+
+    let reformData = getAppendLocation(locationAndName)
+    count = 0
+    for (const v of reformData) {
+      window['location' + count] = L.marker([v.lat, v.long]).addTo(mymap);
+      window['location' + count].bindPopup(v.text);
+      window['location' + count].on('mouseover', function (ev) {
+        ev.target.openPopup();
+      });
+      window['location' + count].on('mouseout', function (ev) {
+        ev.target.closePopup();
+      });
+      console.log(v.allText);
+
+
+      window['location' + count].on('click', function (ev) {
+        var newBtnText = ''
+        for(j=0;j < v.allText.length;j++){
+          console.log(v.allText[j]);
+          newBtnText += '<button class="form-control"' + ' onclick=clickForStream('+ "this" + ')' + '>' + v.allText[j] + '</button>'
+        }
+        console.log(newBtnText);
+        document.getElementById('streamBtnContainer').innerHTML = newBtnText
+        document.getElementById('modal_btn').click()
+
+
+      });
+    }
+
+    function clickForStream(streamName) {
+      var find = false
+      var indexVal = 0
+      do {
+        var finding = allRow[indexVal].includes(streamName.innerHTML);
+        indexVal++;
+      }
+      while (indexVal < allRow.length && finding == false);
+
+      console.log(indexVal);
+
+      console.log(allRow[indexVal-1][3]);
+      var host = ''
+      if (String(allRow[indexVal-1][1]).length < 2) {
+        host = '0' + String(allRow[indexVal-1][1])
+      } else {
+        host = String(allRow[indexVal-1][1])
+      }
+      var devicepin = allRow[indexVal-1][2]
+      if (String(allRow[indexVal-1][2]).length < 2) {
+        devicepin = '0' + String(allRow[indexVal-1][2])
+      } else {
+        devicepin = String(allRow[indexVal-1][2])
+      }
+      window.open(`http://localhost:2204/video_feed/axxon/AXXON${host}/${devicepin}`, "_blank",
+                  "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+
+
+    }
+  </script>
+
 
 
 

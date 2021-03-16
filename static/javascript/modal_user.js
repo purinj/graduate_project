@@ -5,7 +5,7 @@ var del_modal = document.getElementById("delete_Modal");
 var span = document.getElementsByClassName("close_modal")[0];
 var span_del = document.getElementsByClassName("close_modal")[1];
 
-
+var org_id = []
 
 span.onclick = function() {
     modal.style.display = "none";
@@ -54,7 +54,7 @@ document.getElementById('add_thermal_complete').onclick = function() {
             password: document.querySelector('#add_user_password').value,
             firstname:document.querySelector('#add_user_firstname').value,
             lastname: document.querySelector('#add_user_lastname').value,
-            organization:document.querySelector('#add_user_organization').selectedIndex + 1,
+            organization:org_id[document.querySelector('#add_user_organization').selectedIndex],
             role:roles,
 
         },
@@ -91,7 +91,7 @@ document.getElementById('edit_complete').onclick = function() {
             password: document.querySelector('#edit_password').value,
             firstname:document.querySelector('#edit_firstname').value,
             lastname: document.querySelector('#edit_lastname').value,
-            organization:document.querySelector('#edit_organization').selectedIndex + 1,
+            organization:org_id[document.querySelector('#edit_organization').selectedIndex],
             role:roles,
             ID: document.querySelector("#edit_id").value
         },
@@ -202,6 +202,7 @@ function addOption_organization(elmid) {
          option = ''
          console.log(data);
          for(i=0;i < data.row.length; i++){
+             org_id.push(data.row[i][0])
              option += '<option value=' + data.row[i][1] + '>' + data.row[i][1]  + '</option>'
 
          }

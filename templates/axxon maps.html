@@ -223,6 +223,7 @@
 
 
         data = getAppendLocation(data)
+        console.log(data);
         data.forEach(({
             lat,
             long,
@@ -230,6 +231,7 @@
             allText,
             objectAmount
         }, i) => {
+            console.log(i);
 
             window['location' + i] = L.marker([lat, long], {
                 icon: getColor(objectAmount)
@@ -245,6 +247,7 @@
             });
 
             window['location' + i].on('click', function (ev) {
+                console.log(allText);
                 const haveMultipleText = allText.length > 1
                 if (haveMultipleText) {
                     const container = document.createElement("div")

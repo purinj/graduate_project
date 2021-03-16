@@ -4,7 +4,9 @@ var del_modal = document.getElementById("delete_Modal");
 var span = document.getElementsByClassName("close_modal")[0];
 var span_del = document.getElementsByClassName("close_modal")[1];
 
-
+var brand_id = []
+var org_id = []
+var cam_id = []
 
 span.onclick = function () {
     modal.style.display = "none";
@@ -47,7 +49,7 @@ document.getElementById('add_thermal_complete').onclick = function () {
         url: host_url + "api/allCameraTable",
         data: {
             ip: document.querySelector("#add_all_ip").value,
-            brand: document.querySelector("#add_all_brand").value,
+            brand: brand_id[document.querySelector("#add_all_brand").selectedIndex],
             model: document.querySelector("#add_all_model").value,
             camera_name: document.querySelector("#add_all_camera_name").value,
             user: document.querySelector("#add_all_user").value,
@@ -57,9 +59,9 @@ document.getElementById('add_thermal_complete').onclick = function () {
             location_name: document.querySelector("#add_all_location_name").value,
             latitude: document.querySelector("#add_all_latitude").value,
             longitude: document.querySelector("#add_all_longitude").value,
-            organization: document.querySelector("#add_all_organization").value,
+            organization: org_id[document.querySelector("#add_all_organization").selectedIndex],
             manage_role: roles,
-            cam_type: document.querySelector("#add_all_cam_type").value
+            cam_type: cam_id[document.querySelector("#add_all_cam_type").selectedIndex]
 
         },
         success: function (data) {
@@ -89,7 +91,7 @@ document.getElementById('edit_complete').onclick = function () {
         url: host_url + "api/allCameraTable",
         data: {
             ip: document.querySelector("#edit_ip").value,
-            brand: document.querySelector("#edit_all_brand").value,
+            brand: brand_id[document.querySelector("#edit_all_brand").selectedIndex],
             model: document.querySelector("#edit_model").value,
             camera_name: document.querySelector("#edit_camera_name").value,
             user: document.querySelector("#edit_user").value,
@@ -99,10 +101,10 @@ document.getElementById('edit_complete').onclick = function () {
             location_name: document.querySelector("#edit_location_name").value,
             latitude: document.querySelector("#edit_latitude").value,
             longitude: document.querySelector("#edit_longitude").value,
-            organization: document.querySelector("#edit_all_organization").value,
+            organization: org_id[document.querySelector("#edit_all_organization").selectedIndex],
             manage_role: roles,
             id_Index: document.querySelector("#edit_id").value,
-            cam_type: document.querySelector("#edit_cam_type").value
+            cam_type: cam_id[document.querySelector("#edit_cam_type").selectedIndex]
         },
         success: function (data) {
             console.log(data);
@@ -169,6 +171,7 @@ function addOption_brand(elmid) {
             option = ''
             console.log(data);
             for (i = 0; i < data.row.length; i++) {
+                brand_id.push(data.row[i][0])
                 option += '<option value=' + data.row[i][1] + '>' + data.row[i][1] + '</option>'
 
             }
@@ -187,6 +190,27 @@ function addOption_organization(elmid) {
             option = ''
             console.log(data);
             for (i = 0; i < data.row.length; i++) {
+                org_id.push(data.row[i][0])
+                option += '<option value=' + data.row[i][1] + '>' + data.row[i][1] + '</option>'
+
+            }
+            document.getElementById(elmid).innerHTML = option
+
+        }
+    });
+}
+
+
+function addOption_type(elmid) {
+    $.ajax({
+        type: 'GET',
+        async: false,
+        url: host_url + "api/camerasTypeManage",
+        success: function (data) {
+            option = ''
+            console.log(data);
+            for (i = 0; i < data.row.length; i++) {
+                cam_id.push(data.row[i][0])
                 option += '<option value=' + data.row[i][1] + '>' + data.row[i][1] + '</option>'
 
             }

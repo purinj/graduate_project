@@ -126,6 +126,11 @@ def organization_manage():
 def brand_manage():
     return render_template('brand_manage.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
 
+@app.route('/bluepole_manage')
+@roles_required(['Admin','Security'])
+def bluepole_manage():
+    return render_template('bluepole_manage.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
+
 ## Main Route End
 
 
@@ -642,8 +647,11 @@ def AxxonCameraTable():
 @app.route('/api/allCameraTable',methods = ['GET','POST','PUT','PATCH']) 
 def allCameraTable():
     if request.method == 'GET':
-        sql_com = '''SELECT id, ip, brand, model, cam_type, camera_name, "user", password, auth_type, stream_url, location_name, latitude, longitude, organization, manage_role
-	FROM public.all_cameras where '''
+        sql_com = '''SELECT public.all_cameras.id, ip, public.cam_brand.brand_name as brand, model, public.cameras_type.type_name as cam_type, camera_name, "user", password, auth_type, stream_url, location_name, latitude, longitude, public.organization.name as organization, manage_role
+FROM public.all_cameras full outer join public.cam_brand on brand = public.cam_brand.id
+full outer join public.cameras_type on cam_type = public.cameras_type.id
+full outer join public.organization  on organization = public.organization.id 
+where public.all_cameras.id is not NULL and '''
         count = 0
         for i in [role.name for role in current_user.roles]:
             if count > 0:
@@ -928,6 +936,100 @@ def OrganizationManage():
         connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
         cur = connection.cursor()
         cur.execute('''delete from public.organization where id = %s; '''%(request.form.get('del_id')));
+        connection.commit()
+        cur.close()
+        connection.close()
+        return 'Brand has deleted'
+
+@app.route('/api/camerasTypeManage',methods = ['GET','POST','PUT','PATCH']) 
+def camerasTypeManage():
+    if request.method == 'GET':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute('''select * from public.cameras_type''');
+        records = cur.fetchall()
+        #print(cur.description)
+        col_names = []
+        for elt in cur.description:
+            col_names.append(elt[0])
+        
+        table_row_column = {
+        'column': col_names,
+        'row': records
+        }
+        cur.close()
+        connection.close()
+        return table_row_column
+    
+    if request.method == 'POST':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute('''INSERT INTO public.cameras_type(type_name) VALUES ('%s'); ''' %(request.form.get('name')));
+        connection.commit()
+        cur.close()
+        connection.close()
+        return 'Brand has Created'
+    
+    if request.method == 'PUT':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute(''' UPDATE public.cameras_type SET type_name= '%s' WHERE id = %s; ''' %(request.form.get('name'),request.form.get('ID')));
+        connection.commit()
+        cur.close()
+        connection.close()
+        return 'Brand has Edited'
+
+    if request.method == 'PATCH':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute('''delete from public.cameras_type where id = %s; '''%(request.form.get('del_id')));
+        connection.commit()
+        cur.close()
+        connection.close()
+        return 'Brand has deleted'
+
+@app.route('/api/bluepoleManage',methods = ['GET','POST','PUT','PATCH']) 
+def bluepoleManage():
+    if request.method == 'GET':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute('select * from public.blue_pole order by id');
+        records = cur.fetchall()
+        #print(cur.description)
+        col_names = []
+        for elt in cur.description:
+            col_names.append(elt[0])
+        
+        table_row_column = {
+        'column': col_names,
+        'row': records
+        }
+        cur.close()
+        connection.close()
+        return table_row_column
+    
+    if request.method == 'POST':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute('''INSERT INTO public.blue_pole(name,latitude,longitude) VALUES ('%s','%s','%s'); ''' %(request.form.get('name'),request.form.get('latitude'),request.form.get('longitude')));
+        connection.commit()
+        cur.close()
+        connection.close()
+        return 'Brand has Created'
+    
+    if request.method == 'PUT':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute(''' UPDATE public.blue_pole SET name= '%s', latitude= '%s', longitude= '%s' WHERE id = %s; ''' %(request.form.get('name'),request.form.get('latitude'),request.form.get('longitude'),request.form.get('ID')));
+        connection.commit()
+        cur.close()
+        connection.close()
+        return 'Brand has Edited'
+
+    if request.method == 'PATCH':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute('''delete from public.blue_pole where id = %s; '''%(request.form.get('del_id')));
         connection.commit()
         cur.close()
         connection.close()

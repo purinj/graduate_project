@@ -78,7 +78,9 @@ axxonTimeScale_ppl_out_time = '''SELECT count(typex),cast(substring(split_part(s
             order by host,devicepint,hh,mm;'''
 
 usermanage_table_Get = '''SELECT public."user".id, username, password, firstname, lastname, public."organization".name as organization
-	FROM public."user",public."organization" where organization = public."organization".id order by public."user".id;'''
+	FROM public."user" full outer join public."organization" on organization = public."organization".id 
+	where public."user".id is not null
+	order by public."user".id;'''
 
 brandManage_get = '''SELECT * from public.cam_brand order by id '''
 stream_sql = '''select stream_url from public.all_cameras where ip = '%s'; '''
