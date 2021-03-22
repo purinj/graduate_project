@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="static/image/favicon.ico" type="image/ico" />
 
-  <title>Gentelella Alela! | </title>
+  <title>Smart Safety</title>
 
   <!-- Bootstrap -->
   <link href="static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -65,25 +65,37 @@
               <h3>General</h3>
               <ul class="nav side-menu">
                 <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="/axxondatastatic"><i class="fa fa-bar-chart"></i>ข้อมูล Smartpoles</a></li>
-                <li><a href="/thermalDataStatic"><i class="fa fa-bar-chart"></i>ข้อมูลกล้องวัดอุณหภูมิ</a></li>
-                <li><a href="/streamView"><i class="fa fa-bar-chart"></i>ดูภาพ stream</a></li>
+                <li><a href="/smartPoledatastatic"><i class="fa fa-bar-chart"></i>ข้อมูล Smartpoles</a></li>
+                <li><a href="/thermalDataStatic"><i class="fa fa-tachometer"></i>ข้อมูลกล้องวัดอุณหภูมิ</a></li>
+                <li>
+                  <a href="/streamView"><i class="fa fa-map-marker"></i>แผนที่กล้อง</a>
+                </li>
+                {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') or current_user.has_role('Security') or current_user.has_role('Library') %}
+                <li><a href="/camera_status"><i class="fa fa-wifi"></i>สถานะการเชื่อมต่อกล้อง</a></li>
+                {% endif %}
+
               </ul>
               {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') or current_user.has_role('Security') or current_user.has_role('Library') %}
               <h3>Manage</h3>
               <ul class="nav side-menu">
                 {% if current_user.has_role('Admin')%}
                 <li><a href="/user_manage"><i class="fa fa-group"></i>จัดการสมาชิก</a></li>
+                <li><a href="/organization_manage"><i class="fa fa-university"></i>จัดการข้อมูลหน่วยงาน</a></li>
+                <li><a href="/user_log"><i class="fa fa-history"></i>ประวัติการใช้งาน</a></li>
                 {% endif %}
-                <li><a href="/camera_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูลกล้อง</a></li>
+                <li><a><i class="fa fa-video-camera"></i>จัดการข้อมูลกล้อง<span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="/camera_manage">ข้อมูลกล้อง</a></li>
+                    <li><a href="/brand_manage">ข้อมูลยี่ห้อกล้อง</a></li>
+                  </ul>
+                </li>
                 {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') %}
-                <li><a href="/axxoncam_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Smart Pole</a></li>
+                <li><a href="/axxoncam_manage"><i class="fa fa-cog"></i>จัดการข้อมูล Smart Pole</a></li>
                 {% endif %}
-                <li><a href="/brand_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Brand กล้อง</a></li>
-                {% if current_user.has_role('Admin')%}
-                <li><a href="/organization_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูลหน่วยงาน</a></li>
-                <li><a href="/bluepole_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Blue Pole</a></li>
+                {% if current_user.has_role('Admin') or current_user.has_role('Security') %}
+                <li><a href="/bluepole_manage"><i class="fa fa-cog"></i>จัดการข้อมูล Blue Pole</a></li>
                 {% endif %}
+                
 
               </ul>
               {% endif %}
@@ -94,17 +106,8 @@
 
           <!-- /menu footer buttons -->
           <div class="sidebar-footer hidden-small">
-            <a data-toggle="tooltip" data-placement="top" title="Settings">
-              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Lock">
-              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-              <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="/api/fastlogout" style="width: 100%;">
+              <span class="glyphicon glyphicon-off" aria-hidden="true"></span> ออกจากระบบ
             </a>
           </div>
           <!-- /menu footer buttons -->
@@ -242,7 +245,7 @@
             <div class="col-md-12 col-sm-12 ">
               <div class="x_panel">
                 <div class="x_title">
-                  <h2>จัดการข้อมูลกล้องวัดอุณหภูมิ</h2>
+                  <h2>จัดการข้อมูลยี่ห้อกล้อง</h2>
                   <!-- <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>

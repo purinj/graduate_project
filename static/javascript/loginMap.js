@@ -7,7 +7,8 @@ var overlayMaps = {};
 blupole_init()
 Zoning_init()
 getRolesCam()
-if (document.getElementById('Roles_p').innerHTML.includes("SmartCity") || document.getElementById('Roles_p').innerHTML.includes("Admin")) {
+Smartpoles_init()
+function Smartpoles_init() {
     $.ajax({
         type: 'GET',
         async: false,
@@ -49,16 +50,16 @@ if (document.getElementById('Roles_p').innerHTML.includes("SmartCity") || docume
 
 
 
-        window['location' + count].on('click', function (ev) {
-            var newBtnText = ''
-            for (j = 0; j < v.allText.length; j++) {
-                console.log(v.allText[j]);
-                newBtnText += '<button class="form-control"' + ' onclick=clickForStream(' + "this" + ')' + '>' + v.allText[j] + '</button>'
-            }
-            console.log(newBtnText);
-            document.getElementById('streamBtnContainer').innerHTML = newBtnText
-            document.getElementById('modal_btn').click()
-        });
+        // window['location' + count].on('click', function (ev) {
+        //     var newBtnText = ''
+        //     for (j = 0; j < v.allText.length; j++) {
+        //         console.log(v.allText[j]);
+        //         newBtnText += '<button class="form-control"' + ' onclick=clickForStream(' + "this" + ')' + '>' + v.allText[j] + '</button>'
+        //     }
+        //     console.log(newBtnText);
+        //     document.getElementById('streamBtnContainer').innerHTML = newBtnText
+        //     document.getElementById('modal_btn').click()
+        // });
         count += 1
     }
 
@@ -148,27 +149,27 @@ function getRolesCam() {
     $.ajax({
         type: 'GET',
         async: false,
-        url: host_url + "api/allCameraTable",
+        url: host_url + "api/LoginMap",
         success: function (data) {
             normalLocation = []
             thermalLocation = []
             allCameraTableRows = data.row
-            console.log(data);
+            console.log('wง',allCameraTableRows);
             //console.log(testType.indexOf('bison'));
             for (i = 0; i < data.row.length; i++) {
-                if (data.row[i][4] == 'normal') {
+                if (data.row[i][3] == 'normal') {
                     normalLocation.push({
-                        lat: data.row[i][11],
-                        long: data.row[i][12],
-                        text: data.row[i][5],
-                        allText: [data.row[i][5]],
+                        lat: data.row[i][1],
+                        long: data.row[i][2],
+                        text: data.row[i][0],
+                        allText: [data.row[i][0]],
                     })
-                } else if (data.row[i][4] == 'thermal') {
+                } else if (data.row[i][3] == 'thermal') {
                     thermalLocation.push({
-                        lat: data.row[i][11],
-                        long: data.row[i][12],
-                        text: data.row[i][5],
-                        allText: [data.row[i][5]],
+                        lat: data.row[i][1],
+                        long: data.row[i][2],
+                        text: data.row[i][0],
+                        allText: [data.row[i][0]],
                     })
 
                 }
@@ -191,16 +192,16 @@ function getRolesCam() {
                 });
                 console.log(v.allText);
 
-                window['Cameras' + count].on('click', function (ev) {
-                    var newBtnText = ''
-                    for (j = 0; j < v.allText.length; j++) {
-                        console.log(v.allText[j]);
-                        newBtnText += '<button class="form-control"' + ' onclick=CamStreamClick(' + "this" + ')' + '>' + v.allText[j] + '</button>'
-                    }
-                    console.log(newBtnText);
-                    document.getElementById('streamBtnContainer').innerHTML = newBtnText
-                    document.getElementById('modal_btn').click()
-                });
+                // window['Cameras' + count].on('click', function (ev) {
+                //     var newBtnText = ''
+                //     for (j = 0; j < v.allText.length; j++) {
+                //         console.log(v.allText[j]);
+                //         newBtnText += '<button class="form-control"' + ' onclick=CamStreamClick(' + "this" + ')' + '>' + v.allText[j] + '</button>'
+                //     }
+                //     console.log(newBtnText);
+                //     document.getElementById('streamBtnContainer').innerHTML = newBtnText
+                //     document.getElementById('modal_btn').click()
+                // });
                 count += 1
             }
             // layer
@@ -225,16 +226,16 @@ function getRolesCam() {
                 });
                 console.log(v.allText);
 
-                window['thermal' + count].on('click', function (ev) {
-                    var newBtnText = ''
-                    for (j = 0; j < v.allText.length; j++) {
-                        console.log(v.allText[j]);
-                        newBtnText += '<button class="form-control"' + ' onclick=CamStreamClick(' + "this" + ')' + '>' + v.allText[j] + '</button>'
-                    }
-                    console.log(newBtnText);
-                    document.getElementById('streamBtnContainer').innerHTML = newBtnText
-                    document.getElementById('modal_btn').click()
-                });
+                // window['thermal' + count].on('click', function (ev) {
+                //     var newBtnText = ''
+                //     for (j = 0; j < v.allText.length; j++) {
+                //         console.log(v.allText[j]);
+                //         newBtnText += '<button class="form-control"' + ' onclick=CamStreamClick(' + "this" + ')' + '>' + v.allText[j] + '</button>'
+                //     }
+                //     console.log(newBtnText);
+                //     document.getElementById('streamBtnContainer').innerHTML = newBtnText
+                //     document.getElementById('modal_btn').click()
+                // });
                 count += 1
             }
 
@@ -344,20 +345,19 @@ function CamStreamClick(someInput) {
 
 function addLayer () {
     L.control.layers({
-        ดาวเทียม: normalLayer,
-        เฉพาะแผนที่: L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+        เฉพาะแผนที่: normalLayer,
+        ดาวเทียม: L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
             maxZoom: 20,
             subdomains:['mt0','mt1','mt2','mt3']
         })
-    }, overlayMaps).addTo(mymap);
-
-    // L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //         maxZoom: 19,
-    //         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    //     })
+    }, overlayMaps,{collapsed:false}).addTo(mymap);
 
 
 }
+// L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//             maxZoom: 19,
+//             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+//         })
 
 
 function Zoning_init() {

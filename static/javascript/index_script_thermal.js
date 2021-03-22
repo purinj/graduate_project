@@ -14,9 +14,20 @@ document.getElementById('view_select_thermalcam').onclick = function () {
     console.log(data_index);
     console.log(IPaddress[data_index]);
     $('#AgeGroupChart').remove();
-
     $('#AgeGroupChart_container').append('<div id="AgeGroupChart" style="width: 100%; min-height: 350px"></div>');
-    getDetectData(IPaddress[data_index])
+    getDetectData(IPaddress[data_index],'POST',{
+    startDate:$('#start_date').val(),
+    endDate:$('#end_date').val(),
+    temperatureType:'all',
+    AgeGroup:'all',
+    gender:'all',
+    glassed:'all',
+    faceExpression:'all',
+    race:'all',
+    beard:'all',
+    hat:'all'
+
+ })
 
 }
 document.getElementById('view_select_thermalcam').click();
@@ -42,13 +53,21 @@ function getCamData() {
 }
 
 function highLowTemp(ipdata) {
+    highTemp = []
+    normalTemp = []
     for (i = 0; i < ipdata.length; i++) {
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             async: false,
             url: host_url + "api/isAbnomalTemp/" + ipdata[i],
-            data: "",
+            data: {
+                startDate: document.getElementById('start_date').value,
+                endDate: document.getElementById('end_date').value
+            },
             success: function (data) {
+                pre_highTemp = []
+                pre_normalTemp = []
+                console.log(data);
                 data = JSON.parse(data)
                 highTemp.push(data.highTemp)
                 normalTemp.push(data.normalTemp)
@@ -333,12 +352,12 @@ function add_option(option_id) {
     }
 }
 
-function getDetectData(ip) {
+function getDetectData(ip,type,data) {
     $.ajax({
-        type: 'GET',
+        type: type,
         async: false,
         url: host_url + "api/hikVisionData/" + ip,
-        data: "",
+        data: data,
         success: function (data) {
             data = JSON.parse(data)
             console.log(data);
@@ -362,10 +381,10 @@ function getDetectData(ip) {
                         })
 
                     }
-                    console.log(nameforsubdata);
-                    console.log(valueforsubdata);
-                    console.log(valueforsubdata[1].name);
-                    console.log(valueforsubdata[0].name);
+                    // console.log(nameforsubdata);
+                    // console.log(valueforsubdata);
+                    // console.log(valueforsubdata[1].name);
+                    // console.log(valueforsubdata[0].name);
                     document.getElementById('male_data').innerHTML = data[Object.keys(data)[i]]['male']
                     document.getElementById('female_data').innerHTML = data[Object.keys(data)[i]]['female']
 

@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="static/image/favicon.ico" type="image/ico" />
 
-  <title>Gentelella Alela! | </title>
+  <title>Smart Safety</title>
 
   <!-- Bootstrap -->
   <link href="static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -83,25 +83,37 @@
               <h3>General</h3>
               <ul class="nav side-menu">
                 <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="/axxondatastatic"><i class="fa fa-bar-chart"></i>ข้อมูล Smartpoles</a></li>
-                <li><a href="/thermalDataStatic"><i class="fa fa-bar-chart"></i>ข้อมูลกล้องวัดอุณหภูมิ</a></li>
-                <li><a href="/streamView"><i class="fa fa-bar-chart"></i>ดูภาพ stream</a></li>
+                <li><a href="/smartPoledatastatic"><i class="fa fa-bar-chart"></i>ข้อมูล Smartpoles</a></li>
+                <li><a href="/thermalDataStatic"><i class="fa fa-tachometer"></i>ข้อมูลกล้องวัดอุณหภูมิ</a></li>
+                <li>
+                  <a href="/streamView"><i class="fa fa-map-marker"></i>แผนที่กล้อง</a>
+                </li>
+                {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') or current_user.has_role('Security') or current_user.has_role('Library') %}
+                <li><a href="/camera_status"><i class="fa fa-wifi"></i>สถานะการเชื่อมต่อกล้อง</a></li>
+                {% endif %}
+
               </ul>
               {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') or current_user.has_role('Security') or current_user.has_role('Library') %}
               <h3>Manage</h3>
               <ul class="nav side-menu">
                 {% if current_user.has_role('Admin')%}
                 <li><a href="/user_manage"><i class="fa fa-group"></i>จัดการสมาชิก</a></li>
+                <li><a href="/organization_manage"><i class="fa fa-university"></i>จัดการข้อมูลหน่วยงาน</a></li>
+                <li><a href="/user_log"><i class="fa fa-history"></i>ประวัติการใช้งาน</a></li>
                 {% endif %}
-                <li><a href="/camera_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูลกล้อง</a></li>
+                <li><a><i class="fa fa-video-camera"></i>จัดการข้อมูลกล้อง<span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="/camera_manage">ข้อมูลกล้อง</a></li>
+                    <li><a href="/brand_manage">ข้อมูลยี่ห้อกล้อง</a></li>
+                  </ul>
+                </li>
                 {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') %}
-                <li><a href="/axxoncam_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Smart Pole</a></li>
+                <li><a href="/axxoncam_manage"><i class="fa fa-cog"></i>จัดการข้อมูล Smart Pole</a></li>
                 {% endif %}
-                <li><a href="/brand_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Brand กล้อง</a></li>
-                {% if current_user.has_role('Admin')%}
-                <li><a href="/organization_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูลหน่วยงาน</a></li>
-                <li><a href="/bluepole_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Blue Pole</a></li>
+                {% if current_user.has_role('Admin') or current_user.has_role('Security') %}
+                <li><a href="/bluepole_manage"><i class="fa fa-cog"></i>จัดการข้อมูล Blue Pole</a></li>
                 {% endif %}
+                
 
               </ul>
               {% endif %}
@@ -112,17 +124,8 @@
 
           <!-- /menu footer buttons -->
           <div class="sidebar-footer hidden-small">
-            <a data-toggle="tooltip" data-placement="top" title="Settings">
-              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Lock">
-              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-              <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="/api/fastlogout" style="width: 100%;">
+              <span class="glyphicon glyphicon-off" aria-hidden="true"></span> ออกจากระบบ
             </a>
           </div>
           <!-- /menu footer buttons -->
@@ -144,11 +147,11 @@
                 </a>
                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                   <!-- <a class="dropdown-item"  href="javascript:;"> Profile</a>
-                    <a class="dropdown-item"  href="javascript:;">
-                      <span class="badge bg-red pull-right">50%</span>
-                      <span>Settings</span>
-                    </a>
-                <a class="dropdown-item"  href="javascript:;">Help</a> -->
+                      <a class="dropdown-item"  href="javascript:;">
+                        <span class="badge bg-red pull-right">50%</span>
+                        <span>Settings</span>
+                      </a>
+                  <a class="dropdown-item"  href="javascript:;">Help</a> -->
                   <a class="dropdown-item" href="/api/fastlogout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                 </div>
               </li>
@@ -209,6 +212,7 @@
   </div>
 
   <script src="static/javascript/host.js"></script>
+  <script src="static/javascript/zoning.js"></script>
   <!-- jQuery -->
   <script src="static/vendors/jquery/dist/jquery.min.js"></script>
   <script src="static/vendors/moment/min/moment.min.js"></script>
@@ -233,124 +237,25 @@
     crossorigin=""></script>
   <script>
     // console.log(mymap);
-    let allRow = []
-    let locationAndName = []
     var mymap = L.map('stream_map').setView([16.476631, 102.823252], 13.5);
-    const accessToken = `pk.eyJ1IjoidHNwZXRlciIsImEiOiJja2RpeTgzcGEwOWpoMzRwOXNpYmRzeXBjIn0.r4QTVks0jXkW-nRjrzpjYQ`
-    L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`, {
-      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      maxZoom: 18,
-      id: 'mapbox/streets-v11',
-      tileSize: 512,
-      zoomOffset: -1,
-      accessToken
-    }).addTo(mymap);
-    $.ajax({
-        type: 'GET',
-        async: false,
-        url: host_url + "api/AxxonCameraTable",
-        success: function(data) {
-          console.log(data);
-          allRow = data.row
-          for(i=0;i<data.row.length;i++) {
-            locationAndName.push({
-            lat:data.row[i][5],
-            long: data.row[i][6],
-            text: data.row[i][3],
-            allText: [data.row[i][3]],
-        })
-            
-
-          }
-          
-        }
-
-      });
-
-    console.log(locationAndName);
+    var normalLayer =  L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+}).addTo(mymap);
+    // const accessToken = `pk.eyJ1IjoidHNwZXRlciIsImEiOiJja2RpeTgzcGEwOWpoMzRwOXNpYmRzeXBjIn0.r4QTVks0jXkW-nRjrzpjYQ`
+    // var normalLayer = L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`, {
+    //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    //   maxZoom: 18,
+    //   id: 'mapbox/streets-v11',
+    //   tileSize: 512,
+    //   zoomOffset: -1,
+    //   accessToken
+    // }).addTo(mymap);
+   
 
 
-    function getAppendLocation(data) {
-      const temp = {}
-      data.forEach((v, i) => {
-        console.log(v);
-        const location = `${v.lat}${v.long}`
-        console.log(location);
-        if (!temp[location]) {
-          temp[location] = i + 1
-        } else {
-          data[i] = undefined
-          data[temp[location] - 1].allText.push(v.text)
-          data[temp[location] - 1].objectAmount += v.objectAmount
-          data[temp[location] - 1].text = `
-                        <div style="color:black">${data[temp[location] - 1].text}</div>
-                        <div style="color:black">${v.text}</div>
-                    `
-        }
-
-      })
-      data = data.filter(v => v)
-      return data
-    }
-
-    let reformData = getAppendLocation(locationAndName)
-    count = 0
-    for (const v of reformData) {
-      window['location' + count] = L.marker([v.lat, v.long]).addTo(mymap);
-      window['location' + count].bindPopup(v.text);
-      window['location' + count].on('mouseover', function (ev) {
-        ev.target.openPopup();
-      });
-      window['location' + count].on('mouseout', function (ev) {
-        ev.target.closePopup();
-      });
-      console.log(v.allText);
-
-
-      window['location' + count].on('click', function (ev) {
-        var newBtnText = ''
-        for(j=0;j < v.allText.length;j++){
-          console.log(v.allText[j]);
-          newBtnText += '<button class="form-control"' + ' onclick=clickForStream('+ "this" + ')' + '>' + v.allText[j] + '</button>'
-        }
-        console.log(newBtnText);
-        document.getElementById('streamBtnContainer').innerHTML = newBtnText
-        document.getElementById('modal_btn').click()
-
-
-      });
-    }
-
-    function clickForStream(streamName) {
-      var find = false
-      var indexVal = 0
-      do {
-        var finding = allRow[indexVal].includes(streamName.innerHTML);
-        indexVal++;
-      }
-      while (indexVal < allRow.length && finding == false);
-
-      console.log(indexVal);
-
-      console.log(allRow[indexVal-1][3]);
-      var host = ''
-      if (String(allRow[indexVal-1][1]).length < 2) {
-        host = '0' + String(allRow[indexVal-1][1])
-      } else {
-        host = String(allRow[indexVal-1][1])
-      }
-      var devicepin = allRow[indexVal-1][2]
-      if (String(allRow[indexVal-1][2]).length < 2) {
-        devicepin = '0' + String(allRow[indexVal-1][2])
-      } else {
-        devicepin = String(allRow[indexVal-1][2])
-      }
-      window.open(`http://localhost:2204/video_feed/axxon/AXXON${host}/${devicepin}`, "_blank",
-                  "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
-
-
-    }
   </script>
+  <script src="static/javascript/stream_page.js"></script>
 
 
 

@@ -8,6 +8,10 @@ import psycopg2
 import json
 from psycopg2.extras import RealDictCursor
 from raw_sql_command import *
+import base64
+import requests
+import datetime
+
 
 
 app = Flask(__name__, static_folder='static')
@@ -66,7 +70,6 @@ class Organization(db.Model):
 # *** DB Set Up ***
 db_adapter = SQLAlchemyAdapter(db,  User)
 user_manager = UserManager(db_adapter, app)
-
     
 def rowToJson(inputlist):
     text = {}
@@ -83,6 +86,25 @@ def gen(video):
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
+def check_video(video):
+    try:
+        success,image = video.read()
+        print(success,image)
+        ret,jpeg = cv2.imencode('.jpg', image)
+    except cv2.error as e:
+      meaage = 'loss'
+    else:
+       meaage = 'Pass'
+    return meaage
+
+def StrtoBase64(strForconverse):
+    message = strForconverse
+    message_bytes = message.encode('ascii')
+    base64_bytes = base64.b64encode(message_bytes)
+    base64_message = base64_bytes.decode('ascii')
+    return base64_message
+
+
 
 ## Main Route Start
 @app.route('/login')
@@ -94,9 +116,48 @@ def login():
 @app.route('/')
 @login_required
 def index():
-    return render_template('index.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
+    connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+    cur = connection.cursor()
+    cur.execute('''select count(*) from all_cameras''')
+    all_cam_execute = cur.fetchall()
 
-@app.route('/axxondatastatic')
+    cur.execute('''select count(*) from all_cameras where cam_type = 1''')
+    normal_cam_execute = cur.fetchall()
+
+    cur.execute('''select count(*) from all_cameras where cam_type = 2''')
+    ai_cam_execute = cur.fetchall()
+
+    cur.execute('''select count(*) from all_cameras where cam_type = 3''')
+    thermal_cam = cur.fetchall()
+
+    cur.execute('''select count(*) from public.blue_pole''')
+    bluepole_amount = cur.fetchall()
+
+    cur.close()
+    connection.close()
+
+    axnApi = psycopg2.connect(user=AXNAPIdb_user,password=AXNAPIdb_password,host=AXNAPIdb_host,port=AXNAPIdb_port,database=AXNAPIdb_dbname)
+                                  
+    cur2 = axnApi.cursor()
+    cur2.execute('''SELECT count(*) FROM public.cameras;''')
+    smart_pole_amount = cur2.fetchall()
+    cur2.close()
+    axnApi.close()
+
+    RealallCamera = int(all_cam_execute[0][0]) + int(smart_pole_amount[0][0])
+    RealAiCam = int(ai_cam_execute[0][0]) + int(thermal_cam[0][0]) + int(smart_pole_amount[0][0])
+    print('all = ',RealallCamera)
+    print('ai = ',RealAiCam)
+    print('thermal = ',thermal_cam[0][0])
+    print('smartpole = ',smart_pole_amount[0][0])
+    print('normal = ',normal_cam_execute[0][0])
+    print('bluepole = ',bluepole_amount[0][0])
+    
+
+    
+    return render_template('index.html',amount={'all':RealallCamera,'ai':RealAiCam,'thermal':thermal_cam[0][0],'smartpole':smart_pole_amount[0][0],'normal':normal_cam_execute[0][0],'bluepole':bluepole_amount[0][0]},user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
+
+@app.route('/smartPoledatastatic')
 @login_required
 def axxondatastatic():
     return render_template('AxxonNext_Event.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
@@ -130,6 +191,17 @@ def brand_manage():
 @roles_required(['Admin','Security'])
 def bluepole_manage():
     return render_template('bluepole_manage.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
+
+@app.route('/camera_status')
+@roles_required(['Admin','Security','SmartCity','Library'])
+def camera_status():
+    return render_template('camera_status.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
+
+@app.route('/user_log')
+@roles_required('Admin')
+def user_log():
+    return render_template('user_log.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})    
+
 
 ## Main Route End
 
@@ -180,10 +252,54 @@ def login_api():
         print('user =', user)
         # 
         if (user == None):
-            messages = json.dumps({"main":"รหัสไม่ถูก"})
-            return redirect(url_for('login', messages=messages))
+            r = requests.get('http://ldap.ibatt.in.th/ldap/limitless/%s/%s'%(StrtoBase64(request.form.get('password')),request.form.get('username')))
+            print(r.json())
+            print(r.json()['passed'])
+            if r.json()['passed'] == True:
+                print('create Login Func')
+                user1 = User(username=request.form.get('username'), firstname=r.json()['firstname'], lastname=r.json()['lastname'],password=r.json()['pid'])
+                db.session.add(user1)
+                db.session.commit()
+                user_for_id = User.query.filter_by(username=request.form.get('username'), firstname=r.json()['firstname'], lastname=r.json()['lastname'],password=r.json()['pid']).first()
+                role_add = UserRoles(user_id=user_for_id.id,role_id=9)
+                db.session.add(role_add)
+                db.session.commit()
+                login_user(user_for_id)
+
+                connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+                cur = connection.cursor()
+                action_msg = 'ได้เข้าสู่ระบบ'
+                cur.execute(insert_log %(
+                current_user.id,
+                action_msg,
+                datetime.datetime.now()
+                ))
+                connection.commit()
+                cur.close()
+                connection.close()
+
+                mdg = redirect(request.args.get('next') or url_for('index'))
+
+               
+            else:
+                print('Nooo')
+                mdg = 'wrong'
+
+            return mdg
+               
         else:
             login_user(user)
+            connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+            cur = connection.cursor()
+            action_msg = 'ได้เข้าสู่ระบบ'
+            cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+            connection.commit()
+            cur.close()
+            connection.close()
             return redirect(request.args.get('next') or url_for('index'))
 
 @app.route('/api/fastcreateuser')
@@ -208,8 +324,19 @@ def fastlogin():
 @app.route('/api/fastlogout')
 @login_required
 def fastlogout():
+    connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+    cur = connection.cursor()
+    action_msg = 'ได้ออกจากระบบ'
+    cur.execute(insert_log %(
+    current_user.id,
+    action_msg,
+    datetime.datetime.now()
+    ))
+    connection.commit()
+    cur.close()
+    connection.close()
     logout_user()
-    return 'You are now logged out!'
+    return redirect(url_for('login'))
 # ___ Login API
 
 
@@ -236,7 +363,7 @@ def video_feed(brand, ipOfCam):
 
 @app.route('/video_feed/axxon/<host>/<pin>')
 def axn_vid(host,pin):
-    video = cv2.VideoCapture('http://liger:12345678@10.172.10.1:8081/live/media/%s/DeviceIpint.%s/SourceEndpoint.video:0:0' % (host,pin))
+    video = cv2.VideoCapture('http://liger:12345678@10.172.10.1:8081/live/media/%s/DeviceIpint.%s/SourceEndpoint.video:0:1' % (host,pin))
     return Response(gen(video),mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
@@ -268,61 +395,219 @@ def hikcamNote(): # นับข้อมูลจาก hikvision
     
     return json.dumps(note)
 
-@app.route('/api/isAbnomalTemp/<ip>') 
-def isAbnomalTemp(ip):
+@app.route('/api/LoginMap') 
+def LoginMap():
     connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
     cur = connection.cursor()
+    cur.execute(login_map);
+    records = cur.fetchall()
+    #print(cur.description)
+    col_names = []
+    for elt in cur.description:
+        col_names.append(elt[0])
+        
+    table_row_column = {
+        'column': col_names,
+        'row': records
+    }
+    cur.close()
+    connection.close()
+    return table_row_column
+
+## Status Check
+@app.route('/api/videoStatus/<ipOfCam>')
+def videoStatus(ipOfCam):
+    reIPofcam = ipOfCam.replace("_", ".")
+    connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+    cur = connection.cursor()
+    cur.execute(stream_sql % reIPofcam)
+    stram_link = cur.fetchall()
+    print(stram_link)
+    cur.close()
+    connection.close()
+    video = cv2.VideoCapture(stram_link[0][0])
+    status = check_video(video)
+    return status
+
+@app.route('/api/axxonStatus/<host>/<pin>')
+def axxonStatus(host,pin):
+    video = cv2.VideoCapture('http://liger:12345678@10.172.10.1:8081/live/media/%s/DeviceIpint.%s/SourceEndpoint.video:0:1' % (host,pin))
+    status = check_video(video)
+    return status
+
+## Status Check    
+
+@app.route('/api/isAbnomalTemp/<ip>',methods = ['GET','POST']) 
+def isAbnomalTemp(ip):
+    if request.method == 'GET':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
     
-    cur.execute(isAbnomalTemp_normalTemp %(ip))
+        cur.execute(isAbnomalTemp_normalTemp %(ip))
     
-    normal_data = cur.fetchall()
-    cur.execute(isAbnomalTemp_highTemp %(ip) )
-    high_temp_data = cur.fetchall()
-    jsondata = {
+        normal_data = cur.fetchall()
+        cur.execute(isAbnomalTemp_highTemp %(ip) )
+        high_temp_data = cur.fetchall()
+        jsondata = {
         "normalTemp": normal_data[0][0],
         "highTemp": high_temp_data[0][0]
-    }
-    cur.close()
-    connection.close()
-    return json.dumps(jsondata)
+        }
+        cur.close()
+        connection.close()
+        return json.dumps(jsondata)
+    if request.method == 'POST':
+        startDate = request.form.get('startDate')
+        endDate = request.form.get('endDate')
+        print(startDate)
+        print(endDate)
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+    
+        cur.execute(isAbnomalTemp_normalTempByDate %(ip,endDate,startDate))
+    
+        normal_data = cur.fetchall()
+        cur.execute(isAbnomalTemp_highTempByDate %(ip,endDate,startDate) )
+        high_temp_data = cur.fetchall()
+        jsondata = {
+        "normalTemp": normal_data[0][0],
+        "highTemp": high_temp_data[0][0]
+        }
+        cur.close()
+        connection.close()
+        return json.dumps(jsondata)
 
-@app.route('/api/hikVisionData/<ip>') 
+
+@app.route('/api/hikVisionData/<ip>',methods = ['GET','POST']) 
 def hikVisionData(ip):
-    connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
-    cur = connection.cursor()
+    if request.method == 'GET':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        
+        cur.execute(hikVisionData_AgeGroupdata %(ip,''))
+        
+        AgeGroupdata = cur.fetchall()
+
+        cur.execute(hikVisionData_gender %(ip,''))
+        gender = cur.fetchall()
+
+        cur.execute(hikVisionData_glass %(ip,''))
+        glass = cur.fetchall()
+
+        cur.execute(hikVisionData_faceExpression %(ip,''))
+        faceExpression = cur.fetchall()
+
+        cur.execute(hikVisionData_race %(ip,''))
+        race = cur.fetchall()
+        cur.execute(hikVisionData_beard %(ip,''))
+        beard = cur.fetchall()
+        cur.execute(hikVisionData_hat %(ip,''))
+        hat = cur.fetchall()
+
+        jsonData = {
+            'AgeGroup':rowToJson(AgeGroupdata),
+            'gender':rowToJson(gender),
+            'glass':rowToJson(glass),
+            'faceExpression':rowToJson(faceExpression),
+            'race':rowToJson(race),
+            'beard':rowToJson(beard),
+            'hat':rowToJson(hat)         
+        }
+        cur.close()
+        connection.close()
+        return json.dumps(jsonData)
+    if request.method == 'POST':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        print(request.form.get('startDate'))
+        print(request.form.get('endDate'))
+        new = '''SELECT "ageGroup",count("ageGroup") FROM public.hikvisondata \
+                where "ipAddress" = '%s' %s group by "ageGroup";'''
+        sql_end_query =''
+        # '''SELECT gender,count(gender) FROM public.hikvisondata \
+        #         where "ipAddress" = '%s' group by gender;'''
+        if (request.form.get('temperatureType') != 'all'):
+            sql_end_query +=  ''' AND "isAbnomalTemperature" = '%s' ''' %(request.form.get('temperatureType'))
+
+        if (request.form.get('AgeGroup') != 'all'):
+            sql_end_query +=  ''' AND "ageGroup" = '%s' ''' %(request.form.get('AgeGroup'))
+        
+        if (request.form.get('gender') != 'all'):
+            sql_end_query +=  ''' AND "gender" = '%s' ''' %(request.form.get('gender'))
+        
+        if (request.form.get('glassed') != 'all'):
+            sql_end_query +=  ''' AND "glass" = '%s' ''' %(request.form.get('glassed'))
+        
+        if (request.form.get('faceExpression') != 'all'):
+            sql_end_query +=  ''' AND "faceExpression" = '%s' ''' %(request.form.get('faceExpression'))
+        
+        if (request.form.get('race') != 'all'):
+            sql_end_query +=  ''' AND "race" = '%s' ''' %(request.form.get('race'))
+
+        if (request.form.get('beard') != 'all'):
+            sql_end_query +=  ''' AND "beard" = '%s' ''' %(request.form.get('beard'))
+
+        if (request.form.get('hat') != 'all'):
+            sql_end_query +=  ''' AND "hat" = '%s' ''' %(request.form.get('hat'))
+
+        sql_end_query += ''' AND "time_stamp" > '%s' AND "time_stamp" < '%s' ''' %(request.form.get('startDate'),request.form.get('endDate'))
+
+        # print(new %(ip,sql_end_query))
+        # cur.execute(new %(ip,sql_end_query))
+        # AgeGroupdata = cur.fetchall()
+        # print(AgeGroupdata)
+
+        cur.execute(hikVisionData_AgeGroupdata %(ip,sql_end_query))
+        
+        AgeGroupdata = cur.fetchall()
+
+        cur.execute(hikVisionData_gender %(ip,sql_end_query))
+        gender = cur.fetchall()
+
+        cur.execute(hikVisionData_glass %(ip,sql_end_query))
+        glass = cur.fetchall()
+
+        cur.execute(hikVisionData_faceExpression %(ip,sql_end_query))
+        faceExpression = cur.fetchall()
+
+        cur.execute(hikVisionData_race %(ip,sql_end_query))
+        race = cur.fetchall()
+        cur.execute(hikVisionData_beard %(ip,sql_end_query))
+        beard = cur.fetchall()
+        cur.execute(hikVisionData_hat %(ip,sql_end_query))
+        hat = cur.fetchall()
+
+        jsonData = {
+            'AgeGroup':rowToJson(AgeGroupdata),
+            'gender':rowToJson(gender),
+            'glass':rowToJson(glass),
+            'faceExpression':rowToJson(faceExpression),
+            'race':rowToJson(race),
+            'beard':rowToJson(beard),
+            'hat':rowToJson(hat)         
+        }
+        cur.close()
+        connection.close()    
+        # print(request.form.get('temperatureType'))
+        # print(request.form.get('AgeGroup'))
+        # print(request.form.get('gender'))
+        # print(request.form.get('glassed'))
+        # print(request.form.get('faceExpression'))
+        # print(request.form.get('race'))
+        # print(request.form.get('beard'))
+        # print(request.form.get('hat'))
+        return json.dumps(jsonData)
     
-    cur.execute(hikVisionData_AgeGroupdata %(ip))
-    
-    AgeGroupdata = cur.fetchall()
-
-    cur.execute(hikVisionData_gender %(ip))
-    gender = cur.fetchall()
-
-    cur.execute(hikVisionData_glass %(ip))
-    glass = cur.fetchall()
-
-    cur.execute(hikVisionData_faceExpression %(ip))
-    faceExpression = cur.fetchall()
-
-    cur.execute(hikVisionData_race %(ip))
-    race = cur.fetchall()
-    cur.execute(hikVisionData_beard %(ip))
-    beard = cur.fetchall()
-    cur.execute(hikVisionData_hat %(ip))
-    hat = cur.fetchall()
-
-    jsonData = {
-        'AgeGroup':rowToJson(AgeGroupdata),
-        'gender':rowToJson(gender),
-        'glass':rowToJson(glass),
-        'faceExpression':rowToJson(faceExpression),
-        'race':rowToJson(race),
-        'beard':rowToJson(beard),
-        'hat':rowToJson(hat)         
-    }
-    cur.close()
-    connection.close()
-    return json.dumps(jsonData)
+    if request.method == 'PUT':
+        print(request.form.get('startDate'))
+        print(request.form.get('endDate'))
+        print(request.form.get('temperatureType'))
+        print(request.form.get('AgeGroup'))
+        print(request.form.get('gender'))
+        print(request.form.get('glassed'))
+        print(request.form.get('faceExpression'))
+        print(request.form.get('race'))
+        print(request.form.get('beard'))
+        print(request.form.get('hat'))
 
 @app.route('/api/AxxonDataWithTime',methods = ['POST'])
 def AxxonDataWithTime():
@@ -589,6 +874,17 @@ def AxxonCameraTable():
         axnApi.commit()
         cur2.close()
         axnApi.close()
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        action_msg = 'เพิ่มข้อมูล smartpole(' +  host_id + ','+ display_idx  + ',' + display_name  +  ')'
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
+        cur.close()
+        connection.close()
         return 'add axxon complete'
 
     elif request.method == 'PUT':
@@ -626,6 +922,17 @@ def AxxonCameraTable():
         axnApi.commit()
         cur2.close()
         axnApi.close()
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        action_msg = 'แก้ไขข้อมูล smartpole( id = ' + idIndex + ',' +  host_id + ','+ display_idx  + ',' + display_name  + ')'
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
+        cur.close()
+        connection.close()
         return 'edit axxon complete'
 
     elif request.method == 'PATCH':
@@ -640,6 +947,17 @@ def AxxonCameraTable():
         axnApi.commit()
         cur2.close()
         axnApi.close()
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        action_msg = 'ลบข้อมูล smartpole( id = ' + idIndex + ')'
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
+        cur.close()
+        connection.close()
         return 'add axxon complete'
 
 
@@ -686,21 +1004,6 @@ where public.all_cameras.id is not NULL and '''
     elif request.method == 'POST':
         connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
         cur = connection.cursor()
-        print(request.form.get('ip'),
-            request.form.get('brand'),
-            request.form.get('model'),
-            request.form.get('camera_name'),
-            request.form.get('user'),
-            request.form.get('password'),
-            request.form.get('auth_type'),
-            request.form.get('stream_url'),
-            request.form.get('location_name'),
-            request.form.get('latitude'),
-            request.form.get('longitude'),
-            request.form.get('organization'),
-           request.form.getlist('manage_role[]')
-            )
-        
         cur.execute(insert_all %(
             request.form.get('ip'),
             request.form.get('brand'),
@@ -718,6 +1021,15 @@ where public.all_cameras.id is not NULL and '''
             request.form.get('cam_type')
         ))
         connection.commit()
+
+        action_msg = 'เพิ่มข้อมูล กล้อง ip = ' + request.form.get('ip')
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
+        
         cur.close()
         connection.close()
         return 'add LibCam complete'
@@ -746,6 +1058,14 @@ where public.all_cameras.id is not NULL and '''
             request.form.get('id_Index')
         ))
         connection.commit()
+
+        action_msg = 'แก้ไขข้อมูล กล้อง id = ' +  request.form.get('id_Index')
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
         cur.close()
         connection.close()
         return 'edit complete'
@@ -758,6 +1078,16 @@ where public.all_cameras.id is not NULL and '''
             del_id
         ))
         connection.commit()
+        action_msg = 'ลบข้อมูล กล้อง id = ' + del_id
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
+
+
+
         cur.close()
         connection.close()
         return 'del LibCam complete'
@@ -812,6 +1142,18 @@ def usermanage_table():
             role_add = UserRoles(user_id=user_for_id.id,role_id=role[0])
             db.session.add(role_add)
             db.session.commit()
+
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        action_msg = 'เพิ่มผู้ใช้ username = ' + request.form.get('username') + ',firstname = ' + request.form.get('firstname') + ',lastname = ' + request.form.get('lastname') + ', organize = ' + request.form.get('organization')
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
+        cur.close()
+        connection.close()
         
         return 'User has Created'
 
@@ -838,11 +1180,36 @@ def usermanage_table():
             role_add = UserRoles(user_id=request.form.get('ID'),role_id=role[0])
             db.session.add(role_add)
             db.session.commit()
+
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        action_msg = 'แก้ไขข้อมูลผู้ใช้ id = ' + request.form.get('ID')
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
+        cur.close()
+        connection.close()
         return 'User has Edited'
 
     if request.method == 'PATCH':
         User.query.filter_by(id=request.form.get('del_id')).delete()
         db.session.commit()
+
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        action_msg = 'ลบข้อมูลผู้ใช้ id = ' + request.form.get('del_id')
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
+        cur.close()
+        connection.close()
+
         return 'User has Deleted'
 
 
@@ -872,6 +1239,14 @@ def brandManage():
         cur = connection.cursor()
         cur.execute('''INSERT INTO public.cam_brand(brand_name) VALUES ('%s'); ''' %(request.form.get('brand_name')));
         connection.commit()
+
+        action_msg = 'เพิ่ม brand name = ' + request.form.get('brand_name')
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
         cur.close()
         connection.close()
         return 'Brand has Created'
@@ -880,6 +1255,14 @@ def brandManage():
         connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
         cur = connection.cursor()
         cur.execute(''' UPDATE public.cam_brand SET brand_name= '%s' WHERE id = %s; ''' %(request.form.get('brand_name'),request.form.get('ID')));
+        connection.commit()
+
+        action_msg = 'แก้ไข brand id = '+ request.form.get('ID') +' name = ' + request.form.get('brand_name')
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
         connection.commit()
         cur.close()
         connection.close()
@@ -890,6 +1273,15 @@ def brandManage():
         cur = connection.cursor()
         cur.execute('''delete from public.cam_brand where id = %s; '''%(request.form.get('del_id')));
         connection.commit()
+
+        action_msg = 'ลบ brand id = '+ request.form.get('del_id')
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
+
         cur.close()
         connection.close()
         return 'Brand has deleted'
@@ -919,6 +1311,13 @@ def OrganizationManage():
         cur = connection.cursor()
         cur.execute('''INSERT INTO public.organization(name) VALUES ('%s'); ''' %(request.form.get('name')));
         connection.commit()
+        action_msg = 'เพิ่ม organization name = '+ request.form.get('name')
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
         cur.close()
         connection.close()
         return 'Brand has Created'
@@ -928,6 +1327,16 @@ def OrganizationManage():
         cur = connection.cursor()
         cur.execute(''' UPDATE public.organization SET name= '%s' WHERE id = %s; ''' %(request.form.get('name'),request.form.get('ID')));
         connection.commit()
+
+        action_msg = 'แก้ไข organization id = ' + request.form.get('ID')  +' name = '+ request.form.get('name')
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
+
+
         cur.close()
         connection.close()
         return 'Brand has Edited'
@@ -937,6 +1346,16 @@ def OrganizationManage():
         cur = connection.cursor()
         cur.execute('''delete from public.organization where id = %s; '''%(request.form.get('del_id')));
         connection.commit()
+
+        action_msg = 'ลบ organization id = ' + request.form.get('del_id')
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
+
+
         cur.close()
         connection.close()
         return 'Brand has deleted'
@@ -1013,6 +1432,15 @@ def bluepoleManage():
         cur = connection.cursor()
         cur.execute('''INSERT INTO public.blue_pole(name,latitude,longitude) VALUES ('%s','%s','%s'); ''' %(request.form.get('name'),request.form.get('latitude'),request.form.get('longitude')));
         connection.commit()
+
+        action_msg = 'เพิ่มข้อมูล blue_pole name = ' + request.form.get('name') + ', lat = ' + request.form.get('latitude') + ', long = ' + request.form.get('longitude')
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
+
         cur.close()
         connection.close()
         return 'Brand has Created'
@@ -1022,6 +1450,16 @@ def bluepoleManage():
         cur = connection.cursor()
         cur.execute(''' UPDATE public.blue_pole SET name= '%s', latitude= '%s', longitude= '%s' WHERE id = %s; ''' %(request.form.get('name'),request.form.get('latitude'),request.form.get('longitude'),request.form.get('ID')));
         connection.commit()
+
+        action_msg = 'แก้ไขข้อมูล blue_pole id = ' +  request.form.get('ID') + ', name = ' + request.form.get('name') + ', lat = ' + request.form.get('latitude') + ', long = ' + request.form.get('longitude')
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
+
+
         cur.close()
         connection.close()
         return 'Brand has Edited'
@@ -1031,9 +1469,43 @@ def bluepoleManage():
         cur = connection.cursor()
         cur.execute('''delete from public.blue_pole where id = %s; '''%(request.form.get('del_id')));
         connection.commit()
+
+        action_msg = 'ลบข้อมูล blue_pole id = ' +  request.form.get('del_id')
+        cur.execute(insert_log %(
+            current_user.id,
+            action_msg,
+            datetime.datetime.now()
+        ))
+        connection.commit()
+
+
+
         cur.close()
         connection.close()
         return 'Brand has deleted'
+
+
+@app.route('/api/userLog', methods = ['GET','POST','PUT','PATCH']) 
+def userLog():
+    if request.method == 'GET':
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+        cur.execute(''' SELECT public.log_action.id, user_id,public.user.firstname,public.user.lastname, action, time_stamp
+	FROM public.log_action INNER JOIN public.user 
+    ON user_id = public.user.id
+ORDER BY public.log_action.id; ''');
+        records = cur.fetchall()
+        #print(cur.description)
+        col_names = []
+        for elt in cur.description:
+            col_names.append(elt[0])
+        table_row_column = {
+            'column': col_names,
+            'row': records
+        }
+        cur.close()
+        connection.close() 
+        return table_row_column
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=2204, threaded=True,debug=True)

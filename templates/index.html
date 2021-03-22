@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="static/image/favicon.ico" type="image/ico" />
 
-  <title>Gentelella Alela! | </title>
+  <title>Smart Safety</title>
 
   <!-- Bootstrap -->
   <link href="static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -63,25 +63,37 @@
               <h3>General</h3>
               <ul class="nav side-menu">
                 <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="/axxondatastatic"><i class="fa fa-bar-chart"></i>ข้อมูล Smartpoles</a></li>
-                <li><a href="/thermalDataStatic"><i class="fa fa-bar-chart"></i>ข้อมูลกล้องวัดอุณหภูมิ</a></li>
-                <li><a href="/streamView"><i class="fa fa-bar-chart"></i>ดูภาพ stream</a></li>
+                <li><a href="/smartPoledatastatic"><i class="fa fa-bar-chart"></i>ข้อมูล Smartpoles</a></li>
+                <li><a href="/thermalDataStatic"><i class="fa fa-tachometer"></i>ข้อมูลกล้องวัดอุณหภูมิ</a></li>
+                <li>
+                  <a href="/streamView"><i class="fa fa-map-marker"></i>แผนที่กล้อง</a>
+                </li>
+                {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') or current_user.has_role('Security') or current_user.has_role('Library') %}
+                <li><a href="/camera_status"><i class="fa fa-wifi"></i>สถานะการเชื่อมต่อกล้อง</a></li>
+                {% endif %}
+
               </ul>
               {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') or current_user.has_role('Security') or current_user.has_role('Library') %}
               <h3>Manage</h3>
               <ul class="nav side-menu">
                 {% if current_user.has_role('Admin')%}
                 <li><a href="/user_manage"><i class="fa fa-group"></i>จัดการสมาชิก</a></li>
+                <li><a href="/organization_manage"><i class="fa fa-university"></i>จัดการข้อมูลหน่วยงาน</a></li>
+                <li><a href="/user_log"><i class="fa fa-history"></i>ประวัติการใช้งาน</a></li>
                 {% endif %}
-                <li><a href="/camera_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูลกล้อง</a></li>
+                <li><a><i class="fa fa-video-camera"></i>จัดการข้อมูลกล้อง<span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="/camera_manage">ข้อมูลกล้อง</a></li>
+                    <li><a href="/brand_manage">ข้อมูลยี่ห้อกล้อง</a></li>
+                  </ul>
+                </li>
                 {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') %}
-                <li><a href="/axxoncam_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Smart Pole</a></li>
+                <li><a href="/axxoncam_manage"><i class="fa fa-cog"></i>จัดการข้อมูล Smart Pole</a></li>
                 {% endif %}
-                <li><a href="/brand_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Brand กล้อง</a></li>
-                {% if current_user.has_role('Admin')%}
-                <li><a href="/organization_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูลหน่วยงาน</a></li>
-                <li><a href="/bluepole_manage"><i class="fa fa-video-camera"></i>จัดการข้อมูล Blue Pole</a></li>
+                {% if current_user.has_role('Admin') or current_user.has_role('Security') %}
+                <li><a href="/bluepole_manage"><i class="fa fa-cog"></i>จัดการข้อมูล Blue Pole</a></li>
                 {% endif %}
+                
 
               </ul>
               {% endif %}
@@ -92,17 +104,8 @@
 
           <!-- /menu footer buttons -->
           <div class="sidebar-footer hidden-small">
-            <a data-toggle="tooltip" data-placement="top" title="Settings">
-              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Lock">
-              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-              <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="/api/fastlogout" style="width: 100%;">
+              <span class="glyphicon glyphicon-off" aria-hidden="true"></span> ออกจากระบบ
             </a>
           </div>
           <!-- /menu footer buttons -->
@@ -147,33 +150,33 @@
           <div class="tile_count">
             <div class="col-md-2 col-sm-4  tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i>จำนวนกล้องวงจรปิดทั้งหมด</span>
-              <div class="count">0</div>
-              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+              <div class="count" style="text-align: right;">{{ amount.all }}</div>
+              <span class="count_bottom"></span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i>จำนวนกล้อง AI</span>
-              <div class="count">0</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-clock-o"></i>จำนวนกล้องปกติ</span>
+              <div class="count" style="text-align: right;">{{ amount.normal }}</div>
+              <span class="count_bottom"></span>
+            </div>
+            <div class="col-md-2 col-sm-4  tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> จำนวนกล้อง AI</span>
+              <div class="count green" style="text-align: right;">{{ amount.ai }}</div>
+              <span class="count_bottom"></span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> จำนวน Smartpoles</span>
-              <div class="count green">0</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <div class="count" style="text-align: right;">{{ amount.smartpole }}</div>
+              <span class="count_bottom"></span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> จำนวน Bluepoles</span>
-              <div class="count">0</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-user"></i>จำนวนกล้องวัดอุณหภูมิ</span>
+              <div class="count" style="text-align: right;">{{ amount.thermal }}</div>
+              <span class="count_bottom"></span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-              <div class="count">2,315</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-              <div class="count">7,325</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-user"></i>จำนวน Bluepole</span>
+              <div class="count" style="text-align: right;">{{ amount.bluepole }}</div>
+              <span class="count_bottom"></span>
             </div>
           </div>
         </div>
@@ -187,14 +190,15 @@
                 <ul class="nav navbar-right panel_toolbox">
                   <!-- <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                   </li> -->
-                  <li id="li_7d"><button class="form-control">7 วันที่ผ่านมา</button></li>
-                  <li id="li_30d"><button class="form-control">30 วันที่ผ่านมา</button></li>
-                  <li id="li_1y"><button class="form-control">1 ปีที่ผ่านมา</button></li>
+                  <li id="li_7d"><button class="form-control" onclick="sevenDays()">7 วันที่ผ่านมา</button></li>
+                  <li id="li_30d"><button class="form-control" onclick="thirtyDays()">30 วันที่ผ่านมา</button></li>
+                  <li id="li_1y"><button class="form-control" onclick="yearsPass()">1 ปีที่ผ่านมา</button></li>
                   <li id="li_custom"><button class="form-control" onclick="customRange()">กำหนดช่วง</button></li>
                   <li id="li_startdate" hidden>วันแรก<input class="date-picker form-control" type="date"
                       id="start_date"></li>
                   <li id="li_enddate" hidden>วันแรกสุดท้าย<input class="date-picker form-control" type="date"
                       id="end_date"></li>
+                  <li id="li_ok" hidden><span style="color: white;">ตกลง</span><button class="form-control btn-outline-primary" id="find_range">ตกลง</button></li>
                   <!-- <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
                         class="fa fa-wrench"></i></a>
@@ -208,7 +212,7 @@
                 </ul>
                 <div class="clearfix"></div>
               </div>
-              <div class="x_content">
+              <div class="x_content" id="axxon_data_container">
                 <div id="axxon_data" style="height:500px;"></div>
               </div>
             </div>
@@ -222,7 +226,7 @@
               <div class="x_title">
                 <h2>กล้องตรวจอุณหภูมิ<small>ทั้งหมด</small></h2>
                 <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                  <!-- <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                   </li>
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
@@ -233,7 +237,7 @@
                     </div>
                   </li>
                   <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
+                  </li> -->
                 </ul>
                 <div class="clearfix"></div>
               </div>
@@ -241,7 +245,7 @@
                 <!-- content of thermal -->
                 <div class="row">
                   <div class="col-md-6 col-sm-6  ">
-                    <div class="x_panel">
+                    <div class="x_panel" id="thermal_Data_container">
                       <div id="thermal_Data" style="height:620px;"></div>
 
                     </div>
@@ -293,7 +297,7 @@
                           <div class="x_title">
                             <h2>ช่วงอายุ</h2>
                             <ul class="nav navbar-right panel_toolbox">
-                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              <!-- <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                               </li>
                               <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -304,7 +308,7 @@
                                 </div>
                               </li>
                               <li><a class="close-link"><i class="fa fa-close"></i></a>
-                              </li>
+                              </li> -->
                             </ul>
                             <div class="clearfix"></div>
                           </div>
@@ -392,6 +396,7 @@
   <script src="static/build/js/custom.min.js"></script>
   <script src="static/javascript/index_script_axxon.js"></script>
   <script src="static/javascript/index_script_thermal.js"></script>
+  <script src="static/javascript/index_option.js"></script>
 </body>
 
 </html>

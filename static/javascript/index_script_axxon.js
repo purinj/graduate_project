@@ -14,6 +14,8 @@ function customRange() {
     $('#li_custom').hide()
     document.getElementById('li_startdate').hidden = false;
     document.getElementById('li_enddate').hidden = false;
+    document.getElementById('li_ok').hidden = false;
+    
 
 }
 
@@ -307,7 +309,7 @@ function create_axxon_graoh(catetgoly_data, InData, OutData) {
 
         echartBar.setOption({
             title: {
-                text: 'SmartPole Axxon',
+                text: 'SmartPole',
                 subtext: 'SmartCity'
             },
             tooltip: {
@@ -330,6 +332,10 @@ function create_axxon_graoh(catetgoly_data, InData, OutData) {
             series: [{
                 name: 'เข้า',
                 type: 'bar',
+                label: {
+                    show: true,
+                    position: 'top'
+                },
                 data: InData,
                 markPoint: {
                     data: [{
@@ -349,6 +355,10 @@ function create_axxon_graoh(catetgoly_data, InData, OutData) {
             }, {
                 name: 'ออก',
                 type: 'bar',
+                label: {
+                    show: true,
+                    position: 'top'
+                },
                 data: OutData,
                 markPoint: {
                     data: [{

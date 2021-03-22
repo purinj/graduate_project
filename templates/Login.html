@@ -1,122 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap -->
-    <link href="static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="static/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- Animate.css -->
-    <link href="static/vendors/animate.css/animate.min.css" rel="stylesheet">
+  <title>Smart Safety</title>
 
-    <!-- Custom Theme Style -->
-    <link href="static/build/css/custom.min.css" rel="stylesheet">
-  </head>
+  <!-- Bootstrap -->
+  <link href="static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="static/vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- Animate.css -->
+  <link href="static/vendors/animate.css/animate.min.css" rel="stylesheet">
 
-  <body class="login">
-    <div>
-      <a class="hiddenanchor" id="signup"></a>
-      <a class="hiddenanchor" id="signin"></a>
+  <!-- Custom Theme Style -->
+  <link href="static/build/css/custom.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+</head>
+<style>
+  #mapid { height: 85vh; }
+</style>
 
-      <div class="login_wrapper">
-        <div class="animate form login_form">
-          <section class="login_content">
-            <form>
-              <h1> {{ message }}</h1>
-              <h1>Login Form</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" required="" id="username"/>
+<body class="login">
+  <div>
+    <a class="hiddenanchor" id="signup"></a>
+    <a class="hiddenanchor" id="signin"></a>
+
+
+    
+
+   
+
+    <div class="right_col" id="mapAndtext" role="main">
+      <nav class="navbar navbar-dark bg-dark"">
+        <a class="navbar-brand primary">Smart Safety</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span><button class="btn btn-primary" id="displayLogin">เข้าสู่ระบบ</button></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <span class="navbar-text">
+            Navbar text with an inline element
+          </span>
+        </div>
+      </nav>
+
+      <!-- <div class="top_nav">
+        <div class="nav_menu">
+          <nav class="nav navbar-nav">
+            <ul class=" navbar-right">
+              <li class="nav-item dropdown open" style="padding-left: 15px;">
+                <button class="btn btn-primary" id="displayLogin">เข้าสู่ระบบ</button>            
+              </li>
+            </ul>
+            </li>
+            </ul>
+          </nav>
+        </div>
+      </div> -->
+      <span style="color: white; height: 0px;">แผนที่</span>
+      <div id="mapid"></div>
+
+
+    </div>
+
+
+
+    <div class="login_wrapper" id="loginPage" hidden>
+      <div class="animate form login_form">
+        <section class="login_content">
+          <form>
+
+            <h1>Login Form</h1>
+            <div>
+              <div class="alert alert-danger alert-dismissible " id="alert" style="color: red; background-color: pink;">
+                <span class="close"><span aria-hidden="true">×</span>
+                </span>
+                <strong id="invalid"></strong>
               </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Password" required="" id="password"/>
-              </div>
-              <div> 
-                <button  class="btn btn-primary" id="loging_in">Log in</button>
-              </div>
+              <input type="text" class="form-control" placeholder="Username" required="" id="username" />
+            </div>
+            <div>
+              <input type="password" class="form-control" placeholder="Password" required="" id="password" />
+            </div>
+            <div>
+              <button class="btn btn-primary" id="loging_in">Log in</button>
+            </div>
 
-              <div class="clearfix"></div>
+            <div class="clearfix"></div>
 
-              <div class="separator">
-                <p class="change_link">New to site?
+            <div class="separator">
+              <!-- <p class="change_link">New to site?
                   <a href="#signup" class="to_register"> Create Account </a>
-                </p>
-
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                </div>
-              </div>
-            </form>
-          </section>
-        </div>
-
-        <div id="register" class="animate form registration_form">
-          <section class="login_content">
-            <form>
-              <h1>Create Account</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
-              </div>
-              <div>
-                <a class="btn btn-default submit" href="index.html">Submit</a>
-              </div>
+                </p> -->
 
               <div class="clearfix"></div>
+              <br />
 
-              <div class="separator">
-                <p class="change_link">Already a member ?
-                  <a href="#signin" class="to_register"> Log in </a>
-                </p>
-
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                </div>
+              <div>
+                <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
               </div>
-            </form>
-          </section>
-        </div>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <div id="register" class="animate form registration_form">
+        <section class="login_content">
+          <form>
+            <h1>Create Account</h1>
+            <div>
+              <input type="text" class="form-control" placeholder="Username" required="" />
+            </div>
+            <div>
+              <input type="email" class="form-control" placeholder="Email" required="" />
+            </div>
+            <div>
+              <input type="password" class="form-control" placeholder="Password" required="" />
+            </div>
+            <div>
+              <a class="btn btn-default submit" href="index.html">Submit</a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="separator">
+              <p class="change_link">Already a member ?
+                <a href="#signin" class="to_register"> Log in </a>
+              </p>
+
+              <div class="clearfix"></div>
+              <br />
+
+              <div>
+                <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+              </div>
+            </div>
+          </form>
+        </section>
       </div>
     </div>
-    <script src="static/javascript/host.js"></script>
-    <script src="static/vendors/jquery/dist/jquery.min.js"></script>
-    <script>
-      document.getElementById('loging_in').onclick = function() {
-        console.log(document.getElementById('username').value);
-        console.log(document.getElementById('password').value);
-        $.ajax({
-         type: 'POST',
-         async: false,
-         url: host_url + "api/login",
-         data: {
-          username:document.getElementById('username').value,
-          password:document.getElementById('password').value
-        }
-        });
+  </div>
+  <script src="static/javascript/host.js"></script>
+  <script src="static/javascript/zoning.js"></script>
+  <script src="static/vendors/jquery/dist/jquery.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
 
-      }
-       
-    </script>
-  </body>
+
+  <script>
+    var mymap = L.map('mapid').setView([16.476631, 102.823252], 13.5);
+    var mapLink = '<a href="http://www.esri.com/">Esri</a>';
+    var wholink = 'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
+
+    var normalLayer =  L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+            maxZoom: 20,
+            subdomains:['mt0','mt1','mt2','mt3']
+        }).addTo(mymap);
+
+    // const accessToken = `pk.eyJ1IjoidHNwZXRlciIsImEiOiJja2RpeTgzcGEwOWpoMzRwOXNpYmRzeXBjIn0.r4QTVks0jXkW-nRjrzpjYQ`
+    // var normalLayer = L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`, {
+    //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    //   maxZoom: 18,
+    //   id: 'mapbox/streets-v11',
+    //   tileSize: 512,
+    //   zoomOffset: -1,
+    //   accessToken
+    // }).addTo(mymap);
+    document.getElementById('alert').hidden =true
+    document.getElementById('loging_in').onclick = function (e) {
+      e.preventDefault();
+      console.log(document.getElementById('username').value);
+      console.log(document.getElementById('password').value);
+      $.ajax({
+        type: 'POST',
+        async: false,
+        url: host_url + "api/login",
+        data: {
+          username: document.getElementById('username').value,
+          password: document.getElementById('password').value
+        },success: function(data) {
+          if (data == 'wrong') {
+            document.getElementById('invalid').innerHTML = 'username หรือ รหัสผ่านไม่ถูกต้อง'
+            document.getElementById('alert').hidden = false
+          } else {
+            window.location.reload()
+          }
+}
+      });
+
+    }
+    document.getElementsByClassName('close')[0].onclick = function() {
+      document.getElementById('alert').hidden = true
+
+    }
+
+    document.getElementById('displayLogin').onclick = function() {
+      document.getElementById('loginPage').hidden = false;
+      document.getElementById('mapAndtext').hidden = true;
+
+    }
+  </script>
+  <script src="static/javascript/loginMap.js"></script>
+</body>
+
 </html>

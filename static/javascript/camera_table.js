@@ -24,11 +24,16 @@ function add_data_test(url_request,table_column,table_rows,type_for_modal){
                 document.getElementById("body_modal").innerHTML = '<h2>แก้ไขข้อมูล</h2>' + modal_body + roleEdit
 
                 for (i = 0; i < data.row.length ; i ++) {
-                    turn_to_rows = ''
+                    turn_to_rows = '<tr>'
                     for (j = 0; j < data.row[i].length ; j ++) {
-                       
                         console.log(data.column[j]);
-                        turn_to_rows +=  "<td id=" + data.column[j] + "_rows" + i + ' >'+ data.row[i][j] + "</td>"
+                        if (data.column[j] == 'password') {
+                            turn_to_rows +=  "<td id=" + data.column[j] + "_rowsShow" + i + ' >'+ '*******' + `<a id=${data.column[j]}_rows${i} hidden>${data.row[i][j]}</a>` + "</td>"
+
+                        } else {
+                            turn_to_rows +=  "<td id=" + data.column[j] + "_rows" + i + ' >'+ data.row[i][j] + "</td>"
+                        }
+                       
                         
                     }
 
@@ -49,12 +54,24 @@ function add_data_test(url_request,table_column,table_rows,type_for_modal){
                     
     
                 }
-                turn_to_head +=  '<th>' + 'action' +'</th>'
+                
+                if (type_for_modal == 'brand') {
+                    if (document.getElementById('Roles_p').innerHTML.includes('Admin')) {
+                        turn_to_head +=  '<th>' + 'action' +'</th>'
+                    } else {
+                        turn_to_head += ''
+
+                    }
+
+                } else {
+                    turn_to_head +=  '<th>' + 'action' +'</th>'
+
+                }
                 document.getElementById(table_column).innerHTML += turn_to_head;
                 document.getElementById("body_modal").innerHTML = '<h2>แก้ไขข้อมูล</h2>' + modal_body
 
                 for (i = 0; i < data.row.length ; i ++) {
-                    turn_to_rows = ''
+                    turn_to_rows = '<tr>'
                     for (j = 0; j < data.row[i].length ; j ++) {
                        
                         console.log(data.column[j]);
@@ -65,7 +82,19 @@ function add_data_test(url_request,table_column,table_rows,type_for_modal){
                               '<button class="btn btn-warning" type="button"'+ 'onclick=edit_open_modal('+ i +','+ "'" + type_for_modal + "'"+ ") "  + '>' + 'แก้ไข</button>' +
                               '<button class="btn btn-danger" type="button"' + 'onclick=delete_open_modal('+ i +','+ "'" + type_for_modal + "'"+ ") " + ' >ลบ</button>'  +
                             '</div></td>';
-                    turn_to_rows += btn + '</tr>'
+                    
+                    if (type_for_modal == 'brand') {
+                        if (document.getElementById('Roles_p').innerHTML.includes('Admin')) {
+                            turn_to_rows += btn + '</tr>'
+                        } else {
+                            turn_to_rows += '</tr>'
+    
+                        }
+    
+                    } else {
+                        turn_to_rows += btn + '</tr>'
+    
+                    }
                     document.getElementById(table_rows).innerHTML += turn_to_rows;     
                 }
 

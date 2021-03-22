@@ -24,25 +24,30 @@ create_Time_Chart("people_out_time_chart",Out_timeSeq,'people_out','#FF7F50')
     
 // listener Event For Date Range
 document.getElementById('find_range').onclick = function() {
-  fetchNameAndCam($('#start_date').val(),$('#end_date').val())
   $('#AxxonChart').remove(); // this is my <canvas> element
   $('#Axxon_chart_container').append('<canvas id="AxxonChart"></canvas>');
+  fetchNameAndCam($('#start_date').val(),$('#end_date').val())
   console.log($('#Axxon_chart_container').html());
   createStackdata('AxxonChart',Name,People_in,People_out)
+  document.getElementById('Cam_Name_for_in').selectedIndex = 0;
+  $('#Cam_Name_for_in').change();
+  document.getElementById('Cam_Name_for_out').selectedIndex = 0;
+  $('#Cam_Name_for_out').change();
+ 
 }
 document.getElementById('Cam_Name_for_in').onchange = function() {
-  data_index = document.getElementById('Cam_Name_for_in').selectedIndex;
-  getTimeData(Name[data_index],$('#start_date').val(),$('#end_date').val())
   $('#people_in_time_chart').remove();
   $('#people_in_time_chart_container').append('<canvas id="people_in_time_chart"></canvas>');
+  data_index = document.getElementById('Cam_Name_for_in').selectedIndex;
+  getTimeData(Name[data_index],$('#start_date').val(),$('#end_date').val())
   create_Time_Chart("people_in_time_chart",In_timeSeq,'people_in','#48D1CC')
 }
 
 document.getElementById('Cam_Name_for_out').onchange = function() {
-  data_index = document.getElementById('Cam_Name_for_out').selectedIndex;
-  getTimeData(Name[data_index],$('#start_date').val(),$('#end_date').val())
   $('#people_out_time_chart').remove();
   $('#people_out_time_chart_container').append('<canvas id="people_out_time_chart"></canvas>');
+  data_index = document.getElementById('Cam_Name_for_out').selectedIndex;
+  getTimeData(Name[data_index],$('#start_date').val(),$('#end_date').val())
   create_Time_Chart("people_out_time_chart",Out_timeSeq,'people_in','#FF7F50')
 }
 
@@ -198,7 +203,7 @@ function create_Time_Chart(idOfChart,result,nameLabel,lineColor) {
     console.log(labels);
     console.log(data);
     if ($('#' + idOfChart).length) {
-      var ctx = document.getElementById(idOfChart).getContext('2d');
+      var ctx = document.getElementById(idOfChart);
       var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -229,4 +234,30 @@ function create_Time_Chart(idOfChart,result,nameLabel,lineColor) {
         }
       });
     }
+  }
+
+
+  function sevenDays() {
+    console.log('test');
+    var date = new Date();
+    
+    document.getElementById('start_date').valueAsDate = new Date(date.setDate(date.getDate() - 7));
+    document.getElementById('end_date').valueAsDate = new Date();
+    document.getElementById('find_range').click()
+  }
+  function thirtyDays() {
+    console.log('test');
+    var date = new Date();
+    
+    document.getElementById('start_date').valueAsDate = new Date(date.setDate(date.getDate() - 30));
+    document.getElementById('end_date').valueAsDate = new Date();
+    document.getElementById('find_range').click()
+  }
+  function yearsPass() {
+    console.log('test');
+    var date = new Date();
+    
+    document.getElementById('start_date').valueAsDate = new Date(date.setDate(date.getDate() - 365));
+    document.getElementById('end_date').valueAsDate = new Date();
+    document.getElementById('find_range').click()
   }
