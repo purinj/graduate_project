@@ -62,7 +62,7 @@
  }
  document.getElementById('find_range').onclick = function () {
      $('#AxxonChart').remove()
-     $('#Axxon_chart_container').append('<canvas id="AxxonChart"></canvas>')
+     $('#Axxon_chart_container').append('<div id="AxxonChart" style="height: 500px;"></div>')
      highLowTemp(IPaddress)
      createStackdata('AxxonChart', label_camNote, normalTemp, highTemp)
      document.getElementById('view_event_chart').click()
@@ -160,80 +160,368 @@
 
 
  function createStackdata(element_id, label, normalTemp, highTemp) {
-     if ($('#' + element_id).length) {
-         var canvas = $('#' + element_id);
-         var canvas = document.getElementById(element_id);
-         console.log(label);
-         console.log(normalTemp);
-         console.log(highTemp);
-         var AxxonChart = new Chart(canvas, {
+     
+  var theme = {
+    color: [
+      'green', 'red', '#BDC3C7', '#3498DB',
+      '#9B59B6', '#8abb6f', '#759c6a', '#bfd3b7'
+    ],
 
-             type: 'horizontalBar',
-             data: {
-                 labels: label,
-                 datasets: [{
-                     label: 'ปกติ',
-                     backgroundColor: "#48D1CC",
-                     data: normalTemp
-                 }, {
-                     label: 'มากกว่า 37.5',
-                     backgroundColor: "#FF7F50",
-                     data: highTemp
-                 }]
-             },
+    title: {
+      itemGap: 8,
+      textStyle: {
+        fontWeight: 'normal',
+        color: '#408829'
+      }
+    },
 
-             options: {
-                 legend: {
-                     display: false
-                 },
-                 "animation": {
-                     "duration": 1,
-                     "onComplete": function () {
-                         var chartInstance = this.chart,
-                             ctx = chartInstance.ctx;
+    dataRange: {
+      color: ['#1f610a', '#97b58d']
+    },
 
-                         ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
-                         ctx.textAlign = 'center';
-                         ctx.textBaseline = 'center';
+    toolbox: {
+      color: ['#408829', '#408829', '#408829', '#408829']
+    },
 
-                         this.data.datasets.forEach(function (dataset, i) {
-                             var meta = chartInstance.controller.getDatasetMeta(i);
-                             meta.data.forEach(function (bar, index) {
-                                 var data = dataset.data[index];
-                                 ctx.fillText(data, bar._model.x + 10, bar._model.y - 5);
-                             });
-                         });
-                     }
-                 },
-                 scales: {
-                     yAxes: [{
-                         ticks: {
-                             beginAtZero: true
-                         }
-                     }]
-                 }
-             }
-         });
-         canvas.onclick = function (evt) {
-             var activePoint = AxxonChart.getElementAtEvent(evt)[0];
-             console.log(activePoint);
-             var data = activePoint._chart.data;
-             var datasetIndex = activePoint._datasetIndex;
-             var label = data.datasets[datasetIndex].label;
-             var value = data.datasets[datasetIndex].data[activePoint._index];
-             console.log(data.labels[activePoint._index], label, value);
-             getTimeData(data.labels[activePoint._index], $('#start_date').val(), $('#end_date').val())
-             console.log(In_timeSeq);
-             // $('#time_Chart').remove(); // this is my <canvas> element
-             // $('#time_Chart_container').append('<canvas class="w3-white" id="time_Chart" hidden></canvas>');
-             // if (label == 'เข้า') {
-             //   create_Time_Chart(In_timeSeq,'people_in','MediumTurquoise')
-             // } else {
-             //   create_Time_Chart(Out_timeSeq,'people_Out','LightCoral')
-             // }
+    tooltip: {
+      backgroundColor: 'rgba(0,0,0,0.5)',
+      axisPointer: {
+        type: 'line',
+        lineStyle: {
+          color: '#408829',
+          type: 'dashed'
+        },
+        crossStyle: {
+          color: '#408829'
+        },
+        shadowStyle: {
+          color: 'rgba(200,200,200,0.3)'
+        }
+      }
+    },
 
-         }
-     }
+    dataZoom: {
+      dataBackgroundColor: '#eee',
+      fillerColor: 'rgba(64,136,41,0.2)',
+      handleColor: '#408829'
+    },
+    grid: {
+      borderWidth: 0
+    },
+
+    categoryAxis: {
+      axisLine: {
+        lineStyle: {
+          color: '#408829'
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          color: ['#eee']
+        }
+      }
+    },
+
+    valueAxis: {
+      axisLine: {
+        lineStyle: {
+          color: '#408829'
+        }
+      },
+      splitArea: {
+        show: true,
+        areaStyle: {
+          color: ['rgba(250,250,250,0.1)', 'rgba(200,200,200,0.1)']
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          color: ['#eee']
+        }
+      }
+    },
+    timeline: {
+      lineStyle: {
+        color: '#408829'
+      },
+      controlStyle: {
+        normal: {
+          color: '#408829'
+        },
+        emphasis: {
+          color: '#408829'
+        }
+      }
+    },
+
+    k: {
+      itemStyle: {
+        normal: {
+          color: '#68a54a',
+          color0: '#a9cba2',
+          lineStyle: {
+            width: 1,
+            color: '#408829',
+            color0: '#86b379'
+          }
+        }
+      }
+    },
+    map: {
+      itemStyle: {
+        normal: {
+          areaStyle: {
+            color: '#ddd'
+          },
+          label: {
+            textStyle: {
+              color: '#c12e34'
+            }
+          }
+        },
+        emphasis: {
+          areaStyle: {
+            color: '#99d2dd'
+          },
+          label: {
+            textStyle: {
+              color: '#c12e34'
+            }
+          }
+        }
+      }
+    },
+    force: {
+      itemStyle: {
+        normal: {
+          linkStyle: {
+            strokeColor: '#408829'
+          }
+        }
+      }
+    },
+    chord: {
+      padding: 4,
+      itemStyle: {
+        normal: {
+          lineStyle: {
+            width: 1,
+            color: 'rgba(128, 128, 128, 0.5)'
+          },
+          chordStyle: {
+            lineStyle: {
+              width: 1,
+              color: 'rgba(128, 128, 128, 0.5)'
+            }
+          }
+        },
+        emphasis: {
+          lineStyle: {
+            width: 1,
+            color: 'rgba(128, 128, 128, 0.5)'
+          },
+          chordStyle: {
+            lineStyle: {
+              width: 1,
+              color: 'rgba(128, 128, 128, 0.5)'
+            }
+          }
+        }
+      }
+    },
+    gauge: {
+      startAngle: 225,
+      endAngle: -45,
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: [
+            [0.2, '#86b379'],
+            [0.8, '#68a54a'],
+            [1, '#408829']
+          ],
+          width: 8
+        }
+      },
+      axisTick: {
+        splitNumber: 10,
+        length: 12,
+        lineStyle: {
+          color: 'auto'
+        }
+      },
+      axisLabel: {
+        textStyle: {
+          color: 'auto'
+        }
+      },
+      splitLine: {
+        length: 18,
+        lineStyle: {
+          color: 'auto'
+        }
+      },
+      pointer: {
+        length: '90%',
+        color: 'auto'
+      },
+      title: {
+        textStyle: {
+          color: '#333'
+        }
+      },
+      detail: {
+        textStyle: {
+          color: 'auto'
+        }
+      }
+    },
+    textStyle: {
+      fontFamily: 'Arial, Verdana, sans-serif'
+    }
+  };
+  if ($('#' + element_id).length) {
+
+    var echartBar = echarts.init(document.getElementById(element_id), theme);
+
+    echartBar.setOption({
+      grid: {
+        containLabel: true,
+        left: 10
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      legend: {
+        data: ['ปกติ', 'มากกว่า 37.5']
+      },
+      toolbox: {
+        show: true,
+        feature: {
+          saveAsImage: {
+            show: true,
+            title: "Save Image"
+          }
+        }
+      },
+      calculable: true,
+      xAxis: [{
+        type: 'value',
+        boundaryGap: [0, 0.01]
+      }],
+      yAxis: [{
+        type: 'category',
+        data: label
+      }],
+      series: [{
+        name: 'ปกติ',
+        type: 'bar',
+        label: {
+          normal: {
+            show: true,
+            position: 'right',
+            offset: [10, 0],
+            textStyle: {
+              fontSize: 16
+            }
+          }
+        },
+        data: normalTemp
+      }, {
+        name: 'มากกว่า 37.5',
+        type: 'bar',
+        label: {
+          normal: {
+            show: true,
+            position: 'right',
+            offset: [10, 0],
+            textStyle: {
+              fontSize: 16
+            }
+          }
+        },
+        data: highTemp
+      }]
+    });
+
+  }
+    //  if ($('#' + element_id).length) {
+    //      var canvas = $('#' + element_id);
+    //      var canvas = document.getElementById(element_id);
+    //      console.log(label);
+    //      console.log(normalTemp);
+    //      console.log(highTemp);
+    //      var AxxonChart = new Chart(canvas, {
+
+    //          type: 'horizontalBar',
+    //          data: {
+    //              labels: label,
+    //              datasets: [{
+    //                  label: 'ปกติ',
+    //                  backgroundColor: "#48D1CC",
+    //                  data: normalTemp
+    //              }, {
+    //                  label: 'มากกว่า 37.5',
+    //                  backgroundColor: "#FF7F50",
+    //                  data: highTemp
+    //              }]
+    //          },
+
+    //          options: {
+    //              legend: {
+    //                  display: false
+    //              },
+    //              "animation": {
+    //                  "duration": 1,
+    //                  "onComplete": function () {
+    //                      var chartInstance = this.chart,
+    //                          ctx = chartInstance.ctx;
+
+    //                      ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+    //                      ctx.textAlign = 'center';
+    //                      ctx.textBaseline = 'center';
+
+    //                      this.data.datasets.forEach(function (dataset, i) {
+    //                          var meta = chartInstance.controller.getDatasetMeta(i);
+    //                          meta.data.forEach(function (bar, index) {
+    //                              var data = dataset.data[index];
+    //                              ctx.fillText(data, bar._model.x + 10, bar._model.y - 5);
+    //                          });
+    //                      });
+    //                  }
+    //              },
+    //              scales: {
+    //                  yAxes: [{
+    //                      ticks: {
+    //                          beginAtZero: true
+    //                      }
+    //                  }]
+    //              }
+    //          }
+    //      });
+    //      canvas.onclick = function (evt) {
+    //          var activePoint = AxxonChart.getElementAtEvent(evt)[0];
+    //          console.log(activePoint);
+    //          var data = activePoint._chart.data;
+    //          var datasetIndex = activePoint._datasetIndex;
+    //          var label = data.datasets[datasetIndex].label;
+    //          var value = data.datasets[datasetIndex].data[activePoint._index];
+    //          console.log(data.labels[activePoint._index], label, value);
+    //          getTimeData(data.labels[activePoint._index], $('#start_date').val(), $('#end_date').val())
+    //          console.log(In_timeSeq);
+    //          // $('#time_Chart').remove(); // this is my <canvas> element
+    //          // $('#time_Chart_container').append('<canvas class="w3-white" id="time_Chart" hidden></canvas>');
+    //          // if (label == 'เข้า') {
+    //          //   create_Time_Chart(In_timeSeq,'people_in','MediumTurquoise')
+    //          // } else {
+    //          //   create_Time_Chart(Out_timeSeq,'people_Out','LightCoral')
+    //          // }
+
+    //      }
+    //  }
  }
 
  function add_to_strem_button(elm_id, ipForlink, labelToDisplay) {
@@ -254,7 +542,7 @@
 
  function stream_page(ip) {
      const ip_to_link = ip.replaceAll(".", "_");
-     window.open(host_url + 'video_feed/hikvision/' + ip_to_link, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=500,height=500");
+     window.open(host_url + 'api/stream/' + ip_to_link, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=500,height=500");
  }
 
 
@@ -279,11 +567,11 @@
                      var colorOfdata = ['#44a3fa', '#f721c9']
 
                      for (var j = 0; j < Object.keys(data[Object.keys(data)[i]]).length; j++) {
-                         nameforsubdata.push(translate('gender',innerObject[j]));
+                         nameforsubdata.push(translate('gender', innerObject[j]));
                          console.log(data[Object.keys(data)[i]][innerObject[j]]);
                          valueforsubdata.push({
                              value: parseInt(data[Object.keys(data)[i]][innerObject[j]]),
-                             name: translate('gender',innerObject[j])
+                             name: translate('gender', innerObject[j])
                          })
 
                      }
@@ -302,11 +590,11 @@
                      var colorOfdata = ['#008080', '#FFFF00', '#3CB371']
 
                      for (var j = 0; j < Object.keys(data[Object.keys(data)[i]]).length; j++) {
-                         nameforsubdata.push(translate('glass',innerObject[j]));
+                         nameforsubdata.push(translate('glass', innerObject[j]));
                          console.log(data[Object.keys(data)[i]][innerObject[j]]);
                          valueforsubdata.push({
                              value: parseInt(data[Object.keys(data)[i]][innerObject[j]]),
-                             name: translate('glass',innerObject[j])
+                             name: translate('glass', innerObject[j])
                          })
 
                      }
@@ -328,7 +616,7 @@
                          console.log(data[Object.keys(data)[i]][innerObject[j]]);
                          valueforsubdata.push({
                              value: parseInt(data[Object.keys(data)[i]][innerObject[j]]),
-                             name: translate('beard',innerObject[j])
+                             name: translate('beard', innerObject[j])
                          })
 
                      }
@@ -347,11 +635,11 @@
                      var colorOfdata = ['#FFB6C1', '#90EE90']
 
                      for (var j = 0; j < Object.keys(data[Object.keys(data)[i]]).length; j++) {
-                         nameforsubdata.push(translate('hat',innerObject[j]));
+                         nameforsubdata.push(translate('hat', innerObject[j]));
                          console.log(data[Object.keys(data)[i]][innerObject[j]]);
                          valueforsubdata.push({
                              value: parseInt(data[Object.keys(data)[i]][innerObject[j]]),
-                             name: translate('hat',innerObject[j])
+                             name: translate('hat', innerObject[j])
                          })
 
                      }
@@ -370,11 +658,11 @@
                      var colorOfdata = ['#FFE4C4', '#000000', '#F0FFFF']
 
                      for (var j = 0; j < Object.keys(data[Object.keys(data)[i]]).length; j++) {
-                         nameforsubdata.push(translate('race',innerObject[j]));
+                         nameforsubdata.push(translate('race', innerObject[j]));
                          console.log(data[Object.keys(data)[i]][innerObject[j]]);
                          valueforsubdata.push({
                              value: parseInt(data[Object.keys(data)[i]][innerObject[j]]),
-                             name: translate('race',innerObject[j])
+                             name: translate('race', innerObject[j])
                          })
 
                      }
@@ -392,11 +680,11 @@
                      var colorOfdata = ['#D2691E', '#FF8C00', '#DAA520', '#6B8E23', '#00FF7F']
 
                      for (var j = 0; j < Object.keys(data[Object.keys(data)[i]]).length; j++) {
-                         nameforsubdata.push(translate('AgeGroup',innerObject[j]));
+                         nameforsubdata.push(translate('AgeGroup', innerObject[j]));
                          console.log(data[Object.keys(data)[i]][innerObject[j]]);
                          valueforsubdata.push({
                              value: parseInt(data[Object.keys(data)[i]][innerObject[j]]),
-                             name: translate('AgeGroup',innerObject[j])
+                             name: translate('AgeGroup', innerObject[j])
                          })
 
                      }
@@ -415,11 +703,11 @@
                      var colorOfdata = ['#32CD32', '#FFA07A', '#FFF0F5', '#FFFF00', '#6A5ACD', '#4169E1', '#87CEFA']
 
                      for (var j = 0; j < Object.keys(data[Object.keys(data)[i]]).length; j++) {
-                         nameforsubdata.push(translate('faceExpression',innerObject[j]));
+                         nameforsubdata.push(translate('faceExpression', innerObject[j]));
                          console.log(data[Object.keys(data)[i]][innerObject[j]]);
                          valueforsubdata.push({
                              value: parseInt(data[Object.keys(data)[i]][innerObject[j]]),
-                             name: translate('faceExpression',innerObject[j])
+                             name: translate('faceExpression', innerObject[j])
                          })
 
                      }
@@ -801,121 +1089,59 @@
  }
 
  function translate(name, data) {
-    if (name == 'gender') {
-        if (data == 'male') {
-            result = 'ผู้ชาย'
-        }
-        else if (data == 'female') {
-            result = 'ผู้หญิง'
-        }
-        else {
-           result = data
-        }
-
-    }
-
-     if (name == 'beard') {
-         if (data == 'no') {
-             result = 'ไม่มีหนวด'
+     obj_test = {
+         "gender": {
+             "male": "ผู้ชาย",
+             "female": "ผู้หญิง"
+         },
+         'beard': {
+             'no': 'ไม่มีหนวด',
+             'yes': 'มีหนวด'
+         },
+         'race': {
+             'asians': 'เอเชีย',
+             'white': 'ผิวขาว',
+             'black': 'ผิวสี'
+         },
+         'hat': {
+             'no': 'ไม่สวม',
+             'yes': 'สวม'
+         },
+         'glass': {
+             'no': 'ไม่สวม',
+             'yes': 'สวม',
+             'sunglasses': 'แว่นกันแดด'
+         },
+         'AgeGroup': {
+             'young': 'วันรุ่น',
+             'prime': 'วัยทำงาน',
+             'middle': 'วัยผู้ใหญ่',
+             'middleAged': 'วัยกลางคน',
+             'old': 'วัยสูงอายุ'
+         },
+         'faceExpression': {
+             'panic': 'ตื่นตระหนก',
+             'angry': 'โกรธ',
+             'surprised': 'ประหลาดใจ',
+             'happy': 'มีความสุข',
+             'disgusted': 'รังเกียจ',
+             'poker-faced': 'นิ่งเฉย',
+             'sad': 'เศร้า'
          }
-         else if (data == 'yes') {
-             result = 'มีหนวด'
+     }
+     if (name in obj_test === false) {
+         result = 'กระต่าย'
+
+
+     } else {
+         if (data in obj_test[name] === false) {
+             result = 'ผีเสื้อ'
+
+         } else {
+             result = obj_test[name][data]
+
          }
-         else {
-            result = data
-         }
 
-
-     }
-     if (name == 'race') {
-        if (data == 'asians') {
-            result = 'เอเชีย'
-        }
-        else if (data == 'white') {
-            result = 'ผิวขาว'
-        }
-        else if (data == 'black') {
-            result = 'ผิวสี'
-
-        } else {
-            result = data
-        }
-
-     }
-     if (name == 'hat') {
-        if (data == 'no') {
-            result = 'ไม่สวม'
-        }
-        else if (data == 'yes') {
-            result = 'สวม'
-        }
-        else {
-            result = data
-        }
-
-     }
-
-     if (name == 'glass') {
-        if (data == 'no') {
-            result = 'ไม่สวม'
-        }
-        else if (data == 'yes') {
-            result = 'สวม'
-        }
-        else if (data == 'sunglasses') {
-            result = 'แว่นกันแดด'
-        }
-        else {
-            result = data
-        }
-
-     }
-     if (name == 'AgeGroup') {
-        if (data == 'young') {
-            result = 'วันรุ่น'
-        }
-        else if (data == 'prime') {
-            result = 'วัยทำงาน'
-        }
-        else if (data == 'middle') {
-            result = 'วัยผู้ใหญ่'
-        }
-        else if (data == 'middleAged') {
-            result = 'วัยกลางคน'
-        }
-        else if (data == 'old') {
-            result = 'วัยสูงอายุ'
-        }
-        else {
-            result = data
-        }
-
-     }
-     if (name == 'faceExpression') {
-        if (data == 'panic') {
-            result = 'แพนิค'
-        }
-        else if (data == 'angry') {
-            result = 'โกรธ'
-        }
-        else if (data == 'surprised') {
-            result = 'ประหลาดใจ'
-        }
-        else if (data == 'happy') {
-            result = 'มีความสุข'
-        }
-        else if (data == 'disgusted') {
-            result = 'รังเกียจ'
-        }
-        else if (data == 'poker-faced') {
-            result = 'นิ่งเฉย'
-        }
-        else if (data == 'sad') {
-            result = 'เศร้า'
-        }
-        else {
-            result = data
-        }
 
      }
 

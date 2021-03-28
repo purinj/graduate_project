@@ -15,19 +15,19 @@ document.getElementById('view_select_thermalcam').onclick = function () {
     console.log(IPaddress[data_index]);
     $('#AgeGroupChart').remove();
     $('#AgeGroupChart_container').append('<div id="AgeGroupChart" style="width: 100%; min-height: 350px"></div>');
-    getDetectData(IPaddress[data_index],'POST',{
-    startDate:$('#start_date').val(),
-    endDate:$('#end_date').val(),
-    temperatureType:'all',
-    AgeGroup:'all',
-    gender:'all',
-    glassed:'all',
-    faceExpression:'all',
-    race:'all',
-    beard:'all',
-    hat:'all'
+    getDetectData(IPaddress[data_index], 'POST', {
+        startDate: $('#start_date').val(),
+        endDate: $('#end_date').val(),
+        temperatureType: 'all',
+        AgeGroup: 'all',
+        gender: 'all',
+        glassed: 'all',
+        faceExpression: 'all',
+        race: 'all',
+        beard: 'all',
+        hat: 'all'
 
- })
+    })
 
 }
 document.getElementById('view_select_thermalcam').click();
@@ -352,7 +352,7 @@ function add_option(option_id) {
     }
 }
 
-function getDetectData(ip,type,data) {
+function getDetectData(ip, type, data) {
     $.ajax({
         type: type,
         async: false,
@@ -401,11 +401,11 @@ function getDetectData(ip,type,data) {
                     var colorOfdata = ['#D2691E', '#FF8C00', '#DAA520', '#6B8E23', '#00FF7F']
 
                     for (var j = 0; j < Object.keys(data[Object.keys(data)[i]]).length; j++) {
-                        nameforsubdata.push(innerObject[j]);
+                        nameforsubdata.push(translate('AgeGroup', innerObject[j]));
                         console.log(data[Object.keys(data)[i]][innerObject[j]]);
                         valueforsubdata.push({
                             value: parseInt(data[Object.keys(data)[i]][innerObject[j]]),
-                            name: innerObject[j]
+                            name: translate('AgeGroup', innerObject[j])
                         })
 
                     }
@@ -722,5 +722,70 @@ function create_echart(chart_name, chart_elm_id, nameOfdata, valueDataset, color
         });
 
     }
+
+}
+
+
+
+function translate(name, data) {
+    obj_test = {
+        "gender": {
+            "male": "ผู้ชาย",
+            "female": "ผู้หญิง"
+        },
+        'beard': {
+            'no': 'ไม่มีหนวด',
+            'yes': 'มีหนวด'
+        },
+        'race': {
+            'asians': 'เอเชีย',
+            'white': 'ผิวขาว',
+            'black': 'ผิวสี'
+        },
+        'hat': {
+            'no': 'ไม่สวม',
+            'yes': 'สวม'
+        },
+        'glass': {
+            'no': 'ไม่สวม',
+            'yes': 'สวม',
+            'sunglasses': 'แว่นกันแดด'
+        },
+        'AgeGroup': {
+            'young': 'วันรุ่น',
+            'prime': 'วัยทำงาน',
+            'middle': 'วัยผู้ใหญ่',
+            'middleAged': 'วัยกลางคน',
+            'old': 'วัยสูงอายุ'
+        },
+        'faceExpression': {
+            'panic': 'ตื่นตระหนก',
+            'angry': 'โกรธ',
+            'surprised': 'ประหลาดใจ',
+            'happy': 'มีความสุข',
+            'disgusted': 'รังเกียจ',
+            'poker-faced': 'นิ่งเฉย',
+            'sad': 'เศร้า'
+        }
+    }
+    if (name in obj_test === false) {
+        result = name
+
+
+    } else {
+        if (data in obj_test[name] === false) {
+            result = data
+
+        } else {
+            result = obj_test[name][data]
+
+        }
+
+
+    }
+
+
+
+    return result
 
 }

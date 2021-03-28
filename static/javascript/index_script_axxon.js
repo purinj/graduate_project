@@ -308,6 +308,42 @@ function create_axxon_graoh(catetgoly_data, InData, OutData) {
         var echartBar = echarts.init(document.getElementById('axxon_data'), theme);
 
         echartBar.setOption({
+            axisLabel : {//Relevant settings of coordinate axis calibration labels.
+                formatter : function(params){
+                   var newParamsName = "";// The final concatenated string
+                            var paramsNameNumber = params.length;// Number of actual labels
+                            var provideNumber = 11;// Number of words per line
+                            var rowNumber = Math.ceil(paramsNameNumber / provideNumber);// If you change lines, you need to show a few lines and take them up.
+                            /**
+                             * Determine whether the number of tags is greater than the specified number, and if it is greater than the number of new lines, if it is not greater than, that is, equal to or less than, return to the original tag.
+                             */
+                            // The condition is equal to rowNumber > 1
+                            if (paramsNameNumber > provideNumber) {
+                                /** Loop each row, p represents the row */
+                                for (var p = 0; p < rowNumber; p++) {
+                                    var tempStr = "";// A string representing each intercept
+                                    var start = p * provideNumber;// Starting interception position
+                                    var end = start + provideNumber;// End Interception Position
+                                    // The index value of the last row is specially handled here
+                                    if (p == rowNumber - 1) {
+                                        // No change of line for the last time
+                                        tempStr = params.substring(start, paramsNameNumber);
+                                    } else {
+                                        // Each concatenation of strings and line breaks
+                                        tempStr = params.substring(start, end) + "\n";
+                                    }
+                                    newParamsName += tempStr;// The final string
+                                }
+
+                            } else {
+                                // Assign the value of the old tag to the new tag
+                                newParamsName = params;
+                            }
+                            //Returns the final string
+                            return newParamsName
+                }
+
+            },
             title: {
                 text: 'SmartPole',
                 subtext: 'SmartCity'

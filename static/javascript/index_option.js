@@ -26,14 +26,16 @@ function yearsPass() {
 }
 
 document.getElementById('find_range').onclick = function() {
-    $('#axxon_data').remove()
-    $('#axxon_data_container').html('<div id="axxon_data" style="height:500px;"></div>')
-    fetchNameAndCam($('#start_date').val(), $('#end_date').val())
-    create_axxon_graoh(Name, People_in, People_out)
     $('#thermal_Data').remove()
     $('#thermal_Data_container').html('<div id="thermal_Data" style="height:620px;"></div>')
     highLowTemp(IPaddress)
     createStackdata('thermal_Data', label_camNote, normalTemp, highTemp)
     document.getElementById('view_select_thermalcam').click()
+    
+    $('#axxon_data').remove()
+    $('#axxon_data_container').html('<div id="axxon_data" style="height:500px;"></div>')
+    fetchNameAndCam($('#start_date').val(), $('#end_date').val())
+    create_axxon_graoh(Name, People_in, People_out)
+    
 
 }
