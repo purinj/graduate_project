@@ -14,6 +14,7 @@ add_option('Cam_Name_for_out')
 getTimeData(Name[0], $('#start_date').val(), $('#end_date').val())
 create_Time_Chart("people_in_time_chart", In_timeSeq, 'people_in', '#48D1CC')
 create_Time_Chart("people_out_time_chart", Out_timeSeq, 'people_out', '#FF7F50')
+createTable()
 
 
 
@@ -33,6 +34,7 @@ document.getElementById('find_range').onclick = function () {
   $('#Cam_Name_for_in').change();
   document.getElementById('Cam_Name_for_out').selectedIndex = 0;
   $('#Cam_Name_for_out').change();
+  createTable()
 
 }
 document.getElementById('Cam_Name_for_in').onchange = function () {
@@ -64,6 +66,10 @@ function fetchNameAndCam(start, end) {
     data: {
       startDate: start,
       endDate: end
+    },
+    beforeSend: function () {
+      // setting a timeout
+      alert("กรุณารอสักครู่")
     },
     success: function (data) {
       json_pplIn = JSON.parse(data.peopleIn)
@@ -353,7 +359,13 @@ function createStackdata(element_id, label, normalTemp, highTemp) {
             }
           }
         },
-        data: normalTemp
+        data: normalTemp,
+        markLine: {
+          data: [{
+              type: 'average',
+              name: 'เหตุการณ์เข้าเฉลี่ย'
+          }]
+      }
       }, {
         name: 'จำนวนออก',
         type: 'bar',
@@ -365,9 +377,15 @@ function createStackdata(element_id, label, normalTemp, highTemp) {
             textStyle: {
               fontSize: 16
             }
-          }
+          },
         },
-        data: highTemp
+        data: highTemp,
+        markLine: {
+          data: [{
+              type: 'average',
+              name: 'เหตุการณ์ออกเฉลี่ย'
+          }]
+      }
       }]
     });
 
@@ -557,4 +575,46 @@ function yearsPass() {
   document.getElementById('start_date').valueAsDate = new Date(date.setDate(date.getDate() - 365));
   document.getElementById('end_date').valueAsDate = new Date();
   document.getElementById('find_range').click()
+}
+
+
+function createTable() {
+  //   var Name = []
+  // var People_in = []
+  // var People_out = []
+  clumnstr = "<tr><th>ชื่อกล้อง</th><th>จำนวนเหตุการณ์เข้า</th><th>จำนวนเหตุการณ์ออก</th></tr>"
+  for (i = 0; i < Name.length; i++) {
+    polename = `<td>${Name[i]}</td>`
+    In = `<td>${People_in[i]}</td>`
+    Out = `<td>${People_out[i]}</td>`
+    row = '<tr>' + polename + In + Out + '</tr>'
+    clumnstr += row
+  }
+
+  document.getElementById("to_csv_table").innerHTML = clumnstr
+
+}
+
+function exportCsv() {
+  let data = ''
+  const tableData = []
+  const rows = document.querySelectorAll('table#' + 'to_csv_table' + ' tr')
+  for (const row of rows) {
+    const rowData = []
+    for (const [index, column] of row.querySelectorAll('td,th').entries()) {
+      if ((index + 1) % 3 === 0) {
+        rowData.push('"' + column.innerText + '"')
+      } else {
+        rowData.push(column.innerText)
+      }
+    }
+    tableData.push(rowData.join(','))
+  }
+  data += tableData.join('\n')
+  const a = document.createElement('a')
+  a.href = URL.createObjectURL(new Blob(['\uFEFF' + data], { type: 'text/csv;charset=utf-8' }))
+  a.setAttribute('download', 'smartPole.csv')
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
 }

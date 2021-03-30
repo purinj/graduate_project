@@ -202,6 +202,10 @@ def camera_status():
 def user_log():
     return render_template('user_log.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})    
 
+@app.route('/arcgisReport')
+@roles_required(['Admin','Security','SmartCity','Library'])
+def arcgisReport():
+    return render_template('embedArcgis.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
 
 ## Main Route End
 

@@ -67,6 +67,11 @@
                 <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
                 <li><a href="/smartPoledatastatic"><i class="fa fa-bar-chart"></i>ข้อมูล Smartpoles</a></li>
                 <li><a href="/thermalDataStatic"><i class="fa fa-tachometer"></i>ข้อมูลกล้องวัดอุณหภูมิ</a></li>
+                {% if current_user.has_role('Admin') or current_user.has_role('Security')%}
+                <li>
+                    <a href="/arcgisReport"><i class="fa fa-book"></i>รายงานอุบัติเหตุ</a>
+                  </li>
+                {% endif %}
                 <li>
                   <a href="/streamView"><i class="fa fa-map-marker"></i>แผนที่กล้อง</a>
                 </li>

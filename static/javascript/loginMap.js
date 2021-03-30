@@ -33,10 +33,20 @@ function Smartpoles_init() {
 
 
     let reformData = getAppendLocation(locationAndName)
+    var smartPolesIcon = L.icon({
+        iconUrl: 'static/image/axxon.svg',
+        // shadowUrl: 'leaf-shadow.png',
+
+        iconSize: [35, 75], // size of the icon
+        // shadowSize: [50, 64], // size of the shadow
+        iconAnchor: [10, 77], // point of the icon which will correspond to marker's location
+        // shadowAnchor: [4, 62], // the same for the shadow
+        popupAnchor: [3, -79] // point from which the popup should open relative to the iconAnchor
+    });
     var count = 0
     var arr_smartpole = []
     for (const v of reformData) {
-        window['location' + count] = L.marker([v.lat, v.long]).addTo(mymap);
+        window['location' + count] = L.marker([v.lat, v.long],{icon:smartPolesIcon}).addTo(mymap);
         arr_smartpole.push(window['location' + count])
         window['location' + count].bindPopup(v.text);
         window['location' + count].on('mouseover', function (ev) {
@@ -180,8 +190,18 @@ function getRolesCam() {
             let thermalReformData = getAppendLocation(thermalLocation)
             var count = 0
             var arr_normalCam = []
+            var normalIcon = L.icon({
+                iconUrl: 'static/image/cctv.svg',
+                // shadowUrl: 'leaf-shadow.png',
+    
+                iconSize: [35, 75], // size of the icon
+                // shadowSize: [50, 64], // size of the shadow
+                iconAnchor: [10, 77], // point of the icon which will correspond to marker's location
+                // shadowAnchor: [4, 62], // the same for the shadow
+                popupAnchor: [3, -79] // point from which the popup should open relative to the iconAnchor
+            });
             for (const v of normalReformData) {
-                window['Cameras' + count] = L.marker([v.lat, v.long]).addTo(mymap);
+                window['Cameras' + count] = L.marker([v.lat, v.long],{icon:normalIcon}).addTo(mymap);
                 arr_normalCam.push(window['Cameras' + count])
                 window['Cameras' + count].bindPopup(v.text);
                 window['Cameras' + count].on('mouseover', function (ev) {
@@ -214,8 +234,18 @@ function getRolesCam() {
             count = 0
             console.log('set Zero', count);
             var arr_thermalcam = []
+            var thermalIcon = L.icon({
+                iconUrl: 'static/image/thermal.svg',
+                // shadowUrl: 'leaf-shadow.png',
+    
+                iconSize: [35, 75], // size of the icon
+                // shadowSize: [50, 64], // size of the shadow
+                iconAnchor: [10, 77], // point of the icon which will correspond to marker's location
+                // shadowAnchor: [4, 62], // the same for the shadow
+                popupAnchor: [3, -79] // point from which the popup should open relative to the iconAnchor
+            });
             for (const v of thermalReformData) {
-                window['thermal' + count] = L.marker([v.lat, v.long]).addTo(mymap);
+                window['thermal' + count] = L.marker([v.lat, v.long],{icon:thermalIcon}).addTo(mymap);
                 arr_thermalcam.push(window['thermal' + count])
                 window['thermal' + count].bindPopup(v.text);
                 window['thermal' + count].on('mouseover', function (ev) {
@@ -276,10 +306,10 @@ function blupole_init() {
             var count = 0
             var arr_bluepole = []
             var BIcon = L.icon({
-                iconUrl: 'static/image/bluepole.png',
+                iconUrl: 'static/image/blue.svg',
                 // shadowUrl: 'leaf-shadow.png',
     
-                iconSize: [20, 75], // size of the icon
+                iconSize: [35, 75], // size of the icon
                 // shadowSize: [50, 64], // size of the shadow
                 iconAnchor: [10, 77], // point of the icon which will correspond to marker's location
                 // shadowAnchor: [4, 62], // the same for the shadow

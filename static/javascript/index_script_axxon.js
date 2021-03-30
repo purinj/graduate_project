@@ -39,6 +39,10 @@ function fetchNameAndCam(start, end) {
             startDate: start,
             endDate: end
         },
+        beforeSend: function() {
+            // setting a timeout
+           alert("กรุณารอสักครู่")
+        },
         success: function (data) {
             json_pplIn = JSON.parse(data.peopleIn)
             json_pplOut = JSON.parse(data.peopleOut)
@@ -368,20 +372,26 @@ function create_axxon_graoh(catetgoly_data, InData, OutData) {
             series: [{
                 name: 'เข้า',
                 type: 'bar',
-                label: {
-                    show: true,
-                    position: 'top'
+                label: { 
+                    normal:{
+                        show: true,
+                        position: 'top',
+                        offset: [10, 0],
+                        textStyle: {
+                          fontSize: 16
+                        }
+                      }
                 },
                 data: InData,
-                markPoint: {
-                    data: [{
-                        type: 'max',
-                        name: 'เหตุการณ์เข้ามากที่สุด'
-                    }, {
-                        type: 'min',
-                        name: 'เหตุการณ์เข้าน้อยที่สุด'
-                    }]
-                },
+                // markPoint: {
+                //     data: [{
+                //         type: 'max',
+                //         name: 'เหตุการณ์เข้ามากที่สุด'
+                //     }, {
+                //         type: 'min',
+                //         name: 'เหตุการณ์เข้าน้อยที่สุด'
+                //     }]
+                // },
                 markLine: {
                     data: [{
                         type: 'average',
@@ -392,19 +402,25 @@ function create_axxon_graoh(catetgoly_data, InData, OutData) {
                 name: 'ออก',
                 type: 'bar',
                 label: {
-                    show: true,
-                    position: 'top'
+                    normal:{
+                        show: true,
+                        position: 'top',
+                        offset: [10, 0],
+                        textStyle: {
+                          fontSize: 16
+                        }
+                      }
                 },
                 data: OutData,
-                markPoint: {
-                    data: [{
-                        type: 'max',
-                        name: 'เหตุการณ์ออกมากที่สุด'
-                    }, {
-                        type: 'min',
-                        name: 'เหตุการณ์ออกน้อยที่สุด'
-                    }]
-                },
+                // markPoint: {
+                //     data: [{
+                //         type: 'max',
+                //         name: 'เหตุการณ์ออกมากที่สุด'
+                //     }, {
+                //         type: 'min',
+                //         name: 'เหตุการณ์ออกน้อยที่สุด'
+                //     }]
+                // },
                 markLine: {
                     data: [{
                         type: 'average',

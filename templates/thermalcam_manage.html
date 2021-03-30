@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="static/image/favicon.ico" type="image/ico" />
+	<link rel="icon" href="static/image/logo.ico" type="image/ico" />
 
     <title>Smart Safety</title>
 
@@ -29,6 +29,7 @@
     <!-- Custom Theme Style -->
     <link href="static/build/css/custom.min.css" rel="stylesheet">
     <link href="static/style/new_modal.css" rel="stylesheet">
+    <link href="static/style/icon.css" rel="stylesheet">
   </head>
   
 
@@ -38,7 +39,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Smart Safety</span></a>
+              <a href="/" class="site_title"><i class="fa icon-cctv-9"></i> <span>Smart Safety</span></a>
             </div>
   
             <div class="clearfix"></div>
@@ -66,6 +67,11 @@
                   <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
                   <li><a href="/smartPoledatastatic"><i class="fa fa-bar-chart"></i>ข้อมูล Smartpoles</a></li>
                   <li><a href="/thermalDataStatic"><i class="fa fa-tachometer"></i>ข้อมูลกล้องวัดอุณหภูมิ</a></li>
+                  {% if current_user.has_role('Admin') or current_user.has_role('Security')%}
+                  <li>
+                      <a href="/arcgisReport"><i class="fa fa-book"></i>รายงานอุบัติเหตุ</a>
+                    </li>
+                  {% endif %}
                   <li>
                     <a href="/streamView"><i class="fa fa-map-marker"></i>แผนที่กล้อง</a>
                   </li>

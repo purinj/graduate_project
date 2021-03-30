@@ -335,10 +335,30 @@ function createStackdata(element_id, label, normalTemp, highTemp) {
             series: [{
                 name: 'ปกติ',
                 type: 'bar',
+                label: { 
+                    normal:{
+                        show: true,
+                        position: 'right',
+                        offset: [10, 0],
+                        textStyle: {
+                          fontSize: 16
+                        }
+                      }
+                },
                 data: normalTemp
             }, {
                 name: 'มากกว่า 37.5',
                 type: 'bar',
+                label: { 
+                    normal:{
+                        show: true,
+                        position: 'right',
+                        offset: [10, 0],
+                        textStyle: {
+                          fontSize: 16
+                        }
+                      }
+                },
                 data: highTemp
             }]
         });
