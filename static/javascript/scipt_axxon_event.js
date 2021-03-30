@@ -24,17 +24,32 @@ createTable()
 
 
 // listener Event For Date Range
-document.getElementById('find_range').onclick = function () {
-  $('#AxxonChart').remove(); // this is my <canvas> element
-  $('#Axxon_chart_container').append('<div id="AxxonChart" style="height:620px;" ></div>');
-  fetchNameAndCam($('#start_date').val(), $('#end_date').val())
-  console.log($('#Axxon_chart_container').html());
-  createStackdata('AxxonChart', Name, People_in, People_out)
-  document.getElementById('Cam_Name_for_in').selectedIndex = 0;
-  $('#Cam_Name_for_in').change();
-  document.getElementById('Cam_Name_for_out').selectedIndex = 0;
-  $('#Cam_Name_for_out').change();
-  createTable()
+document.getElementById('find_range').onclick = async function () {
+  await loaderDiaplay()
+  await sleep(500);
+  await graphDisplay()
+  await loaderNotDiaplay()
+
+  function loaderDiaplay(){
+    document.getElementById('LoadingModal').style.display = 'block'
+  }
+  function loaderNotDiaplay(){
+    document.getElementById('LoadingModal').style.display = 'none'
+  }
+
+  function graphDisplay() {
+    $('#AxxonChart').remove(); // this is my <canvas> element
+    $('#Axxon_chart_container').append('<div id="AxxonChart" style="height:620px;" ></div>');
+    fetchNameAndCam($('#start_date').val(), $('#end_date').val())
+    console.log($('#Axxon_chart_container').html());
+    createStackdata('AxxonChart', Name, People_in, People_out)
+    document.getElementById('Cam_Name_for_in').selectedIndex = 0;
+    $('#Cam_Name_for_in').change();
+    document.getElementById('Cam_Name_for_out').selectedIndex = 0;
+    $('#Cam_Name_for_out').change();
+    createTable()
+  }
+ 
 
 }
 document.getElementById('Cam_Name_for_in').onchange = function () {
@@ -67,10 +82,10 @@ function fetchNameAndCam(start, end) {
       startDate: start,
       endDate: end
     },
-    beforeSend: function () {
-      // setting a timeout
-      alert("กรุณารอสักครู่")
-    },
+    // beforeSend: function () {
+    //   // setting a timeout
+    //   alert("กรุณารอสักครู่")
+    // },
     success: function (data) {
       json_pplIn = JSON.parse(data.peopleIn)
       json_pplOut = JSON.parse(data.peopleOut)
@@ -582,12 +597,13 @@ function createTable() {
   //   var Name = []
   // var People_in = []
   // var People_out = []
-  clumnstr = "<tr><th>ชื่อกล้อง</th><th>จำนวนเหตุการณ์เข้า</th><th>จำนวนเหตุการณ์ออก</th></tr>"
+  clumnstr = "<tr><th>ชื่อกล้อง</th><th>จำนวนเหตุการณ์เข้า</th><th>จำนวนเหตุการณ์ออก</th><th>รวม</th></tr>"
   for (i = 0; i < Name.length; i++) {
     polename = `<td>${Name[i]}</td>`
     In = `<td>${People_in[i]}</td>`
     Out = `<td>${People_out[i]}</td>`
-    row = '<tr>' + polename + In + Out + '</tr>'
+    totalEvent = `<td>${ parseFloat(People_in[i])+parseFloat(People_out[i]) }</td>`
+    row = '<tr>' + polename + In + Out + totalEvent + '</tr>'
     clumnstr += row
   }
 
@@ -617,4 +633,8 @@ function exportCsv() {
   document.body.appendChild(a)
   a.click()
   document.body.removeChild(a)
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }

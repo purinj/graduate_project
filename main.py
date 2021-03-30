@@ -81,6 +81,7 @@ def rowToJson(inputlist):
 def gen(video):
     while True:
         success, image = video.read()
+        image = cv2.resize(image, (1280 , 720)) # delete available
         ret, jpeg = cv2.imencode('.jpg', image)
         frame = jpeg.tobytes()
         yield (b'--frame\r\n'

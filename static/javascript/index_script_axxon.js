@@ -39,10 +39,6 @@ function fetchNameAndCam(start, end) {
             startDate: start,
             endDate: end
         },
-        beforeSend: function() {
-            // setting a timeout
-           alert("กรุณารอสักครู่")
-        },
         success: function (data) {
             json_pplIn = JSON.parse(data.peopleIn)
             json_pplOut = JSON.parse(data.peopleOut)

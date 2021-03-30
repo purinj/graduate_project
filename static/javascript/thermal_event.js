@@ -58,14 +58,36 @@
          hat: 'all'
 
      })
+     document.getElementById('option_temperature').selectedIndex = 0;
+     document.getElementById('option_gender').selectedIndex = 0;
+     document.getElementById('option_agegroup').selectedIndex = 0;
+     document.getElementById('option_glased').selectedIndex = 0;
+     document.getElementById('option_race').selectedIndex = 0;
+     document.getElementById('option_hat').selectedIndex = 0;
+     document.getElementById('option_beard').selectedIndex = 0;
+     document.getElementById('option_faceExpression').selectedIndex = 0;
 
  }
- document.getElementById('find_range').onclick = function () {
+ document.getElementById('find_range').onclick = async function () {
+  await loaderDiaplay()
+  await sleep(500);
+  await graphDisplay()
+  await loaderNotDiaplay()
+
+  function loaderDiaplay(){
+    document.getElementById('LoadingModal').style.display = 'block'
+  }
+  function loaderNotDiaplay(){
+    document.getElementById('LoadingModal').style.display = 'none'
+  }
+
+  function graphDisplay() {
      $('#AxxonChart').remove()
      $('#Axxon_chart_container').append('<div id="AxxonChart" style="height: 500px;"></div>')
      highLowTemp(IPaddress)
      createStackdata('AxxonChart', label_camNote, normalTemp, highTemp)
      document.getElementById('view_event_chart').click()
+ }
 
  }
  document.getElementById('moreFunction').onclick = function () {
@@ -104,6 +126,9 @@
      $('#beardChart_container').append('<div id="beardChart" style="width: 100%; min-height: 350px"></div>');
      $('#expressionChart_container').append('<div id="expressionChart" style="width: 100%; min-height: 350px"></div>');
      getDetectData(IPaddress[data_index], 'POST', moreData)
+
+     document.getElementById('closingThemodal').click();
+
 
  }
 
@@ -1155,3 +1180,7 @@
  //   echartBar.on("click", function (event) {    
  //     console.log(event);
  // });
+
+ function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}

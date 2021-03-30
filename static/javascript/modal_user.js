@@ -22,8 +22,8 @@ document.getElementById('closing_del_modal').onclick = function() {
 }
 
 window.onclick = function(event) {
-    if (event.target == modal || event.target == del_modal) {
-      modal.style.display = "none";
+    if (event.target == del_modal) {
+    //   modal.style.display = "none";
       del_modal.style.display = "none";
     }
 }

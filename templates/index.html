@@ -152,36 +152,54 @@
 
       <!-- page content -->
       <div class="right_col" role="main">
+        <div id="LoadingModal" class="new_modal">
+          <!-- Modal content -->
+          <div class="new_modal-content">
+            <div class="centered">
+              <div>
+                <button class="btn btn-primary" type="button" disabled>
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  กำลังโหลดข้อมูล...
+                </button>
+
+              </div>
+              
+            </div>
+          </div>
+  
+        </div>
+
+
         <!-- top tiles -->
         <div class="row" style="display: inline-block;">
           <div class="tile_count">
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i>จำนวนกล้องวงจรปิดทั้งหมด</span>
+              <span class="count_top">จำนวนกล้องวงจรปิดทั้งหมด</span>
               <div class="count" style="text-align: right;">{{ amount.all }}</div>
               <span class="count_bottom"></span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i>จำนวนกล้องปกติ</span>
+              <span class="count_top">จำนวนกล้องปกติ</span>
               <div class="count" style="text-align: right;">{{ amount.normal }}</div>
               <span class="count_bottom"></span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> จำนวนกล้อง AI</span>
+              <span class="count_top">จำนวนกล้อง AI</span>
               <div class="count green" style="text-align: right;">{{ amount.ai }}</div>
               <span class="count_bottom"></span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> จำนวน Smartpoles</span>
+              <span class="count_top">จำนวน Smartpoles</span>
               <div class="count" style="text-align: right;">{{ amount.smartpole }}</div>
               <span class="count_bottom"></span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i>จำนวนกล้องวัดอุณหภูมิ</span>
+              <span class="count_top">จำนวนกล้องวัดอุณหภูมิ</span>
               <div class="count" style="text-align: right;">{{ amount.thermal }}</div>
               <span class="count_bottom"></span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i>จำนวน Bluepole</span>
+              <span class="count_top">จำนวน Bluepole</span>
               <div class="count" style="text-align: right;">{{ amount.bluepole }}</div>
               <span class="count_bottom"></span>
             </div>
