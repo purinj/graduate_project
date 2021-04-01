@@ -11,7 +11,7 @@ from raw_sql_command import *
 import base64
 import requests
 import datetime
-
+from wrapt_timeout_decorator import *
 
 
 app = Flask(__name__, static_folder='static')
@@ -20,7 +20,7 @@ app = Flask(__name__, static_folder='static')
 #---------SmartSafety DB ------------#
 smartsafty_user = "postgres"
 smartsafty_password ="123456789o"
-smartsafty_host = "127.0.0.1"
+smartsafty_host = "10.101.118.45"
 smartsafty_port = "5432"
 smartsafty_dbname = "SmartSafety"
 ### SQLAlchemy Config ####
@@ -430,15 +430,30 @@ def videoStatus(ipOfCam):
     print(stram_link)
     cur.close()
     connection.close()
-    video = cv2.VideoCapture(stram_link[0][0])
-    status = check_video(video)
-    return status
+    @timeout(5)
+    def checking():
+        video = cv2.VideoCapture(stram_link[0][0])
+        status = check_video(video)
+        return status
+    try:
+        stat = checking()
+    except TimeoutError:
+        stat = 'wait'
+    return stat
 
 @app.route('/api/axxonStatus/<host>/<pin>')
 def axxonStatus(host,pin):
-    video = cv2.VideoCapture('http://liger:12345678@10.172.10.1:8081/live/media/%s/DeviceIpint.%s/SourceEndpoint.video:0:1' % (host,pin))
-    status = check_video(video)
-    return status
+    @timeout(5)
+    def checking():
+        video = cv2.VideoCapture('http://liger:12345678@10.172.10.1:8081/live/media/%s/DeviceIpint.%s/SourceEndpoint.video:0:1' % (host,pin))
+        status = check_video(video)
+        return status
+
+    try:
+        stat = checking()
+    except TimeoutError:
+        stat = 'wait'
+    return stat
 
 ## Status Check    
 
