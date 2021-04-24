@@ -387,6 +387,9 @@
     <!-- Custom Theme Scripts -->
     <script src="static/build/js/custom.min.js"></script>
     <script>
+        var normalLength = 0;
+        var thermalLength = 0;
+        var aXnLength;
         if (document.getElementById('Roles_p').innerHTML.includes("Admin") || document.getElementById('Roles_p').innerHTML.includes("SmartCity")) {
             document.getElementById('view_smartpole').hidden = false
 
@@ -410,6 +413,7 @@
                     }
                     console.log(normal_arr);
                     thermal_rows = ''
+                    thermalLength = thermal_arr.length;
                     for (i = 0; i < thermal_arr.length; i++) {
                         ip_row = `<td id='thermal_ip_${i}'>${thermal_arr[i][1]}</td>`
                         brand_row = `<td>${thermal_arr[i][2]}</td>`
@@ -424,6 +428,7 @@
 
                     document.getElementById('camstatus_table_thermal_row').innerHTML += thermal_rows
                     normal_rows = ''
+                    normalLength = normal_arr.length;
                     for (i = 0; i < normal_arr.length; i++) {
                         ip_row = `<td id='normal_ip_${i}'>${normal_arr[i][1]}</td>`
                         brand_row = `<td>${normal_arr[i][2]}</td>`
@@ -486,6 +491,7 @@
                 url: host_url + "api/AxxonCameraTable",
                 success: function (data) {
                     turn_to_rows = ''
+                    aXnLength = data.row;
                     for (i = 0; i < data.row.length; i++) {
                         host_row = `<td>${data.row[i][1]}</td>`
                         pin_row = `<td>${data.row[i][2]}</td>`
@@ -549,12 +555,27 @@
 
         }
 
+        function clicker(){
+            for(i =0; i < thermalLength;i++) {
+                checkAllcam("thermal",i)
+            } 
+            for(i =0; i < normalLength;i++) {
+                checkAllcam("normal",i)
+            }
+            for (i = 0; i < aXnLength.length; i++) {
+            checkforAxxon(aXnLength[i][1], aXnLength[i][2],i)
+    
+
+            }
+        }
+
 
 
 
 
         getAllCam()
         getAxxonData()
+        // clicker()
         $('#camstatus_table_normal').DataTable();
         $('#camstatus_table_thermal').DataTable();
         $('#camstatus_table_smartPole').DataTable();

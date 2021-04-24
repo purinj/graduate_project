@@ -1,5 +1,7 @@
-document.getElementById('start_date').value = "2020-07-10";
-document.getElementById('end_date').value = "2020-07-11";
+var date = new Date();
+document.getElementById('start_date').valueAsDate = new Date(date.setDate(date.getDate() - 7));
+document.getElementById('end_date').valueAsDate = new Date();
+
 var Name = []
 var People_in = []
 var People_out = []
@@ -85,7 +87,7 @@ function create_axxon_graoh(catetgoly_data, InData, OutData) {
 
     var theme = {
         color: [
-            '#26B99A', '#34495E', '#BDC3C7', '#3498DB',
+            '#48D1CC', '#FF7F50', '#BDC3C7', '#3498DB',
             '#9B59B6', '#8abb6f', '#759c6a', '#bfd3b7'
         ],
 

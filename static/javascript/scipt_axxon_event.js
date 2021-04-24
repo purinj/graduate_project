@@ -1,3 +1,8 @@
+var date = new Date();
+
+document.getElementById('start_date').valueAsDate = new Date(date.setDate(date.getDate() - 30));
+document.getElementById('end_date').valueAsDate = new Date();
+
 var Name = []
 var People_in = []
 var People_out = []
@@ -43,6 +48,8 @@ document.getElementById('find_range').onclick = async function () {
     fetchNameAndCam($('#start_date').val(), $('#end_date').val())
     console.log($('#Axxon_chart_container').html());
     createStackdata('AxxonChart', Name, People_in, People_out)
+    add_option('Cam_Name_for_in')
+    add_option('Cam_Name_for_out')
     document.getElementById('Cam_Name_for_in').selectedIndex = 0;
     $('#Cam_Name_for_in').change();
     document.getElementById('Cam_Name_for_out').selectedIndex = 0;
@@ -485,6 +492,7 @@ function createStackdata(element_id, label, normalTemp, highTemp) {
 
 
 function add_option(option_id) {
+  document.getElementById(option_id).innerHTML = '';
   for (i = 0; i < Name.length; i++) {
     $('#' + option_id).append("<option value=" + Name[i] + ">" + Name[i] + "</option>")
   }

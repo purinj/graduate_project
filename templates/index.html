@@ -298,7 +298,7 @@
                             <div class="clearfix"></div>
                           </div>
                           <div class="x_content">
-                            <h1 style="color: DodgerBlue; text-align: right;" id="male_data">12</h1>
+                            <h1 style="color: DodgerBlue; text-align: right;" id="male_data">NaN</h1>
                           </div>
                         </div>
                       </div>
@@ -309,7 +309,7 @@
                             <div class="clearfix"></div>
                           </div>
                           <div class="x_content">
-                            <h1 style="color: DeepPink; text-align: right;" id="female_data">12</h1>
+                            <h1 style="color: DeepPink; text-align: right;" id="female_data">NaN</h1>
                           </div>
                         </div>
 
@@ -357,6 +357,56 @@
             </div>
             <!-- content of thermal -->
           </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12  ">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>faceScan</h2>
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+                <div class="col-md-9 col-sm-9" id="faceGraph">
+                  <div id="face_data" style="height:500px;"></div>
+                </div>
+                <div class="col-md-3 col-sm-3" id="ai_face_mask">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2 style="color: DodgerBlue;">รวมทั้งหมด</h2>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <h1 style="color: DodgerBlue; text-align: right;" id="all_mask_data">NaN</h1>
+                    </div>
+                  </div>
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2 style="color: DodgerBlue;">สวมหน้ากาก</h2>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <h1 style="color: DodgerBlue; text-align: right;" id="masked_data">NaN</h1>
+                    </div>
+                  </div>
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2 style="color: DodgerBlue;">ไม่สวมหน้ากาก</h2>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <h1 style="color: DodgerBlue; text-align: right;" id="nomask_data">NaN</h1>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+
+
         </div>
       </div>
 
@@ -421,6 +471,7 @@
   <script src="static/build/js/custom.min.js"></script>
   <script src="static/javascript/index_script_axxon.js"></script>
   <script src="static/javascript/index_script_thermal.js"></script>
+  <script src="static/javascript/index_aiface.js"></script>
   <script src="static/javascript/index_option.js"></script>
 </body>
 

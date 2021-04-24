@@ -116,6 +116,7 @@ def login():
 
 @app.route('/')
 @login_required
+@roles_required(['Admin','Security','SmartCity','Library','Viewer'])
 def index():
     connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
     cur = connection.cursor()
@@ -160,11 +161,13 @@ def index():
 
 @app.route('/smartPoledatastatic')
 @login_required
+@roles_required(['Admin','Security','SmartCity','Library','Viewer'])
 def axxondatastatic():
     return render_template('AxxonNext_Event.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
 
 @app.route('/thermalDataStatic')
 @login_required
+@roles_required(['Admin','Security','SmartCity','Library','Viewer'])
 def thermalDataStatic():
     return render_template('thermalcam_event.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
 
@@ -208,6 +211,13 @@ def user_log():
 def arcgisReport():
     return render_template('embedArcgis.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
 
+@app.route('/aiface')
+@roles_required(['Admin','Security','SmartCity','Library'])
+def aiface():
+    return render_template('aiface.html',user_msg={'firstname':current_user.firstname,'lastname':current_user.lastname,'user_roles':[role.name for role in current_user.roles]})
+@app.route('/service-worker.js')
+def sw():
+    return app.send_static_file('service-worker.js')
 ## Main Route End
 
 

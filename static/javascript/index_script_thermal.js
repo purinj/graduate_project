@@ -307,6 +307,7 @@ function createStackdata(element_id, label, normalTemp, highTemp) {
                 text: 'Thermal',
                 subtext: ''
             },
+            grid: { containLabel: true },
             tooltip: {
                 trigger: 'axis'
             },

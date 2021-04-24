@@ -40,6 +40,12 @@ document.getElementById('find_range').onclick =  async function() {
 
   function graphDisplay() {
       try {
+        $('#face_data').remove()
+        $('#faceGraph').html('<div id="face_data" style="height:500px;"></div>')
+        FaceAPI($('#start_date').val(), $('#end_date').val())
+        createGraph()
+
+        
         $('#thermal_Data').remove()
         $('#thermal_Data_container').html('<div id="thermal_Data" style="height:620px;"></div>')
         highLowTemp(IPaddress)
@@ -50,6 +56,7 @@ document.getElementById('find_range').onclick =  async function() {
         $('#axxon_data_container').html('<div id="axxon_data" style="height:500px;"></div>')
         fetchNameAndCam($('#start_date').val(), $('#end_date').val())
         create_axxon_graoh(Name, People_in, People_out)
+
           
       } catch (err) {
           console.log('someEror',err);

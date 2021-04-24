@@ -1138,6 +1138,7 @@
              'sunglasses': 'แว่นกันแดด'
          },
          'AgeGroup': {
+             'child':'เด็ก',
              'young': 'วันรุ่น',
              'prime': 'วัยทำงาน',
              'middle': 'วัยผู้ใหญ่',
@@ -1155,12 +1156,12 @@
          }
      }
      if (name in obj_test === false) {
-         result = 'กระต่าย'
+         result = name
 
 
      } else {
          if (data in obj_test[name] === false) {
-             result = 'ผีเสื้อ'
+             result = data
 
          } else {
              result = obj_test[name][data]
