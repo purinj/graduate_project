@@ -18,9 +18,9 @@ app = Flask(__name__, static_folder='static')
 
 # *** DB Set Up ***
 #---------SmartSafety DB ------------#
-smartsafty_user = "postgres"
-smartsafty_password ="123456789o"
-smartsafty_host = "10.101.118.45"
+smartsafty_user = ""
+smartsafty_password =""
+smartsafty_host = ""
 smartsafty_port = "5432"
 smartsafty_dbname = "SmartSafety"
 ### SQLAlchemy Config ####
@@ -38,9 +38,9 @@ db = SQLAlchemy(app)
 #---------SmartSafety DB ------------#
 
 #---------AXNAPI DB ------------#
-AXNAPIdb_user = "AXNAPI"
-AXNAPIdb_password = "AXNAPI"
-AXNAPIdb_host = "127.0.0.1"
+AXNAPIdb_user = ""
+AXNAPIdb_password = ""
+AXNAPIdb_host = ""
 AXNAPIdb_port = "5432"
 AXNAPIdb_dbname = "AXNAPI"
 #---------AXNAPI DB ------------#
@@ -579,7 +579,7 @@ def hikVisionData(ip):
         if (request.form.get('hat') != 'all'):
             sql_end_query +=  ''' AND "hat" = '%s' ''' %(request.form.get('hat'))
 
-        sql_end_query += ''' AND "time_stamp" > '%s' AND "time_stamp" < '%s' ''' %(request.form.get('startDate'),request.form.get('endDate'))
+        sql_end_query += ''' AND "time_stamp" >= '%s' AND "time_stamp" <= '%s' ''' %(request.form.get('startDate'),request.form.get('endDate'))
 
         # print(new %(ip,sql_end_query))
         # cur.execute(new %(ip,sql_end_query))
@@ -848,6 +848,26 @@ def thermalTable():
         connection.close()
         return 'edit complete'
 
+@app.route('/api/AxxonCameraStatus') 
+def AxxonCameraStatus():
+    axnApi = psycopg2.connect(user=AXNAPIdb_user,password=AXNAPIdb_password,host=AXNAPIdb_host,port=AXNAPIdb_port,database=AXNAPIdb_dbname)
+                                  
+    cur2 = axnApi.cursor()
+
+    cur2.execute('SELECT * \
+	        FROM public.cameras order by id;');
+    records = cur2.fetchall()
+    col_names = []
+    for elt in cur2.description:
+        col_names.append(elt[0])
+    
+    table_row_column = {
+        'column': col_names,
+        'row': records
+    }
+    cur2.close()
+    axnApi.close()
+    return table_row_column
 
 @app.route('/api/AxxonCameraTable', methods = ['GET','POST','PUT','PATCH']) 
 def AxxonCameraTable():
@@ -856,7 +876,7 @@ def AxxonCameraTable():
                                   
         cur2 = axnApi.cursor()
 
-        cur2.execute('SELECT * \
+        cur2.execute('SELECT id, host_id, display_idx, display_name, ip, latitude, longitude, model, vendor, created_at, updated_at, thai_name \
 	        FROM public.cameras order by id;');
         records = cur2.fetchall()
         col_names = []
@@ -989,6 +1009,46 @@ def AxxonCameraTable():
         cur.close()
         connection.close()
         return 'add axxon complete'
+
+
+
+@app.route('/api/allCameraStatus') 
+def allCameraStatus():
+        sql_com = '''SELECT public.all_cameras.id, ip, public.cam_brand.brand_name as brand, model, public.cameras_type.type_name as cam_type, camera_name, "user", password, auth_type, stream_url, location_name, latitude, longitude, public.organization.name as organization, manage_role, public.all_cameras.status, public.all_cameras.status_update
+FROM public.all_cameras full outer join public.cam_brand on brand = public.cam_brand.id
+full outer join public.cameras_type on cam_type = public.cameras_type.id
+full outer join public.organization  on organization = public.organization.id 
+where public.all_cameras.id is not NULL and '''
+        count = 0
+        for i in [role.name for role in current_user.roles]:
+            if count > 0:
+                sql_com += ''' or manage_role @> ARRAY['%s']''' %(i)
+            else:
+                sql_com += '''manage_role @> ARRAY['%s']''' %(i)
+
+            count += 1
+        sql_com += ''' order by id;'''
+        print(sql_com)
+        print(count)
+
+        connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+        cur = connection.cursor()
+
+   
+        cur.execute(sql_com);
+        records = cur.fetchall()
+        #print(cur.description)
+        col_names = []
+        for elt in cur.description:
+            col_names.append(elt[0])
+        
+        table_row_column = {
+        'column': col_names,
+        'row': records
+        }
+        cur.close()
+        connection.close()
+        return table_row_column
 
 
 

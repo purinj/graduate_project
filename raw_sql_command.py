@@ -8,15 +8,15 @@ isAbnomalTemp_normalTemp = '''SELECT count("isAbnomalTemperature") FROM public.h
         where "ipAddress" = '%s' AND "isAbnomalTemperature" = 'false';'''
 
 isAbnomalTemp_normalTempByDate = '''SELECT count("isAbnomalTemperature") FROM public.hikvisondata  \
-        where "ipAddress" = '%s' AND "isAbnomalTemperature" = 'false' AND time_stamp::date < '%s' \
-        AND time_stamp::date > '%s'; '''
+        where "ipAddress" = '%s' AND "isAbnomalTemperature" = 'false' AND time_stamp::date <= '%s' \
+        AND time_stamp::date >= '%s'; '''
 
 isAbnomalTemp_highTemp = '''SELECT count("isAbnomalTemperature") FROM public.hikvisondata \
         where "ipAddress" = '%s' AND "isAbnomalTemperature" !=  'false';'''
 
 isAbnomalTemp_highTempByDate = ''' SELECT count("isAbnomalTemperature") FROM public.hikvisondata  \
-where "ipAddress" = '%s' AND "isAbnomalTemperature" != 'false' AND time_stamp::date < '%s' \
-AND time_stamp::date > '%s'; '''
+where "ipAddress" = '%s' AND "isAbnomalTemperature" != 'false' AND time_stamp::date <= '%s' \
+AND time_stamp::date >= '%s'; '''
 
 hikVisionData_AgeGroupdata = '''SELECT "ageGroup",count("ageGroup") FROM public.hikvisondata \
                 where "ipAddress" = '%s' %s group by "ageGroup";'''

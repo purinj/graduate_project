@@ -32,6 +32,17 @@
   <link href="static/style/new_modal.css" rel="stylesheet">
   <link href="static/style/icon.css" rel="stylesheet">
 </head>
+<style>
+  #masked_data_container:hover {
+    border-color:#007BFF;
+}
+#nomask_data_container:hover {
+  border-color:#007BFF;
+
+}
+
+
+</style>
 
 <body class="nav-md">
   <div class="container body">
@@ -362,41 +373,100 @@
           <div class="col-md-12 col-sm-12  ">
             <div class="x_panel">
               <div class="x_title">
-                <h2>faceScan</h2>
+                <h2>Face Scan</h2>
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
-                <div class="col-md-9 col-sm-9" id="faceGraph">
-                  <div id="face_data" style="height:500px;"></div>
+                <div class="col-md-6 col-sm-6" id="faceGraph">
+                  <div id="face_data" style="height:800px;"></div>
                 </div>
-                <div class="col-md-3 col-sm-3" id="ai_face_mask">
-                  <div class="x_panel">
-                    <div class="x_title">
-                      <h2 style="color: DodgerBlue;">รวมทั้งหมด</h2>
-                      <div class="clearfix"></div>
+                <div class="col-md-6 col-sm-6" id="ai_face_mask">
+                  <div class="row" style="padding: 5px;">
+                    <div class="col-md-12 col-sm-12  ">
+                      <a>เลือกสถานที่:</a>
+                      <select class="form-control" id="place_selector">
+                        <option value="all_place">ทั้งหมด</option>
+                      </select>
                     </div>
-                    <div class="x_content">
-                      <h1 style="color: DodgerBlue; text-align: right;" id="all_mask_data">NaN</h1>
+
+                  </div>
+                  <div class="row" style="padding: 5px;">
+                    <div class="col-md-12 col-sm-12  ">
+                      <a>การสวมหน้ากาก:</a>
+                      <select class="form-control" id="mask_seletor">
+                        <option value="all_mask">ทั้งหมด</option>
+                        <option value="1">สวม</option>
+                        <option value="0">ไม่สวม</option>
+                      </select>
+                    </div>
+
+                  </div>
+                  <div class="row" style="padding: 10px;">
+                    <div class="col-md-12 col-sm-12  ">
+                      <button class="form-control btn btn-primary" id="faceScan_query">ตกลง</button>
+
                     </div>
                   </div>
-                  <div class="x_panel">
-                    <div class="x_title">
-                      <h2 style="color: DodgerBlue;">สวมหน้ากาก</h2>
-                      <div class="clearfix"></div>
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6  ">
+                      <div class="x_panel" id="masked_data_container">
+                        <div class="x_title">
+                          <h2 style="color: forestgreen;">สวมหน้ากาก</h2>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                          <h1 style="color: forestgreen; text-align: right;" id="masked_data">NaN</h1>
+                        </div>
+                      </div>
+
                     </div>
-                    <div class="x_content">
-                      <h1 style="color: DodgerBlue; text-align: right;" id="masked_data">NaN</h1>
+                    <div class="col-md-6 col-sm-6  ">
+                      <div class="x_panel" id="nomask_data_container">
+                        <div class="x_title">
+                          <h2 style="color: red;">ไม่สวมหน้ากาก</h2>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                          <h1 style="color: red; text-align: right;" id="nomask_data">NaN</h1>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
-                  <div class="x_panel">
-                    <div class="x_title">
-                      <h2 style="color: DodgerBlue;">ไม่สวมหน้ากาก</h2>
-                      <div class="clearfix"></div>
+
+
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12  ">
+                      <div class="x_panel">
+                        <div class="x_title">
+                          <h2>ประเภท</h2>
+                          <ul class="nav navbar-right panel_toolbox">
+                            <!-- <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Settings 1</a>
+                                <a class="dropdown-item" href="#">Settings 2</a>
+                              </div>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li> -->
+                          </ul>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content" id="pplType_ai_container">
+                          <div id="pplType_ai" style="height: 400px;"></div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="x_content">
-                      <h1 style="color: DodgerBlue; text-align: right;" id="nomask_data">NaN</h1>
-                    </div>
+
+                    
+
                   </div>
+                  
+
                   
                 </div>
               </div>

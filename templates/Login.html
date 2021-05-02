@@ -11,6 +11,8 @@
 
   <title>Smart Safety</title>
 
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+
   <!-- Bootstrap -->
   <link href="static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
@@ -173,6 +175,17 @@
 
 
   <script>
+    if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+    .register('./service-worker.js')
+    .then(function(registration) {
+        console.log('Service Worker Registered!');
+        return registration;
+    })
+    .catch(function(err) {
+        console.error('Unable to register service worker.', err);
+    });
+}
     var mymap = L.map('mapid').setView([16.476631, 102.823252], 13.5);
     var mapLink = '<a href="http://www.esri.com/">Esri</a>';
     var wholink = 'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';

@@ -35,120 +35,128 @@
 
 <body class="nav-md">
     <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-                <a href="/" class="site_title"><i class="fa icon-cctv-9"></i> <span>Smart Safety</span></a>
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="/" class="site_title"><i class="fa icon-cctv-9"></i> <span>Smart Safety</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="static/image/profile.png" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                            <p id="Roles_p" hidden>{{ user_msg.user_roles }}</p>
+                            <h2>{{ user_msg.firstname }} {{ user_msg.lastname}}</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu">
+                                <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+                                <li><a href="/smartPoledatastatic"><i class="fa fa-bar-chart"></i>ข้อมูล Smartpoles</a>
+                                </li>
+                                <li><a href="/thermalDataStatic"><i
+                                            class="fa fa-tachometer"></i>ข้อมูลกล้องวัดอุณหภูมิ</a></li>
+                                {% if current_user.has_role('Admin') or current_user.has_role('Security')%}
+                                <li>
+                                    <a href="/arcgisReport"><i class="fa fa-book"></i>รายงานอุบัติเหตุ</a>
+                                </li>
+                                {% endif %}
+                                <li>
+                                    <a href="/streamView"><i class="fa fa-map-marker"></i>แผนที่กล้อง</a>
+                                </li>
+                                {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') or current_user.has_role('Security') or current_user.has_role('Library') %}
+                                <li><a href="/camera_status"><i class="fa fa-wifi"></i>สถานะการเชื่อมต่อกล้อง</a></li>
+                                {% endif %}
+
+                            </ul>
+                            {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') or current_user.has_role('Security') or current_user.has_role('Library') %}
+                            <h3>Manage</h3>
+                            <ul class="nav side-menu">
+                                {% if current_user.has_role('Admin')%}
+                                <li><a href="/user_manage"><i class="fa fa-group"></i>จัดการสมาชิก</a></li>
+                                <li><a href="/organization_manage"><i
+                                            class="fa fa-university"></i>จัดการข้อมูลหน่วยงาน</a></li>
+                                <li><a href="/user_log"><i class="fa fa-history"></i>ประวัติการใช้งาน</a></li>
+                                {% endif %}
+                                <li><a><i class="fa fa-video-camera"></i>จัดการข้อมูลกล้อง<span
+                                            class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/camera_manage">ข้อมูลกล้อง</a></li>
+                                        <li><a href="/brand_manage">ข้อมูลยี่ห้อกล้อง</a></li>
+                                    </ul>
+                                </li>
+                                {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') %}
+                                <li><a href="/axxoncam_manage"><i class="fa fa-cog"></i>จัดการข้อมูล Smart Pole</a></li>
+                                {% endif %}
+                                {% if current_user.has_role('Admin') or current_user.has_role('Security') %}
+                                <li><a href="/bluepole_manage"><i class="fa fa-cog"></i>จัดการข้อมูล Blue Pole</a></li>
+                                {% endif %}
+
+
+                            </ul>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                    <!-- /sidebar menu -->
+
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="/api/fastlogout"
+                            style="width: 100%;">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span> ออกจากระบบ
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
             </div>
-  
-            <div class="clearfix"></div>
-  
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="static/image/profile.png" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <p id="Roles_p" hidden>{{ user_msg.user_roles }}</p>
-                <h2>{{ user_msg.firstname }} {{ user_msg.lastname}}</h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-  
-            <br />
-  
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-                  <li><a href="/smartPoledatastatic"><i class="fa fa-bar-chart"></i>ข้อมูล Smartpoles</a></li>
-                  <li><a href="/thermalDataStatic"><i class="fa fa-tachometer"></i>ข้อมูลกล้องวัดอุณหภูมิ</a></li>
-                  {% if current_user.has_role('Admin') or current_user.has_role('Security')%}
-                  <li>
-                      <a href="/arcgisReport"><i class="fa fa-book"></i>รายงานอุบัติเหตุ</a>
-                    </li>
-                  {% endif %}
-                  <li>
-                    <a href="/streamView"><i class="fa fa-map-marker"></i>แผนที่กล้อง</a>
-                  </li>
-                  {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') or current_user.has_role('Security') or current_user.has_role('Library') %}
-                  <li><a href="/camera_status"><i class="fa fa-wifi"></i>สถานะการเชื่อมต่อกล้อง</a></li>
-                  {% endif %}
-  
-                </ul>
-                {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') or current_user.has_role('Security') or current_user.has_role('Library') %}
-                <h3>Manage</h3>
-                <ul class="nav side-menu">
-                  {% if current_user.has_role('Admin')%}
-                  <li><a href="/user_manage"><i class="fa fa-group"></i>จัดการสมาชิก</a></li>
-                  <li><a href="/organization_manage"><i class="fa fa-university"></i>จัดการข้อมูลหน่วยงาน</a></li>
-                  <li><a href="/user_log"><i class="fa fa-history"></i>ประวัติการใช้งาน</a></li>
-                  {% endif %}
-                  <li><a><i class="fa fa-video-camera"></i>จัดการข้อมูลกล้อง<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="/camera_manage">ข้อมูลกล้อง</a></li>
-                      <li><a href="/brand_manage">ข้อมูลยี่ห้อกล้อง</a></li>
-                    </ul>
-                  </li>
-                  {% if current_user.has_role('Admin') or current_user.has_role('SmartCity') %}
-                  <li><a href="/axxoncam_manage"><i class="fa fa-cog"></i>จัดการข้อมูล Smart Pole</a></li>
-                  {% endif %}
-                  {% if current_user.has_role('Admin') or current_user.has_role('Security') %}
-                  <li><a href="/bluepole_manage"><i class="fa fa-cog"></i>จัดการข้อมูล Blue Pole</a></li>
-                  {% endif %}
-                  
-  
-                </ul>
-                {% endif %}
-              </div>
-  
-            </div>
-            <!-- /sidebar menu -->
-  
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="/api/fastlogout" style="width: 100%;">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span> ออกจากระบบ
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
-          </div>
-        </div>
-  
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <div class="nav toggle">
-              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-            </div>
-            <nav class="nav navbar-nav">
-              <ul class=" navbar-right">
-                <li class="nav-item dropdown open" style="padding-left: 15px;">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown"
-                    data-toggle="dropdown" aria-expanded="false">
-                    <img src="static/image/profile.png" alt="">{{ user_msg.firstname }} {{ user_msg.lastname}}
-                  </a>
-                  <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                    <!-- <a class="dropdown-item"  href="javascript:;"> Profile</a>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <nav class="nav navbar-nav">
+                        <ul class=" navbar-right">
+                            <li class="nav-item dropdown open" style="padding-left: 15px;">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
+                                    id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="static/image/profile.png" alt="">{{ user_msg.firstname }}
+                                    {{ user_msg.lastname}}
+                                </a>
+                                <div class="dropdown-menu dropdown-usermenu pull-right"
+                                    aria-labelledby="navbarDropdown">
+                                    <!-- <a class="dropdown-item"  href="javascript:;"> Profile</a>
                         <a class="dropdown-item"  href="javascript:;">
                           <span class="badge bg-red pull-right">50%</span>
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a> -->
-                    <a class="dropdown-item" href="/api/fastlogout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                  </div>
-                </li>
-              </ul>
-              </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <!-- /top navigation -->
+                                    <a class="dropdown-item" href="/api/fastlogout"><i
+                                            class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                </div>
+                            </li>
+                        </ul>
+                        </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
 
             <!-- page content -->
             <div class="right_col" role="main">
@@ -162,7 +170,7 @@
                                 <a class="nav-link active" id="view_normal">กล้องปกติ</a>
                                 <a class="nav-link" id="view_thermal">กล้องวัดอุณหภูมิ</a>
                                 <a class="nav-link" id="view_smartpole" hidden>SmartPole</a>
-                               
+
                             </div>
 
                         </div>
@@ -200,46 +208,80 @@
                             <div class="x_content" id="normal_container">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <!-- <div class="row">
-                                            <div class="col-md-4 col-sm-4  ">
-                                                <p>50</p>
-
-                                            </div>
-                                            <div class="col-md-4 col-sm-4  ">
-                                                <p>50</p>
-
-                                            </div>
-                                            <div class="col-md-4 col-sm-4  ">
-                                                <p>50</p>
-
-                                            </div>
-                                            
-
-                                        </div> -->
                                         <div class="row">
-                                            <div class="card-box table-responsive">
-                                                <table id="camstatus_table_normal"
-                                                    class="table table-striped table-bordered"
-                                                    style="width:100%;text-align: center;">
-                                                    <thead id="camstatus_table_normal_header">
-                                                        <tr id="camstatus_table_normal_column">
-    
-                                                            <th>ip</th>
-                                                            <th>ยี่ห้อ</th>
-                                                            <th>ชื่อ</th>
-                                                            <th>ตรวจสถานะ</th>
-                                                            <th>สถานะ</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="camstatus_table_normal_row">
-    
-    
-                                                    </tbody>
-                                                </table>
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="x_panel">
+                                                    <div class="x_title">
+                                                        <h2 style="color: #28a745;">เชื่อมต่อ</h2>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="x_content">
+                                                        <h1 style="color:  #28a745;; text-align: right;"
+                                                            id="normal_green">NaN</h1>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="x_panel">
+                                                    <div class="x_title">
+                                                        <h2 style="color:#ffc107 ;">การเชื่อมต่อขัดข้อง</h2>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="x_content">
+                                                        <h1 style="color: #ffc107; text-align: right;"
+                                                            id="normal_yellow">NaN</h1>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="x_panel">
+                                                    <div class="x_title">
+                                                        <h2 style="color: #dc3545;">ไม่พบข้อมูลภาพ</h2>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="x_content">
+                                                        <h1 style="color: #dc3545; text-align: right;" id="normal_red">
+                                                            NaN</h1>
+                                                    </div>
+                                                </div>
+
                                             </div>
 
                                         </div>
-                                       
+                                        <div class="row">
+                                            <div class="x_panel">
+                                                <div class="x_title">
+                                                    <h2>ตารางสถานะ</h2>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="x_content">
+                                                    <div class="card-box table-responsive">
+                                                        <table id="camstatus_table_normal"
+                                                            class="table table-striped table-bordered"
+                                                            style="width:100%;text-align: center;">
+                                                            <thead id="camstatus_table_normal_header">
+                                                                <tr id="camstatus_table_normal_column">
+        
+                                                                    <th>ip</th>
+                                                                    <th>ยี่ห้อ</th>
+                                                                    <th>ชื่อ</th>
+                                                                    <th>ตรวจสถานะ</th>
+                                                                    <th>สถานะ</th>
+                                                                    <th>อัพเดทล่าสุด</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="camstatus_table_normal_row">
+        
+        
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -247,24 +289,78 @@
                             <div class="x_content" id="thermal_container" hidden>
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <div class="card-box table-responsive">
-                                            <table id="camstatus_table_thermal"
-                                                class="table table-striped table-bordered" style="width:100%;text-align: center;">
-                                                <thead id="camstatus_table_thermal_header">
-                                                    <tr id="camstatus_table_thermal_column">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="x_panel">
+                                                    <div class="x_title">
+                                                        <h2 style="color: #28a745;">เชื่อมต่อ</h2>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="x_content">
+                                                        <h1 style="color:  #28a745;; text-align: right;"
+                                                            id="thermal_green">NaN</h1>
+                                                    </div>
+                                                </div>
 
-                                                        <th>ip</th>
-                                                        <th>ยี่ห้อ</th>
-                                                        <th>ชื่อ</th>
-                                                        <th>ตรวจสถานะ</th>
-                                                        <th>สถานะ</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="camstatus_table_thermal_row">
+                                            </div>
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="x_panel">
+                                                    <div class="x_title">
+                                                        <h2 style="color:#ffc107 ;">การเชื่อมต่อขัดข้อง</h2>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="x_content">
+                                                        <h1 style="color: #ffc107; text-align: right;"
+                                                            id="thermal_yellow">NaN</h1>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="x_panel">
+                                                    <div class="x_title">
+                                                        <h2 style="color: #dc3545;">ไม่พบข้อมูลภาพ</h2>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="x_content">
+                                                        <h1 style="color: #dc3545; text-align: right;" id="thermal_red">
+                                                            NaN</h1>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="x_panel">
+                                                <div class="x_title">
+                                                    <h2>ตารางสถานะ</h2>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="x_content">
+                                                    <div class="card-box table-responsive">
+                                                        <table id="camstatus_table_thermal"
+                                                            class="table table-striped table-bordered"
+                                                            style="width:100%;text-align: center;">
+                                                            <thead id="camstatus_table_thermal_header">
+                                                                <tr id="camstatus_table_thermal_column">
+
+                                                                    <th>ip</th>
+                                                                    <th>ยี่ห้อ</th>
+                                                                    <th>ชื่อ</th>
+                                                                    <th>ตรวจสถานะ</th>
+                                                                    <th>สถานะ</th>
+                                                                    <th>อัพเดทล่าสุด</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="camstatus_table_thermal_row">
 
 
-                                                </tbody>
-                                            </table>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -274,26 +370,80 @@
                             <div class="x_content" id="smartPole_container" hidden>
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <div class="card-box table-responsive">
-                                            <table id="camstatus_table_smartPole"
-                                                class="table table-striped table-bordered"
-                                                style="width:100%;text-align: center;">
-                                                <thead id="camstatus_table_smartPole_header">
-                                                    <tr id="camstatus_table_smartPole_column">
-                                                        <th>โฮส</th>
-                                                        <th>พิน</th>
-                                                        <th>ชื่อ</th>
-                                                        <th>ชื่อภาษาไทย</th>
-                                                        <th>ตรวจสถานะ</th>
-                                                        <th>สถานะ</th>
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="x_panel">
+                                                    <div class="x_title">
+                                                        <h2 style="color: #28a745;">เชื่อมต่อ</h2>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="x_content">
+                                                        <h1 style="color:  #28a745;; text-align: right;"
+                                                            id="smartpole_green">NaN</h1>
+                                                    </div>
+                                                </div>
 
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="camstatus_table_smartPole_row">
+                                            </div>
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="x_panel">
+                                                    <div class="x_title">
+                                                        <h2 style="color:#ffc107 ;">การเชื่อมต่อขัดข้อง</h2>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="x_content">
+                                                        <h1 style="color: #ffc107; text-align: right;"
+                                                            id="smartpole_yellow">NaN</h1>
+                                                    </div>
+                                                </div>
 
-                                                </tbody>
-                                            </table>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="x_panel">
+                                                    <div class="x_title">
+                                                        <h2 style="color: #dc3545;">ไม่พบข้อมูลภาพ</h2>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="x_content">
+                                                        <h1 style="color: #dc3545; text-align: right;"
+                                                            id="smartpole_red">NaN</h1>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
                                         </div>
+                                        <div class="row">
+                                            <div class="x_panel">
+                                                <div class="x_title">
+                                                    <h2>ตารางสถานะ</h2>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="x_content">
+                                                    <div class="card-box table-responsive">
+                                                        <table id="camstatus_table_smartPole"
+                                                            class="table table-striped table-bordered"
+                                                            style="width:100%;text-align: center;">
+                                                            <thead id="camstatus_table_smartPole_header">
+                                                                <tr id="camstatus_table_smartPole_column">
+                                                                    <th>โฮส</th>
+                                                                    <th>พิน</th>
+                                                                    <th>ชื่อ</th>
+                                                                    <th>ชื่อภาษาไทย</th>
+                                                                    <th>ตรวจสถานะ</th>
+                                                                    <th>สถานะ</th>
+                                                                    <th>อัพเดทล่าสุด</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="camstatus_table_smartPole_row">
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -390,15 +540,17 @@
         var normalLength = 0;
         var thermalLength = 0;
         var aXnLength;
-        if (document.getElementById('Roles_p').innerHTML.includes("Admin") || document.getElementById('Roles_p').innerHTML.includes("SmartCity")) {
+        if (document.getElementById('Roles_p').innerHTML.includes("Admin") || document.getElementById('Roles_p')
+            .innerHTML.includes("SmartCity")) {
             document.getElementById('view_smartpole').hidden = false
 
         }
+
         function getAllCam() {
             $.ajax({
                 type: 'GET',
                 async: false,
-                url: host_url + "api/allCameraTable",
+                url: host_url + "api/allCameraStatus",
                 success: function (data) {
                     console.log(data);
                     normal_arr = []
@@ -414,34 +566,73 @@
                     console.log(normal_arr);
                     thermal_rows = ''
                     thermalLength = thermal_arr.length;
+                    thermal_green = 0
+                    thermal_yellow = 0
+                    thermal_red = 0
                     for (i = 0; i < thermal_arr.length; i++) {
                         ip_row = `<td id='thermal_ip_${i}'>${thermal_arr[i][1]}</td>`
                         brand_row = `<td>${thermal_arr[i][2]}</td>`
                         name_row = `<td>${thermal_arr[i][5]}</td>`
+                        last_update = `<td>${thermal_arr[i][16]}</td>`
                         status_check_row =
                             `<td><button onclick='checkAllcam("thermal",${i})'>ตรวจสอบ</button></td>`
-                        final_status = `<td id='thermal_finalStatus${i}'>ยังไม่ทราบ</td>`
+                        if (thermal_arr[i][15] == 'Pass') {
+                            stat = '<sapn class="badge badge-success"><i class="fa fa-check"></i>เชื่อมต่อ</sapn>'
+                            thermal_green += 1
+
+                        } else if (thermal_arr[i][15] == 'loss') {
+                            stat = '<sapn class="badge badge-danger"><i class="fa fa-times"></i>ไม่พบข้อมูลภาพ</sapn>'
+                            thermal_red += 1
+                        } else {
+                            stat = '<sapn class="badge badge-warning"><i class="fa fa-times"></i>การเชื่อมต่อขัดข้อง</sapn>'
+                            thermal_yellow += 1 
+
+                        }
+                        final_status = `<td id='thermal_finalStatus${i}'>${stat}</td>`
                         thermal_rows += '<tr>' + ip_row + brand_row + name_row + status_check_row +
-                            final_status + '</tr>'
+                            final_status + last_update + '</tr>'
 
                     }
 
                     document.getElementById('camstatus_table_thermal_row').innerHTML += thermal_rows
+                    document.getElementById('thermal_green').innerHTML = thermal_green
+                    document.getElementById('thermal_yellow').innerHTML = thermal_yellow
+                    document.getElementById('thermal_red').innerHTML = thermal_red
                     normal_rows = ''
                     normalLength = normal_arr.length;
+                    normal_green = 0
+                    normal_yellow = 0
+                    normal_red = 0
                     for (i = 0; i < normal_arr.length; i++) {
                         ip_row = `<td id='normal_ip_${i}'>${normal_arr[i][1]}</td>`
                         brand_row = `<td>${normal_arr[i][2]}</td>`
                         name_row = `<td>${normal_arr[i][5]}</td>`
+                        last_update = `<td>${normal_arr[i][16]}</td>`
+                        if (normal_arr[i][15] == 'Pass') {
+                            stat = '<sapn class="badge badge-success"><i class="fa fa-check"></i>เชื่อมต่อ</sapn>'
+                            normal_green += 1
+
+                        } else if (normal_arr[i][15] == 'loss') {
+                            stat = '<sapn class="badge badge-danger"><i class="fa fa-times"></i>ไม่พบข้อมูลภาพ</sapn>'
+                            normal_red += 1
+                        } else {
+                            stat = '<sapn class="badge badge-warning"><i class="fa fa-times"></i>การเชื่อมต่อขัดข้อง</sapn>'
+                            normal_yellow += 1 
+
+                        }
                         status_check_row =
                             `<td><button onclick='checkAllcam("normal",${i})'>ตรวจสอบ</button></td>`
-                        final_status = `<td id='normal_finalStatus${i}'>ยังไม่ทราบ</td>`
+                        final_status = `<td id='normal_finalStatus${i}'>${stat}</td>`
                         normal_rows += '<tr>' + ip_row + brand_row + name_row + status_check_row +
-                            final_status + '</tr>'
+                            final_status + last_update + '</tr>'
 
                     }
 
                     document.getElementById('camstatus_table_normal_row').innerHTML += normal_rows
+
+                    document.getElementById('normal_green').innerHTML = normal_green
+                    document.getElementById('normal_yellow').innerHTML = normal_yellow
+                    document.getElementById('normal_red').innerHTML = normal_red
 
 
                 }
@@ -488,8 +679,12 @@
             $.ajax({
                 type: 'GET',
                 async: false,
-                url: host_url + "api/AxxonCameraTable",
+                url: host_url + "api/AxxonCameraStatus",
                 success: function (data) {
+                    console.log(data);
+                    red = 0
+                    green = 0
+                    yellow = 0
                     turn_to_rows = ''
                     aXnLength = data.row;
                     for (i = 0; i < data.row.length; i++) {
@@ -497,17 +692,37 @@
                         pin_row = `<td>${data.row[i][2]}</td>`
                         name_row = `<td>${data.row[i][3]}</td>`
                         thainame_row = `<td>${data.row[i][11]}</td>`
+                        last_update = `<td>${data.row[i][13]}</td>`
                         status_check_row =
                             `<td><button onclick='checkforAxxon(${data.row[i][1]}, ${data.row[i][2]},${i})'>ตรวจสอบ</button></td>`
-                        final_status = `<td id='finalStatus${i}'>ยังไม่ทราบ</td>`
+                        if (data.row[i][12] == 'Pass') {
+                            stat =
+                                '<sapn class="badge badge-success"><i class="fa fa-check"></i>เชื่อมต่อ</sapn>'
+                            green += 1
+
+                        } else if (data.row[i][12] == 'loss') {
+                            stat =
+                                '<sapn class="badge badge-danger"><i class="fa fa-times"></i>ไม่พบข้อมูลภาพ</sapn>'
+                            red += 1
+                        } else {
+                            stat =
+                                '<sapn class="badge badge-warning"><i class="fa fa-times"></i>การเชื่อมต่อขัดข้อง</sapn>'
+                            yellow += 1
+
+                        }
+                        final_status = `<td id='finalStatus${i}'>${stat}</td>`
+
 
 
                         turn_to_rows += '<tr>' + host_row + pin_row + name_row + thainame_row +
-                            status_check_row + final_status + '</tr>'
+                            status_check_row + final_status + last_update + '</tr>'
 
 
                     }
                     document.getElementById('camstatus_table_smartPole_row').innerHTML += turn_to_rows
+                    document.getElementById('smartpole_green').innerHTML = green
+                    document.getElementById('smartpole_yellow').innerHTML = yellow
+                    document.getElementById('smartpole_red').innerHTML = red
 
                 }
             });
@@ -533,7 +748,7 @@
                 type: 'GET',
                 async: false,
                 url: url,
-                timeout:4000,
+                timeout: 4000,
                 success: function (data) {
                     status = data
                 }
@@ -555,16 +770,16 @@
 
         }
 
-        function clicker(){
-            for(i =0; i < thermalLength;i++) {
-                checkAllcam("thermal",i)
-            } 
-            for(i =0; i < normalLength;i++) {
-                checkAllcam("normal",i)
+        function clicker() {
+            for (i = 0; i < thermalLength; i++) {
+                checkAllcam("thermal", i)
+            }
+            for (i = 0; i < normalLength; i++) {
+                checkAllcam("normal", i)
             }
             for (i = 0; i < aXnLength.length; i++) {
-            checkforAxxon(aXnLength[i][1], aXnLength[i][2],i)
-    
+                checkforAxxon(aXnLength[i][1], aXnLength[i][2], i)
+
 
             }
         }
