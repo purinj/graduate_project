@@ -17,6 +17,19 @@ function customRange() {
     document.getElementById('li_startdate').hidden = false;
     document.getElementById('li_enddate').hidden = false;
     document.getElementById('li_ok').hidden = false;
+    document.getElementById('li_backto').hidden = false;
+    
+
+}
+function backTOnormal() {
+    $('#li_7d').show()
+    $('#li_30d').show()
+    $('#li_1y').show()
+    $('#li_custom').show()
+    document.getElementById('li_startdate').hidden = true;
+    document.getElementById('li_enddate').hidden = true;
+    document.getElementById('li_ok').hidden = true;
+    document.getElementById('li_backto').hidden = true;
     
 
 }
@@ -314,7 +327,7 @@ function create_axxon_graoh(catetgoly_data, InData, OutData) {
                 formatter : function(params){
                    var newParamsName = "";// The final concatenated string
                             var paramsNameNumber = params.length;// Number of actual labels
-                            var provideNumber = 11;// Number of words per line
+                            var provideNumber = 8;// Number of words per line
                             var rowNumber = Math.ceil(paramsNameNumber / provideNumber);// If you change lines, you need to show a few lines and take them up.
                             /**
                              * Determine whether the number of tags is greater than the specified number, and if it is greater than the number of new lines, if it is not greater than, that is, equal to or less than, return to the original tag.

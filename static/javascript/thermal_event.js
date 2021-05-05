@@ -3,14 +3,17 @@
  var IPaddress = []
  var highTemp = []
  var normalTemp = []
+ var recentChoosestartDate ;
+ var recentChooseendDate;
 
  sevenDays()
-
 
  getCamData()
  highLowTemp(IPaddress)
  createStackdata('AxxonChart', label_camNote, normalTemp, highTemp)
  add_to_strem_button('stream_button', IPaddress, label_camNote)
+ recentChoosestartDate = document.getElementById('start_date').value;
+ recentChooseendDate = document.getElementById('end_date').value;
  getDetectData(IPaddress[0], 'POST', {
      startDate: $('#start_date').val(),
      endDate: $('#end_date').val(),
@@ -46,8 +49,8 @@
      $('#beardChart_container').append('<div id="beardChart" style="width: 100%; min-height: 350px"></div>');
      $('#expressionChart_container').append('<div id="expressionChart" style="width: 100%; min-height: 350px"></div>');
      getDetectData(IPaddress[data_index], 'POST', {
-         startDate: $('#start_date').val(),
-         endDate: $('#end_date').val(),
+         startDate: recentChoosestartDate,
+         endDate: recentChooseendDate,
          temperatureType: 'all',
          AgeGroup: 'all',
          gender: 'all',
@@ -76,6 +79,8 @@
 
   function loaderDiaplay(){
     document.getElementById('LoadingModal').style.display = 'block'
+    recentChoosestartDate = document.getElementById('start_date').value;
+    recentChooseendDate = document.getElementById('end_date').value;
   }
   function loaderNotDiaplay(){
     document.getElementById('LoadingModal').style.display = 'none'
@@ -97,8 +102,8 @@
  document.getElementById('moreDetailOk').onclick = function () {
      data_index = document.getElementById('Cam_Name_select').selectedIndex;
      moreData = {
-         startDate: $('#start_date').val(),
-         endDate: $('#end_date').val(),
+         startDate: recentChoosestartDate,
+         endDate: recentChooseendDate,
          temperatureType: $('#option_temperature').val(),
          AgeGroup: $('#option_agegroup').val(),
          gender: $('#option_gender').val(),
@@ -1183,5 +1188,51 @@
  // });
 
  function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+function createTable() {
+  //   var Name = []
+  // var People_in = []
+  // var People_out = []
+  clumnstr = "<tr><th>ชื่อกล้อง</th><th>จำนวนอุณหภูมิปกติ</th><th>จำนวนอุณหภูมิมากกว่า 37.5</th><th>รวม</th></tr>"
+  for (i = 0; i < label_camNote.length; i++) {
+    camname = `<td>${label_camNote[i]}</td>`
+    normtemp = `<td>${normalTemp[i]}</td>`
+    hitemp = `<td>${highTemp[i]}</td>`
+    totalEvent = `<td>${ parseFloat(normalTemp[i])+parseFloat(highTemp[i]) }</td>`
+    row = '<tr>' + camname + normtemp + hitemp + totalEvent + '</tr>'
+    clumnstr += row
+  }
+
+  document.getElementById("thermal_to_csv_table").innerHTML = clumnstr
+
+}
+
+function exportCsv() {
+  createTable()
+  let data = ''
+  const tableData = []
+  const rows = document.querySelectorAll('table#' + 'thermal_to_csv_table' + ' tr')
+  for (const row of rows) {
+    const rowData = []
+    for (const [index, column] of row.querySelectorAll('td,th').entries()) {
+      if ((index + 1) % 3 === 0) {
+        rowData.push('"' + column.innerText + '"')
+      } else {
+        rowData.push(column.innerText)
+      }
+    }
+    tableData.push(rowData.join(','))
+  }
+  data += tableData.join('\n')
+  const a = document.createElement('a')
+  a.href = URL.createObjectURL(new Blob(['\uFEFF' + data], { type: 'text/csv;charset=utf-8' }))
+  a.setAttribute('download', recentChoosestartDate + '-' + recentChooseendDate + '-thermalscan.csv')
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+}
+
+function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }

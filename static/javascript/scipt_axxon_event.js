@@ -1,6 +1,6 @@
 var date = new Date();
 
-document.getElementById('start_date').valueAsDate = new Date(date.setDate(date.getDate() - 30));
+document.getElementById('start_date').valueAsDate = new Date(date.setDate(date.getDate() - 7));
 document.getElementById('end_date').valueAsDate = new Date();
 
 var Name = []
@@ -8,17 +8,20 @@ var People_in = []
 var People_out = []
 var In_timeSeq = []
 var Out_timeSeq = []
-
+var recentChoosestartDate ;
+var recentChooseendDate;
 
 // Using Function FirstTime
 fetchNameAndCam($('#start_date').val(), $('#end_date').val())
+recentChoosestartDate = document.getElementById('start_date').value;
+recentChooseendDate = document.getElementById('end_date').value;
 createStackdata('AxxonChart', Name, People_in, People_out)
 add_option('Cam_Name_for_in')
 add_option('Cam_Name_for_out')
 // initial time seq chart
 getTimeData(Name[0], $('#start_date').val(), $('#end_date').val())
-create_Time_Chart("people_in_time_chart", In_timeSeq, 'people_in', '#48D1CC')
-create_Time_Chart("people_out_time_chart", Out_timeSeq, 'people_out', '#FF7F50')
+create_Time_Chart("people_in_time_chart", In_timeSeq, 'เหตุการณ์เข้า', '#48D1CC')
+create_Time_Chart("people_out_time_chart", Out_timeSeq, 'เหตุการณ์ออก', '#FF7F50')
 createTable()
 
 
@@ -37,6 +40,8 @@ document.getElementById('find_range').onclick = async function () {
 
   function loaderDiaplay(){
     document.getElementById('LoadingModal').style.display = 'block'
+    recentChoosestartDate = document.getElementById('start_date').value;
+    recentChooseendDate = document.getElementById('end_date').value;
   }
   function loaderNotDiaplay(){
     document.getElementById('LoadingModal').style.display = 'none'
@@ -63,16 +68,16 @@ document.getElementById('Cam_Name_for_in').onchange = function () {
   $('#people_in_time_chart').remove();
   $('#people_in_time_chart_container').append('<canvas id="people_in_time_chart"></canvas>');
   data_index = document.getElementById('Cam_Name_for_in').selectedIndex;
-  getTimeData(Name[data_index], $('#start_date').val(), $('#end_date').val())
-  create_Time_Chart("people_in_time_chart", In_timeSeq, 'people_in', '#48D1CC')
+  getTimeData(Name[data_index], recentChoosestartDate, recentChooseendDate)
+  create_Time_Chart("people_in_time_chart", In_timeSeq, 'เหตุการณ์เข้า', '#48D1CC')
 }
 
 document.getElementById('Cam_Name_for_out').onchange = function () {
   $('#people_out_time_chart').remove();
   $('#people_out_time_chart_container').append('<canvas id="people_out_time_chart"></canvas>');
   data_index = document.getElementById('Cam_Name_for_out').selectedIndex;
-  getTimeData(Name[data_index], $('#start_date').val(), $('#end_date').val())
-  create_Time_Chart("people_out_time_chart", Out_timeSeq, 'people_in', '#FF7F50')
+  getTimeData(Name[data_index], recentChoosestartDate, recentChooseendDate)
+  create_Time_Chart("people_out_time_chart", Out_timeSeq, 'เหตุการณ์ออก', '#FF7F50')
 }
 
 
@@ -637,7 +642,7 @@ function exportCsv() {
   data += tableData.join('\n')
   const a = document.createElement('a')
   a.href = URL.createObjectURL(new Blob(['\uFEFF' + data], { type: 'text/csv;charset=utf-8' }))
-  a.setAttribute('download', 'smartPole.csv')
+  a.setAttribute('download', recentChoosestartDate +'-'+ recentChooseendDate+'-smartPole.csv')
   document.body.appendChild(a)
   a.click()
   document.body.removeChild(a)

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="static/image/logo.ico" type="image/ico" />
+  <link rel="icon" href="static/image/SmartSafety.ico" type="image/ico" />
 
   <title>Smart Safety</title>
 
@@ -330,6 +330,15 @@
                     </div>
                   </div>
                 </div>
+                {% if current_user.has_role('Admin') %}
+                <div class="col-md-12 col-sm-12 ">
+                  <div>
+                    <div class="">
+                      <button class="form-control btn btn-success" onclick="exportCsv()">ดาวน์โหลด CSV</button>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
 
               </div>
 
@@ -502,6 +511,13 @@
           </div>
         </div>
 
+        <div class="row" hidden>
+          <div class="col-md-12 col-sm-12">
+            <table id="thermal_to_csv_table">
+            </table>
+          </div>
+
+        </div>
 
 
       </div>

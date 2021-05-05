@@ -1,26 +1,26 @@
 {
-    "name": "Developing a PWA in Flask",
-    "short_name": "Flask PWA",
+    "name": "KKU SmartSafety",
+    "short_name": "KKU Smart Safety",
     "theme_color": "#CBD394",
     "background_color": "#F1F7C6",
     "icons": [
       {
-          "src": "/static/image/icon-64.png",
+          "src": "/static/image/64.png",
           "type": "image/png",
           "sizes": "64x64"
         },
         {
-          "src": "/static/image/icon-96.png",
+          "src": "/static/image/96.png",
           "type": "image/png",
           "sizes": "96x96"
         },
         {
-          "src": "/static/image/icon-192.png",
+          "src": "/static/image/192.png",
           "type": "image/png",
           "sizes": "192x192"
         },
         {
-          "src": "/static/image/icon-512.png",
+          "src": "/static/image/512.png",
           "type": "image/png",
           "sizes": "512x512"
         }

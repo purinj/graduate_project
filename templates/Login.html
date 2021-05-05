@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="static/image/logo.ico" type="image/ico" />
+  <link rel="icon" href="static/image/SmartSafety.ico" type="image/ico" />
 
   <title>Smart Safety</title>
 
@@ -35,6 +35,7 @@
 </style>
 
 <body class="login">
+  <button href="#" id="installButton" hidden>Install!</button>
   <div>
     <a class="hiddenanchor" id="signup"></a>
     <a class="hiddenanchor" id="signin"></a>
@@ -46,7 +47,7 @@
 
     <div class="right_col" id="mapAndtext" role="main">
       <nav class="navbar navbar-dark bg-dark"">
-        <a class="navbar-brand primary">Smart Safety</a>
+        <a class="navbar-brand primary"><i class="fa icon-cctv-9" style="font-size: x-large;"></i> Smart Safety</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span><button class="btn btn-primary" id="displayLogin">เข้าสู่ระบบ</button></span>
         </button>
@@ -73,16 +74,20 @@
       <span style="color: white; height: 0px;">แผนที่</span>
       <div id="mapid"></div>
 
-      <div style="text-align: center;">
-        <br>
-        <a>หากต้องการขอไฟล์ข้อมูลทางสถิติสามารถส่งอีเมลล์</a>
-        <br>
-        <a>ได้ที่ <a>batt@kkumail.com</a></a>
-
-      </div>
+      
 
 
     </div>
+
+    <footer id="footer">
+      <div class="pull-right">
+          <a>หากต้องการขอไฟล์ข้อมูลทางสถิติสามารถส่งอีเมลล์</a>
+          <a>ได้ที่ <a>batt@kkumail.com</a></a>
+  
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
 
 
 
@@ -167,6 +172,12 @@
     </div>
   </div>
   <script src="static/javascript/host.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='install.js') }}"></script>
+  <script>
+    if (installButton !== null) {
+    installButton.addEventListener('click', installPWA);
+  }
+  </script>
   <script src="static/javascript/zoning.js"></script>
   <script src="static/vendors/jquery/dist/jquery.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -235,6 +246,7 @@
     document.getElementById('displayLogin').onclick = function() {
       document.getElementById('loginPage').hidden = false;
       document.getElementById('mapAndtext').hidden = true;
+      document.getElementById('footer').hidden = true;
 
     }
   </script>

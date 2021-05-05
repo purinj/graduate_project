@@ -619,7 +619,7 @@ function createFace_echart(chart_name, chart_elm_id, nameOfdata, valueDataset, c
     if ($('#' + chart_elm_id).length) {
         var theme = {
             color: [
-                '#26B99A', '#34495E', '#BDC3C7', '#3498DB',
+                '#3498DB', '#1ABB9C', '#BDC3C7', 'black',
                 '#9B59B6', '#8abb6f', '#759c6a', '#bfd3b7'
             ],
 

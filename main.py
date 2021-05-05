@@ -22,7 +22,7 @@ smartsafty_user = ""
 smartsafty_password =""
 smartsafty_host = ""
 smartsafty_port = "5432"
-smartsafty_dbname = "SmartSafety"
+smartsafty_dbname = ""
 ### SQLAlchemy Config ####
 
 class ConfigClass(object):
@@ -42,7 +42,7 @@ AXNAPIdb_user = ""
 AXNAPIdb_password = ""
 AXNAPIdb_host = ""
 AXNAPIdb_port = "5432"
-AXNAPIdb_dbname = "AXNAPI"
+AXNAPIdb_dbname = ""
 #---------AXNAPI DB ------------#
 
 class User(UserMixin, db.Model):
