@@ -11,19 +11,19 @@ import threading
 
 
 #---------SmartSafety DB ------------#
-smartsafty_user = "postgres"
-smartsafty_password ="123456789o"
-smartsafty_host = "10.101.118.45"
+smartsafty_user = ""
+smartsafty_password =""
+smartsafty_host = ""
 smartsafty_port = "5432"
-smartsafty_dbname = "SmartSafety"
+smartsafty_dbname = ""
 ### SQLAlchemy Config ####
 
 #---------AXNAPI DB ------------#
-AXNAPIdb_user = "AXNAPI"
-AXNAPIdb_password = "AXNAPI"
-AXNAPIdb_host = "127.0.0.1"
+AXNAPIdb_user = ""
+AXNAPIdb_password = ""
+AXNAPIdb_host = ""
 AXNAPIdb_port = "5432"
-AXNAPIdb_dbname = "AXNAPI"
+AXNAPIdb_dbname = ""
 #---------AXNAPI DB ------------#
 
 def check_video(video):

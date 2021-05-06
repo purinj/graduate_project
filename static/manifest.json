@@ -1,8 +1,8 @@
 {
     "name": "KKU SmartSafety",
     "short_name": "KKU Smart Safety",
-    "theme_color": "#CBD394",
-    "background_color": "#F1F7C6",
+    "theme_color": "rgba(231,81,49,255)",
+    "background_color": "rgba(231,81,49,255)",
     "icons": [
       {
           "src": "/static/image/64.png",

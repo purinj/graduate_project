@@ -49,11 +49,11 @@ def record_json(str): # turn data without \t to json record json data to databas
 
     x = json.loads(str.replace(r'\t','')) # remove \t which \t is not tab use r'\t' instead of \t
     
-    connection = psycopg2.connect(user="postgres",
-                                    password="123456789o",
-                                    host="127.0.0.1",
+    connection = psycopg2.connect(user="",
+                                    password="",
+                                    host="",
                                     port="5432",
-                                    database="SmartSafety") # connect to database
+                                    database="") # connect to database
 
     cur = connection.cursor() # database cursor
    

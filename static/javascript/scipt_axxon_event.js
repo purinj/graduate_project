@@ -10,6 +10,7 @@ var In_timeSeq = []
 var Out_timeSeq = []
 var recentChoosestartDate ;
 var recentChooseendDate;
+var solve_unresponsive;
 
 // Using Function FirstTime
 fetchNameAndCam($('#start_date').val(), $('#end_date').val())
@@ -94,10 +95,11 @@ function fetchNameAndCam(start, end) {
       startDate: start,
       endDate: end
     },
-    // beforeSend: function () {
-    //   // setting a timeout
-    //   alert("กรุณารอสักครู่")
-    // },
+    beforeSend: function () {
+      solve_unresponsive = setInterval(function () {
+        console.log('each');
+      },2000)
+    },
     success: function (data) {
       json_pplIn = JSON.parse(data.peopleIn)
       json_pplOut = JSON.parse(data.peopleOut)

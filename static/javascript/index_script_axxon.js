@@ -7,6 +7,7 @@ var People_in = []
 var People_out = []
 var In_timeSeq = []
 var Out_timeSeq = []
+var solve_unresponsive;
 
 
 function customRange() {
@@ -53,6 +54,11 @@ function fetchNameAndCam(start, end) {
         data: {
             startDate: start,
             endDate: end
+        },
+        beforeSend: function () {
+            solve_unresponsive = setInterval(function () {
+              console.log('each');
+            },2000)
         },
         success: function (data) {
             json_pplIn = JSON.parse(data.peopleIn)
