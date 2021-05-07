@@ -12,18 +12,19 @@ var recentChoosestartDate ;
 var recentChooseendDate;
 var solve_unresponsive;
 
+
 // Using Function FirstTime
-fetchNameAndCam($('#start_date').val(), $('#end_date').val())
-recentChoosestartDate = document.getElementById('start_date').value;
-recentChooseendDate = document.getElementById('end_date').value;
-createStackdata('AxxonChart', Name, People_in, People_out)
-add_option('Cam_Name_for_in')
-add_option('Cam_Name_for_out')
+// fetchNameAndCam($('#start_date').val(), $('#end_date').val())
+// recentChoosestartDate = document.getElementById('start_date').value;
+// recentChooseendDate = document.getElementById('end_date').value;
+// createStackdata('AxxonChart', Name, People_in, People_out)
+// add_option('Cam_Name_for_in')
+// add_option('Cam_Name_for_out')
 // initial time seq chart
-getTimeData(Name[0], $('#start_date').val(), $('#end_date').val())
-create_Time_Chart("people_in_time_chart", In_timeSeq, 'เหตุการณ์เข้า', '#48D1CC')
-create_Time_Chart("people_out_time_chart", Out_timeSeq, 'เหตุการณ์ออก', '#FF7F50')
-createTable()
+// getTimeData(Name[0], $('#start_date').val(), $('#end_date').val())
+// create_Time_Chart("people_in_time_chart", In_timeSeq, 'เหตุการณ์เข้า', '#48D1CC')
+// create_Time_Chart("people_out_time_chart", Out_timeSeq, 'เหตุการณ์ออก', '#FF7F50')
+// createTable()
 
 
 
@@ -65,20 +66,46 @@ document.getElementById('find_range').onclick = async function () {
  
 
 }
-document.getElementById('Cam_Name_for_in').onchange = function () {
-  $('#people_in_time_chart').remove();
-  $('#people_in_time_chart_container').append('<canvas id="people_in_time_chart"></canvas>');
-  data_index = document.getElementById('Cam_Name_for_in').selectedIndex;
-  getTimeData(Name[data_index], recentChoosestartDate, recentChooseendDate)
-  create_Time_Chart("people_in_time_chart", In_timeSeq, 'เหตุการณ์เข้า', '#48D1CC')
+document.getElementById('Cam_Name_for_in').onchange = async function () {
+  await timeInloaderDiaplay()
+  await sleep(500);
+  await timeForInCrator()
+  await timeInloaderNotDiaplay()
+
+  function timeInloaderDiaplay(){
+    document.getElementById('LoadingModal').style.display = 'block'
+  }
+  function timeInloaderNotDiaplay(){
+    document.getElementById('LoadingModal').style.display = 'none'
+  }
+  function timeForInCrator() {
+    $('#people_in_time_chart').remove();
+    $('#people_in_time_chart_container').append('<canvas id="people_in_time_chart"></canvas>');
+    data_index = document.getElementById('Cam_Name_for_in').selectedIndex;
+    getTimeData(Name[data_index], recentChoosestartDate, recentChooseendDate)
+    create_Time_Chart("people_in_time_chart", In_timeSeq, 'เหตุการณ์เข้า', '#48D1CC')
+  }
 }
 
-document.getElementById('Cam_Name_for_out').onchange = function () {
-  $('#people_out_time_chart').remove();
-  $('#people_out_time_chart_container').append('<canvas id="people_out_time_chart"></canvas>');
-  data_index = document.getElementById('Cam_Name_for_out').selectedIndex;
-  getTimeData(Name[data_index], recentChoosestartDate, recentChooseendDate)
-  create_Time_Chart("people_out_time_chart", Out_timeSeq, 'เหตุการณ์ออก', '#FF7F50')
+document.getElementById('Cam_Name_for_out').onchange = async function () {
+  await timeOutloaderDiaplay()
+  await sleep(500);
+  await timeForOutCrator()
+  await timeOutloaderNotDiaplay()
+
+  function timeOutloaderDiaplay(){
+    document.getElementById('LoadingModal').style.display = 'block'
+  }
+  function timeOutloaderNotDiaplay(){
+    document.getElementById('LoadingModal').style.display = 'none'
+  }
+  function timeForOutCrator() {
+    $('#people_out_time_chart').remove();
+    $('#people_out_time_chart_container').append('<canvas id="people_out_time_chart"></canvas>');
+    data_index = document.getElementById('Cam_Name_for_out').selectedIndex;
+    getTimeData(Name[data_index], recentChoosestartDate, recentChooseendDate)
+    create_Time_Chart("people_out_time_chart", Out_timeSeq, 'เหตุการณ์ออก', '#FF7F50')
+  }
 }
 
 
@@ -517,6 +544,12 @@ function getTimeData(cctv_name, Start, End) {
       startDate: Start,
       endDate: End
     },
+    beforeSend: function () {
+      clearInterval(solve_unresponsive)
+      solve_unresponsive = setInterval(function () {
+        console.log('time Scale running');
+      },2000)
+    },
     success: function (data) {
       peopleIn_time = JSON.parse(data.ppl_in_time)
       peopleOut_time = JSON.parse(data.ppl_out_time)
@@ -653,3 +686,5 @@ function exportCsv() {
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+document.getElementById('find_range').click()

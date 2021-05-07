@@ -35,12 +35,12 @@ function backTOnormal() {
 
 }
 
-fetchNameAndCam($('#start_date').val(), $('#end_date').val())
-create_axxon_graoh(Name, People_in, People_out)
+// fetchNameAndCam($('#start_date').val(), $('#end_date').val())
+// create_axxon_graoh(Name, People_in, People_out)
 
-console.log('yo', Name);
-console.log('yo', People_in);
-console.log('yo', People_out);
+// console.log('yo', Name);
+// console.log('yo', People_in);
+// console.log('yo', People_out);
 
 function fetchNameAndCam(start, end) {
     CameraName_in = []
@@ -333,7 +333,7 @@ function create_axxon_graoh(catetgoly_data, InData, OutData) {
                 formatter : function(params){
                    var newParamsName = "";// The final concatenated string
                             var paramsNameNumber = params.length;// Number of actual labels
-                            var provideNumber = 8;// Number of words per line
+                            var provideNumber = 5;// Number of words per line
                             var rowNumber = Math.ceil(paramsNameNumber / provideNumber);// If you change lines, you need to show a few lines and take them up.
                             /**
                              * Determine whether the number of tags is greater than the specified number, and if it is greater than the number of new lines, if it is not greater than, that is, equal to or less than, return to the original tag.
@@ -381,6 +381,10 @@ function create_axxon_graoh(catetgoly_data, InData, OutData) {
             calculable: false,
             xAxis: [{
                 type: 'category',
+                // axisLabel: {
+                //     interval: 0,
+                //     rotate: 30 //If the label names are too long you can manage this by rotating the label.
+                //   },
                 data: catetgoly_data
             }],
             yAxis: [{

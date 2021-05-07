@@ -8,26 +8,26 @@
 
  sevenDays()
 
- getCamData()
- highLowTemp(IPaddress)
- createStackdata('AxxonChart', label_camNote, normalTemp, highTemp)
- add_to_strem_button('stream_button', IPaddress, label_camNote)
- recentChoosestartDate = document.getElementById('start_date').value;
- recentChooseendDate = document.getElementById('end_date').value;
- getDetectData(IPaddress[0], 'POST', {
-     startDate: $('#start_date').val(),
-     endDate: $('#end_date').val(),
-     temperatureType: 'all',
-     AgeGroup: 'all',
-     gender: 'all',
-     glassed: 'all',
-     faceExpression: 'all',
-     race: 'all',
-     beard: 'all',
-     hat: 'all'
+//  getCamData()
+//  highLowTemp(IPaddress)
+//  createStackdata('AxxonChart', label_camNote, normalTemp, highTemp)
+//  add_to_strem_button('stream_button', IPaddress, label_camNote)
+//  recentChoosestartDate = document.getElementById('start_date').value;
+//  recentChooseendDate = document.getElementById('end_date').value;
+//  getDetectData(IPaddress[0], 'POST', {
+//      startDate: $('#start_date').val(),
+//      endDate: $('#end_date').val(),
+//      temperatureType: 'all',
+//      AgeGroup: 'all',
+//      gender: 'all',
+//      glassed: 'all',
+//      faceExpression: 'all',
+//      race: 'all',
+//      beard: 'all',
+//      hat: 'all'
 
- })
- add_option('Cam_Name_select')
+//  })
+//  add_option('Cam_Name_select')
 
  document.getElementById('view_event_chart').onclick = function () {
      data_index = document.getElementById('Cam_Name_select').selectedIndex;
@@ -87,10 +87,13 @@
   }
 
   function graphDisplay() {
+     getCamData()
      $('#AxxonChart').remove()
      $('#Axxon_chart_container').append('<div id="AxxonChart" style="height: 500px;"></div>')
      highLowTemp(IPaddress)
      createStackdata('AxxonChart', label_camNote, normalTemp, highTemp)
+     add_to_strem_button('stream_button', IPaddress, label_camNote)
+     add_option('Cam_Name_select')
      document.getElementById('view_event_chart').click()
  }
 
@@ -556,6 +559,7 @@
 
  function add_to_strem_button(elm_id, ipForlink, labelToDisplay) {
      var btncontainner = document.getElementById(elm_id);
+     btncontainner.innerHTML = ''
 
      for (i = 0; i < ipForlink.length; i++) {
          let ip_parse_to_func = ipForlink[i]
@@ -1086,6 +1090,7 @@
 
 
  function add_option(option_id) {
+     $('#' + option_id).html('')
      for (i = 0; i < label_camNote.length; i++) {
          $('#' + option_id).append("<option value=" + label_camNote[i] + ">" + label_camNote[i] + "</option>")
      }
@@ -1236,3 +1241,5 @@ function exportCsv() {
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+document.getElementById('find_range').click()

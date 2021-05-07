@@ -3,11 +3,11 @@ var IPaddress = []
 var highTemp = []
 var normalTemp = []
 
-getCamData()
-highLowTemp(IPaddress)
-add_option('select_thermalcam')
+// getCamData()
+// highLowTemp(IPaddress)
+// add_option('select_thermalcam')
 
-createStackdata('thermal_Data', label_camNote, normalTemp, highTemp)
+// createStackdata('thermal_Data', label_camNote, normalTemp, highTemp)
 
 document.getElementById('view_select_thermalcam').onclick = function () {
     data_index = document.getElementById('select_thermalcam').selectedIndex;
@@ -30,7 +30,7 @@ document.getElementById('view_select_thermalcam').onclick = function () {
     })
 
 }
-document.getElementById('view_select_thermalcam').click();
+// document.getElementById('view_select_thermalcam').click();
 
 function getCamData() {
     ipAddress = []
@@ -368,6 +368,7 @@ function createStackdata(element_id, label, normalTemp, highTemp) {
 }
 
 function add_option(option_id) {
+    $('#' + option_id).html('')
     for (i = 0; i < label_camNote.length; i++) {
         $('#' + option_id).append("<option value=" + label_camNote[i] + ">" + label_camNote[i] + "</option>")
     }
@@ -406,8 +407,17 @@ function getDetectData(ip, type, data) {
                     // console.log(valueforsubdata);
                     // console.log(valueforsubdata[1].name);
                     // console.log(valueforsubdata[0].name);
-                    document.getElementById('male_data').innerHTML = data[Object.keys(data)[i]]['male']
-                    document.getElementById('female_data').innerHTML = data[Object.keys(data)[i]]['female']
+                    if (data[Object.keys(data)[i]]['male'] === undefined || data[Object.keys(data)[i]]['female'] === undefined) {
+                        data_male_display = 0
+                        data_female_display = 0
+
+                    }else {
+                        data_male_display = data[Object.keys(data)[i]]['male']
+                        data_female_display = data[Object.keys(data)[i]]['female']
+
+                    }
+                    document.getElementById('male_data').innerHTML = data_male_display
+                    document.getElementById('female_data').innerHTML = data_female_display
 
 
 

@@ -284,20 +284,20 @@ document.getElementById('faceScan_query').onclick = function () {
 
 
 
-FaceAPI(document.getElementById("start_date").value, document.getElementById("end_date").value)
-createFace_echart('ประเภทบุคคล', 'pplType_ai', ['นักศึกษา', 'บุคลากร', 'ผู้เยี่ยมชม', 'บัญชีดำ'], [{
-    value: Stranger,
-    name: "นักศึกษา"
-}, {
-    value: Employees,
-    name: "บุคลากร"
-}, {
-    value: Visitor,
-    name: "ผู้เยี่ยมชม"
-}, {
-    value: Blacklist,
-    name: "บัญชีดำ"
-}], ['#D2691E', '#FF8C00', '#DAA520', '#6B8E23', '#00FF7F'], false)
+// FaceAPI(document.getElementById("start_date").value, document.getElementById("end_date").value)
+// createFace_echart('ประเภทบุคคล', 'pplType_ai', ['นักศึกษา', 'บุคลากร', 'ผู้เยี่ยมชม', 'บัญชีดำ'], [{
+//     value: Stranger,
+//     name: "นักศึกษา"
+// }, {
+//     value: Employees,
+//     name: "บุคลากร"
+// }, {
+//     value: Visitor,
+//     name: "ผู้เยี่ยมชม"
+// }, {
+//     value: Blacklist,
+//     name: "บัญชีดำ"
+// }], ['#D2691E', '#FF8C00', '#DAA520', '#6B8E23', '#00FF7F'], false)
 
 function listOfData() {
     valueList = []

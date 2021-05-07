@@ -57,8 +57,8 @@
     <div class="right_col" id="mapAndtext" role="main">
       <nav class="navbar navbar-dark bg-dark"">
         <a class="navbar-brand primary"><i class="fa icon-cctv-9" style="font-size: x-large;"></i> Smart Safety</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span><button class="btn btn-primary" id="displayLogin">เข้าสู่ระบบ</button></span>
+        <button class="btn btn-primary" id="displayLogin">เข้าสู่ระบบ
+          <!-- <span><button class="btn btn-primary" id="displayLogin">เข้าสู่ระบบ</button></span> -->
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <span class="navbar-text">
@@ -80,7 +80,7 @@
           </nav>
         </div>
       </div> -->
-      <span style="color: white; height: 0px;">แผนที่</span>
+      <span style="color: white; height: 0px;">&nbsp;</span>
       <div id="mapid"></div>
 
       
@@ -91,8 +91,7 @@
     <footer id="footer">
       <div class="pull-right">
           <a>หากต้องการขอไฟล์ข้อมูลทางสถิติสามารถส่งอีเมลล์</a>
-          <a>ได้ที่ <a>batt@kkumail.com</a></a>
-  
+          <a>ได้ที่ <a>phonka@kku.ac.th</a></a>
         </div>
       </div>
       <div class="clearfix"></div>
@@ -112,10 +111,10 @@
                 </span>
                 <strong id="invalid"></strong>
               </div>
-              <input type="text" class="form-control" placeholder="Username" required="" id="username" />
+              <input type="text" class="form-control" placeholder="ชื่อผู้ใช้งาน" required="" id="username" />
             </div>
             <div>
-              <input type="password" class="form-control" placeholder="Password" required="" id="password" />
+              <input type="password" class="form-control" placeholder="รหัสผ่าน" required="" id="password" />
             </div>
             <div>
               <button class="btn btn-primary" id="loging_in">เข้าสู่ระบบ</button>
@@ -227,18 +226,26 @@
     document.getElementById('alert').hidden =true
     document.getElementById('loging_in').onclick = function (e) {
       e.preventDefault();
-      console.log(document.getElementById('username').value);
+      if (document.getElementById('username').value.match(/^\d{8}[0-9]-\d{1}[0-9]?$/) != null) {
+        userLogin = document.getElementById('username').value.replace('-','')
+      }
+      else {
+        userLogin = document.getElementById('username').value
+      }
+
+      console.log(userLogin);
+    
       console.log(document.getElementById('password').value);
       $.ajax({
         type: 'POST',
         async: false,
         url: host_url + "api/login",
         data: {
-          username: document.getElementById('username').value,
+          username: userLogin,
           password: document.getElementById('password').value
         },success: function(data) {
           if (data == 'wrong') {
-            document.getElementById('invalid').innerHTML = 'username หรือ รหัสผ่านไม่ถูกต้อง'
+            document.getElementById('invalid').innerHTML = 'ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง'
             document.getElementById('alert').hidden = false
           } else {
             window.location.reload()

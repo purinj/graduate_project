@@ -129,7 +129,8 @@ function edit_open_modal(ip_value,typeoftable) {
     document.querySelector("#edit_id").value = document.getElementById('id_rows' + ip_value).innerHTML;
     document.querySelector("#edit_id").disabled = true
     document.querySelector("#edit_username").value = document.getElementById('username_rows' + ip_value).innerHTML;
-    document.querySelector("#edit_password").value = document.getElementById('password_rows' + ip_value).innerHTML;
+    document.querySelector("#edit_password").placeholder = 'เปลี่ยนรหัสผ่าน'
+    // document.querySelector("#edit_password").value = document.getElementById('password_rows' + ip_value).innerHTML;
     document.querySelector("#edit_firstname").value = document.getElementById('firstname_rows' + ip_value).innerHTML;
     document.querySelector("#edit_lastname").value = document.getElementById('lastname_rows' + ip_value).innerHTML;
     document.getElementById('div_edit_role').innerHTML = '<a>Role: </a> \

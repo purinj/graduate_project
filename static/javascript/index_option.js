@@ -65,7 +65,9 @@ document.getElementById('find_range').onclick = async function () {
 
       $('#thermal_Data').remove()
       $('#thermal_Data_container').html('<div id="thermal_Data" style="height:620px;"></div>')
+      getCamData()
       highLowTemp(IPaddress)
+      add_option('select_thermalcam')
       createStackdata('thermal_Data', label_camNote, normalTemp, highTemp)
       document.getElementById('view_select_thermalcam').click()
 
@@ -85,6 +87,8 @@ document.getElementById('find_range').onclick = async function () {
 
 
 }
+
+document.getElementById('find_range').click()
 
 
 function sleep(ms) {

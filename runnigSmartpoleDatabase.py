@@ -12,7 +12,7 @@ src_AXNAPIdb_dbname = ""
 des_AXNAPIdb_user = ""
 des_AXNAPIdb_password = ""
 des_AXNAPIdb_host = ""
-des_AXNAPIdb_port = "5432"
+des_AXNAPIdb_port = ""
 des_AXNAPIdb_dbname = ""
 #---------AXNAPI DB ------------#
 def select_src(code_query):
