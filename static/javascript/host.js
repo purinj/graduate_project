@@ -1,1 +1,1 @@
-host_url = 'http://localhost:2204/';
+host_url = '';

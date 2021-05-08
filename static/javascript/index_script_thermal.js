@@ -301,6 +301,11 @@ function createStackdata(element_id, label, normalTemp, highTemp) {
     if ($('#' + element_id).length) {
 
         var echartBar = echarts.init(document.getElementById(element_id), theme);
+        echartBar.on('click', function(params) {
+            console.log(params.name)
+            document.getElementById('select_thermalcam').selectedIndex =  label_camNote.indexOf(params.name) 
+            document.getElementById('view_select_thermalcam').click()
+        });
 
         echartBar.setOption({
             title: {

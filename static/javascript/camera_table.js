@@ -1,4 +1,4 @@
-
+var mapdataForuser;
 function add_data_test(url_request,table_column,table_rows,type_for_modal){
     $.ajax({
         type: 'GET',
@@ -9,6 +9,7 @@ function add_data_test(url_request,table_column,table_rows,type_for_modal){
             turn_to_rows = ''
             modal_body = ''
             if(type_for_modal == 'user') {
+                var mapdata = []
                 for (i = 0; i < data.column.length ; i ++) {
                     console.log(data.column[i]);
                     console.log(data.role_row[i]);
@@ -28,7 +29,12 @@ function add_data_test(url_request,table_column,table_rows,type_for_modal){
                     for (j = 0; j < data.row[i].length ; j ++) {
                         console.log(data.column[j]);
                         if (data.column[j] == 'password') {
-                            turn_to_rows +=  "<td id=" + data.column[j] + "_rowsShow" + i + ' >'+ '*******' + `<a id=${data.column[j]}_rows${i} hidden>${data.row[i][j]}</a>` + "</td>"
+                            turn_to_rows +=  "<td id=" + data.column[j] + "_rowsShow" + i + ' >'+ '*******' + "</td>"
+                            // + `<a id=${data.column[j]}_rows${i} hidden>${data.row[i][j]}</a>`วางหลังดอกจัน
+                            mapdata.push({
+                                id:data.row[i][0],
+                                password:data.row[i][j]
+                            })
 
                         } else {
                             turn_to_rows +=  "<td id=" + data.column[j] + "_rows" + i + ' >'+ data.row[i][j] + "</td>"
@@ -45,6 +51,7 @@ function add_data_test(url_request,table_column,table_rows,type_for_modal){
                     turn_to_rows += role_user_row + btn + '</tr>'
                     document.getElementById(table_rows).innerHTML += turn_to_rows;     
                 }
+                mapdataForuser = mapdata
 
             } else {
                 for (i = 0; i < data.column.length ; i ++) {

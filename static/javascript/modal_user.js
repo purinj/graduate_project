@@ -4,7 +4,7 @@ var modal = document.getElementById("myModal");
 var del_modal = document.getElementById("delete_Modal");
 var span = document.getElementsByClassName("close_modal")[0];
 var span_del = document.getElementsByClassName("close_modal")[1];
-
+var Pass_ipval;
 var org_id = []
 
 span.onclick = function() {
@@ -81,14 +81,21 @@ document.getElementById('edit_complete').onclick = function() {
     } 
     if (document.getElementById('edit_Viewer_checkbox').checked == true){
         roles.push('Viewer')
-    } 
+    }
+    if (document.querySelector('#edit_password').value == '') {
+        password = Pass_ipval
+    }
+    if (document.querySelector('#edit_password').value != '') {
+        password = document.querySelector('#edit_password').value
+    }
+   
     $.ajax({
         type: 'PUT',
         async: false,
         url: host_url + "api/usermanage" ,
         data: {
             username: document.querySelector('#edit_username').value,
-            password: document.querySelector('#edit_password').value,
+            password: password,
             firstname:document.querySelector('#edit_firstname').value,
             lastname: document.querySelector('#edit_lastname').value,
             organization:org_id[document.querySelector('#edit_organization').selectedIndex],
@@ -130,6 +137,10 @@ function edit_open_modal(ip_value,typeoftable) {
     document.querySelector("#edit_id").disabled = true
     document.querySelector("#edit_username").value = document.getElementById('username_rows' + ip_value).innerHTML;
     document.querySelector("#edit_password").placeholder = 'เปลี่ยนรหัสผ่าน'
+    Pass_ipval =  mapdataForuser.filter(function (obj) {
+        return obj.id == document.querySelector("#edit_id").value
+    })[0].password;
+    // console.log('vallll',Pass_ipval);
     // document.querySelector("#edit_password").value = document.getElementById('password_rows' + ip_value).innerHTML;
     document.querySelector("#edit_firstname").value = document.getElementById('firstname_rows' + ip_value).innerHTML;
     document.querySelector("#edit_lastname").value = document.getElementById('lastname_rows' + ip_value).innerHTML;

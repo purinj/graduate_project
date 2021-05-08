@@ -225,26 +225,6 @@ def unautorized():
     return 'คุณไม่มีสิทธิเข้าถึงข้อมูลนี้กรุณาติดต่อผู้ดูแลระบบ', 401
 
 
-# Old Route
-@app.route('/carcounting')
-def carcounting():
-    return render_template('CarCounting.html')
-
-@app.route('/maps')
-def maps():
-    return render_template('Maps.html')
-
-@app.route('/PeopleCount')
-def PeopleCoun():
-    return render_template('PeopleCoun.html')
-
-@app.route('/thermal')
-def thermal():
-    return render_template('Thermal.html')
-# Old Route
-
-
-
 
 ##________________
 @app.route('/axxoncam_manage')
@@ -266,13 +246,10 @@ def streamView():
 @app.route('/api/login',methods = ['POST'])
 def login_api():
     if request.method == 'POST':
-        user = User.query.filter_by(username=request.form.get('username'),password=request.form.get('password')).first()
-        print('user =', user)
         r = requests.get('http://ldap.ibatt.in.th/ldap/limitless/%s/%s'%(StrtoBase64(request.form.get('password')),request.form.get('username')))
-        if (user == None):
-            print(r.json())
-            print(r.json()['passed'])
-            if r.json()['passed'] == True and User.query.filter_by(username=request.form.get('username')).first() == None:
+        if r.json()['passed'] == True:
+            user = User.query.filter_by(username=request.form.get('username'), firstname=r.json()['firstname'], lastname=r.json()['lastname']).first()
+            if (user == None):
                 print('create Login Func')
                 user1 = User(username=request.form.get('username'), firstname=r.json()['firstname'], lastname=r.json()['lastname'],password=r.json()['pid'])
                 db.session.add(user1)
@@ -296,42 +273,42 @@ def login_api():
                 connection.close()
 
                 mdg = redirect(request.args.get('next') or url_for('index'))
-
-            elif (r.json()['passed'] == True and User.query.filter_by(username=request.form.get('username')).first() != None):
-                login_user(User.query.filter_by(username=request.form.get('username')).first())
+            else:
+                login_user(user)
                 connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
                 cur = connection.cursor()
                 action_msg = 'ได้เข้าสู่ระบบ'
                 cur.execute(insert_log %(
-                current_user.id,
-                action_msg,
-                datetime.datetime.now()
-                ))
+                    current_user.id,
+                    action_msg,
+                    datetime.datetime.now()
+                    ))
                 connection.commit()
                 cur.close()
                 connection.close()
                 mdg = redirect(request.args.get('next') or url_for('index'))
-               
-            else:
+
+        elif r.json()['passed'] == False:
+            user = User.query.filter_by(username=request.form.get('username'),password=request.form.get('password')).first()
+            if(user == None):
                 print('Nooo')
                 mdg = 'wrong'
+            else:
+                login_user(user)
+                connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
+                cur = connection.cursor()
+                action_msg = 'ได้เข้าสู่ระบบ'
+                cur.execute(insert_log %(
+                    current_user.id,
+                    action_msg,
+                    datetime.datetime.now()
+                    ))
+                connection.commit()
+                cur.close()
+                connection.close()
+                mdg = redirect(request.args.get('next') or url_for('index'))
 
-            return mdg
-               
-        else:
-            login_user(user)
-            connection = psycopg2.connect(user=smartsafty_user,password=smartsafty_password,host=smartsafty_host,port=smartsafty_port,database=smartsafty_dbname)
-            cur = connection.cursor()
-            action_msg = 'ได้เข้าสู่ระบบ'
-            cur.execute(insert_log %(
-            current_user.id,
-            action_msg,
-            datetime.datetime.now()
-        ))
-            connection.commit()
-            cur.close()
-            connection.close()
-            return redirect(request.args.get('next') or url_for('index'))
+    return mdg
 
 @app.route('/pjoat/api/fastcreateuser')
 def fastcreateuser():
